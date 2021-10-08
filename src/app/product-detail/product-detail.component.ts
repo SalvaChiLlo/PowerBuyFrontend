@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ProductDetailComponent implements OnInit {
   public productId: number = -1;
   public product: any;
+  public imagenes: string[] = [];
   constructor(private route: ActivatedRoute, private productService: ProductsService) { }
 
   ngOnInit(): void {
@@ -20,8 +21,9 @@ export class ProductDetailComponent implements OnInit {
   }
 
   private getProduct() {
-    this.productService.getProductById(this.productId).subscribe(product => {
+    this.productService.getProductById(this.productId).subscribe((product:any) => {
       this.product = product
+      this.imagenes = JSON.parse(product.imagenes)
       console.log(this.product)
     })
   }
