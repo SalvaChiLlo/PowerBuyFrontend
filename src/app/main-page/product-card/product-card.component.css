@@ -1,12 +1,19 @@
 .card {
   cursor: pointer;
+  box-shadow: 3px 3px 10px rgba(0 0 0 / 0.2);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 3px 3px 5px rgba(0 0 0 / 0.5);
+  transform: scale(0.98);
 }
 
 .fill {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden
+  overflow: hidden;
 }
 .fill img {
   width: 100%;
@@ -16,7 +23,7 @@
   align-self: flex-end;
   padding: 0.5em;
   margin: 0;
-  background-color: #2078F9;
+  background-color: #2078f9;
   color: white;
   border-radius: 5px;
 }
