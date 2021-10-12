@@ -1,3 +1,7 @@
+.card {
+  cursor: pointer;
+}
+
 .fill {
   display: flex;
   justify-content: center;
@@ -8,6 +12,11 @@
   width: 100%;
 }
 
-button {
+.price-tag {
   align-self: flex-end;
+  padding: 0.5em;
+  margin: 0;
+  background-color: #2078F9;
+  color: white;
+  border-radius: 5px;
 }

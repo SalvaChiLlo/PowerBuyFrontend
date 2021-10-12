@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,8 +13,13 @@ import { ProductCardComponent } from './main-page/product-card/product-card.comp
 import { ProductListComponent } from './main-page/product-list/product-list.component';
 import { CategoriesSelectorComponent } from './main-page/categories-selector/categories-selector.component';
 import { SearchBarComponent } from './main-page/search-bar/search-bar.component';
-import { ProgressBarComponent } from './progress-bar/progress-bar.component'
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { MatIconModule } from '@angular/material/icon'
+import localeDEBE from '@angular/common/locales/de-BE'
+import { registerLocaleData } from '@angular/common';
 
+registerLocaleData(localeDEBE)
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,9 +37,11 @@ import { ProgressBarComponent } from './progress-bar/progress-bar.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatIconModule
   ],
-  providers: [],
+  providers: [{ provide: LOCALE_ID, useValue: 'de-be' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

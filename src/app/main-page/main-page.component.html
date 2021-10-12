@@ -1,17 +1,5 @@
-<p>main-page works!</p>
-<div class="container">
-  <div class="row">
-    <div class="col-6">
-      <h3>Categorias</h3>
-      <ul>
-        <li *ngFor="let cat of categories">{{cat.categoria}}</li>
-      </ul>
-    </div>
-    <div class="col-6">
-      <h3>Productos</h3>
-      <ul>
-        <li *ngFor="let prod of products">{{prod.nombre}}</li>
-      </ul>
-    </div>
-  </div>
+<app-categories-selector></app-categories-selector>
+<app-search-bar></app-search-bar>
+<div class="product-list">
+  <app-product-list></app-product-list>
 </div>
