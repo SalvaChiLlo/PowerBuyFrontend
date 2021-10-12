@@ -1,0 +1,13 @@
+.fill {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden
+}
+.fill img {
+  width: 100%;
+}
+
+button {
+  align-self: flex-end;
+}
