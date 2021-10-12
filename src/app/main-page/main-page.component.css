@@ -2,3 +2,16 @@
   display: flex;
   justify-content: center;
 }
+
+hr {
+  margin: 0;
+}
+
+hr.first {
+  margin-top: 0;
+}
+
+.row {
+  background-color: #f8f9fa;
+  padding: 10px 50px;
+}

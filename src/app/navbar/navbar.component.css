@@ -10,6 +10,10 @@ mat-icon {
   width: fit-content;
   margin-left: 1rem;
 }
-.separator{
+.separator {
   margin-right: 1rem;
+}
+
+nav {
+  border-bottom: 1px solid #ced4da;
 }
