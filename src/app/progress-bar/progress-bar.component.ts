@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ProgressBarComponent implements OnInit {
   // @Input() progress: number;
-  progress: number = 50;
+  progress: number = Math.ceil(Math.random() * 100);
   constructor() { }
 
   ngOnInit(): void {
