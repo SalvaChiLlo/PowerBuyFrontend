@@ -1,9 +1,10 @@
 <div class="container">
+    <!-- Start product view -->
     <div class="row">
         <div class="col-6">
-            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-interval="false">
                 <div class="carousel-inner">
-                  <div class="carousel-item active" *ngFor="let image of imagenes">
+                  <div class="carousel-item" *ngFor="let image of imagenes; let index = index" [class.active]="index == 0">
                     <img [src]="image" class="d-block w-100" alt="...">
                   </div>
                   
@@ -21,7 +22,7 @@
         <div class="col-6">
             <div class="row">
                 <div class="col">
-                    <h1>Current product ID is: {{product.nombre}}</h1>
+                    <h2>{{product.nombre}}</h2>
                 </div>
             </div>
             <div class="row">
@@ -31,16 +32,16 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <p>{{product.descripcion}}</p>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" [style]="{'width': progress + '%'}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                            {{progress}} %
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                            {{product.cantidadDisponible}} / {{product.cantidadInicial}}
-                        </div>
-                    </div>
+                    <p align="justify">{{product.descripcion}}</p>
                 </div>
             </div>
             <div class="row">
@@ -50,4 +51,95 @@
             </div>
         </div>
     </div>
+    <!-- End product view -->
+    <hr>
+    <!-- Start reviews -->
+    <div class="row justify-content-center">
+        <div class="col-xl-7 col-lg-8 col-md-10 col-12 text-center mb-5">
+            <div class="card">
+                <div class="row justify-content-left d-flex">
+                    <div class="col-md-4 d-flex flex-column">
+                        <div class="rating-box">
+                            <h1 class="pt-4">4.0</h1>
+                            <p class="">out of 5</p>
+                        </div>
+                        <div> <span class="fa fa-star star-active mx-1"></span> <span class="fa fa-star star-active mx-1"></span> <span class="fa fa-star star-active mx-1"></span> <span class="fa fa-star star-active mx-1"></span> <span class="fa fa-star star-inactive mx-1"></span> </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="rating-bar0 justify-content-center">
+                            <table class="text-left mx-auto">
+                                <tr>
+                                    <td class="rating-label">5</td>
+                                    <td class="rating-bar">
+                                        <div class="bar-container">
+                                            <div class="bar-5"></div>
+                                        </div>
+                                    </td>
+                                    <td class="text-right">123</td>
+                                </tr>
+                                <tr>
+                                    <td class="rating-label">4</td>
+                                    <td class="rating-bar">
+                                        <div class="bar-container">
+                                            <div class="bar-4"></div>
+                                        </div>
+                                    </td>
+                                    <td class="text-right">23</td>
+                                </tr>
+                                <tr>
+                                    <td class="rating-label">3</td>
+                                    <td class="rating-bar">
+                                        <div class="bar-container">
+                                            <div class="bar-3"></div>
+                                        </div>
+                                    </td>
+                                    <td class="text-right">10</td>
+                                </tr>
+                                <tr>
+                                    <td class="rating-label">2</td>
+                                    <td class="rating-bar">
+                                        <div class="bar-container">
+                                            <div class="bar-2"></div>
+                                        </div>
+                                    </td>
+                                    <td class="text-right">3</td>
+                                </tr>
+                                <tr>
+                                    <td class="rating-label">1</td>
+                                    <td class="rating-bar">
+                                        <div class="bar-container">
+                                            <div class="bar-1"></div>
+                                        </div>
+                                    </td>
+                                    <td class="text-right">0</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="row d-flex">
+                    <div class="d-flex flex-column">
+                        <h3 class="mt-2 mb-0">Anónimo</h3>
+                        <div>
+                            <p class="text-left"><span class="text-muted">4.0</span> <span class="fa fa-star star-active ml-3"></span> <span class="fa fa-star star-active"></span> <span class="fa fa-star star-active"></span> <span class="fa fa-star star-active"></span> <span class="fa fa-star star-inactive"></span></p>
+                        </div>
+                    </div>
+                    <div class="ml-auto">
+                        <p class="text-muted pt-5 pt-sm-3">10 Sept</p>
+                    </div>
+                </div>
+                <div class="row text-left">
+                    <p class="content">Gracias a Dios mis brazos son flexibles y tengo las uñas largas, con lo cual me puedo rascar bien la espalda, pero mi marido me tiene harta con tanto: "ráscame la espalda, anda..." Así que es un regalo perfecto para él, viene bien presentado en una caja de cartón y es hasta mono. El diseño está bien, porque no es un trasto largo que ocupa sitio, sino que al ser telescópico se queda a buen tamaño.                        El metal de la barra está bastante bien, no se queda tan fino como los de las antenas de radio. Me costó 3,99 €, no le pongo, de momento, ninguna pega. Lo único que la empresa de transporte dijo que lo había enviado al punto de recogida y no había manera de localizarlo, Amazon me devolvió el dinero y lo tuve que volver a comprar, pero vino en 2 días y porque el punto de recogida no abre por las tardes. Pero bueno, eso ya es cosa de la empresa de transportes.</p>
+                </div>
+                
+                <div class="row text-left mt-4">
+                    <div class="like mr-3 vote"> <img src="https://i.imgur.com/mHSQOaX.png"><span class="blue-text pl-2">20</span> </div>
+                    <div class="unlike vote"> <img src="https://i.imgur.com/bFBO3J7.png"><span class="text-muted pl-2">4</span> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End reviews -->
 </div>
