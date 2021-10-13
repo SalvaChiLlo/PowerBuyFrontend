@@ -11,6 +11,7 @@ export class ProductDetailComponent implements OnInit {
   public productId: number = -1;
   public product: any;
   public imagenes: string[] = [];
+  public progress: number = 0;
   constructor(private route: ActivatedRoute, private productService: ProductsService) { }
 
   ngOnInit(): void {
@@ -25,6 +26,8 @@ export class ProductDetailComponent implements OnInit {
       this.product = product
       this.imagenes = JSON.parse(product.imagenes)
       console.log(this.product)
+
+      this.progress = Math.floor((product.cantidadDisponible / product.cantidadInicial) * 100)
     })
   }
 }
