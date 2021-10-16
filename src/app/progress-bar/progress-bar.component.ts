@@ -6,11 +6,13 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./progress-bar.component.css']
 })
 export class ProgressBarComponent implements OnInit {
-  // @Input() progress: number;
-  progress: number = Math.ceil(Math.random() * 100);
+  @Input() cantDisp: number;
+  @Input() cantInicial: number;
+  progress: number = 0;
   constructor() { }
 
   ngOnInit(): void {
+    this.progress = Math.floor((this.cantDisp / this.cantInicial) * 100)
   }
 
 }

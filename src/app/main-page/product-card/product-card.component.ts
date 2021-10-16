@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Product } from './../../models/producto.model';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-product-card',
@@ -6,10 +7,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product-card.component.css']
 })
 export class ProductCardComponent implements OnInit {
-  price: number = Math.ceil(Math.random() * (2000 - 100) + 2000)
+  @Input() product: Product;
+  price: number = -1;
+  image: string = 'https://drive.google.com/uc?id=1B7MZEPUkmFHkyynxwA3gkLgnGoEPvaf5';
+  titulo: string = '';
+
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.product)
+    this.price = this.product.precio;
+
+    if (this.product.imagenes) {
+      const images = JSON.parse(this.product.imagenes);
+      if (images) {
+        this.image = images[0]
+      }
+    }
+
+    this.formatTitulo();
+  }
+
+  private formatTitulo() {
+    this.titulo = this.product.nombre.slice(0, 25) + '...'
   }
 
 }

@@ -1,15 +1,15 @@
-<div class="card m-2" style="max-width: 540px;">
-  <div class="row g-0">
-    <div class="col-md-4 fill">
-      <img src="https://drive.google.com/uc?id=1B7MZEPUkmFHkyynxwA3gkLgnGoEPvaf5" class="img-fluid rounded-start"
-        alt="...">
+<div [routerLink]="'/product/'+product.id" class="card m-2" style="max-width: 540px;">
+  <div class="row g-0 card-content">
+    <div class="col-4 fill img-container">
+      <img [src]="image" alt="...">
     </div>
-    <div class="col-md-8">
+    <div class="col-8">
       <div class="card-body d-flex flex-column justify-content-start">
-        <h5 class="card-title">Card title</h5>
+        <h5 class="card-title ">{{titulo}}</h5>
         <div class="card-text">
-          Cant.Lote: Y / X
-          <app-progress-bar></app-progress-bar>
+          Cant.Lote: {{product.cantidadDisponible}} / {{product.cantidadInicial}}
+          <app-progress-bar [cantInicial]="product.cantidadInicial" [cantDisp]="product.cantidadDisponible">
+          </app-progress-bar>
         </div>
         <div class="price-tag mt-3 ">{{price|currency:'EUR':true}} </div>
       </div>
