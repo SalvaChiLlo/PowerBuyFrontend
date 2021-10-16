@@ -14,12 +14,10 @@ export class MainPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.productService.getAllProducts().subscribe((products: any) => {
-      console.log(products)
       this.products = products
     })
 
     this.categoriesService.getAllCategories().subscribe((categories: any) => {
-      console.log(categories)
       this.categories = categories
     })
   }

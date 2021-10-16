@@ -23,3 +23,13 @@
     grid-template-columns: 1fr;
   }
 }
+
+.pb-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pb-pagination p {
+  margin: 0;
+}
