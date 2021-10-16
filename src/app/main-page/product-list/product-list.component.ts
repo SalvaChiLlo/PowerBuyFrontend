@@ -19,7 +19,7 @@ export class ProductListComponent implements OnInit, OnChanges {
   constructor() { }
   ngOnChanges(changes: SimpleChanges): void {
     if (Object.keys(changes).includes('products')) {
-      this.products = [...this.products, ...this.products, ...this.products, ...this.products, ...this.products, ...this.products, ...this.products, ...this.products]
+      this.products = [...this.products]
       this.setPagination();
     }
   }
