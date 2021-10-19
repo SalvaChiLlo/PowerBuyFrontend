@@ -10,18 +10,19 @@ import { Product } from 'src/app/models/producto.model';
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent implements OnInit {
-  
+
   private searchTerms = new Subject<string>();
 
   constructor() { }
 
-  search(term: string): void {
+  search(event: any, term: string): void {
+    event.preventDefault();
     console.log(term);
     this.searchTerms.next(term);
   }
 
   ngOnInit(): void {
-    
+
   }
 
 }
