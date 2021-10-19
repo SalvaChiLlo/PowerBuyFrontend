@@ -7,7 +7,7 @@
                   <div class="carousel-item" *ngFor="let image of imagenes; let index = index" [class.active]="index == 0">
                     <img [src]="image" class="d-block w-100" alt="...">
                   </div>
-                  
+
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -55,7 +55,8 @@
     <hr>
     <!-- Start reviews -->
     <div class="row justify-content-center">
-        <div class="col-xl-7 col-lg-8 col-md-10 col-12 text-center mb-5">
+        <h2>Reseñas</h2>
+        <div class="col-12 text-center mb-5">
             <div class="card">
                 <div class="row justify-content-left d-flex">
                     <div class="col-md-4 d-flex flex-column">
@@ -118,22 +119,22 @@
                     </div>
                 </div>
             </div>
-            <div class="card">
+            <div class="card" *ngFor="let opinion of opiniones">
                 <div class="row d-flex">
                     <div class="d-flex flex-column">
-                        <h3 class="mt-2 mb-0">Anónimo</h3>
+                        <h3 class="mt-2 mb-0">{{opinion.nombre}}</h3>
                         <div>
-                            <p class="text-left"><span class="text-muted">4.0</span> <span class="fa fa-star star-active ml-3"></span> <span class="fa fa-star star-active"></span> <span class="fa fa-star star-active"></span> <span class="fa fa-star star-active"></span> <span class="fa fa-star star-inactive"></span></p>
+                            <p class="text-left"><span class="text-muted">{{opinion.valoracion}}</span> <span class="fa fa-star star-active ml-3"></span> <span class="fa fa-star star-active"></span> <span class="fa fa-star star-active"></span> <span class="fa fa-star star-active"></span> <span class="fa fa-star star-inactive"></span></p>
                         </div>
                     </div>
                     <div class="ml-auto">
-                        <p class="text-muted pt-5 pt-sm-3">10 Sept</p>
+                        <p class="text-muted pt-5 pt-sm-3">{{opinion.updatedAt}}</p>
                     </div>
                 </div>
                 <div class="row text-left">
-                    <p class="content">Gracias a Dios mis brazos son flexibles y tengo las uñas largas, con lo cual me puedo rascar bien la espalda, pero mi marido me tiene harta con tanto: "ráscame la espalda, anda..." Así que es un regalo perfecto para él, viene bien presentado en una caja de cartón y es hasta mono. El diseño está bien, porque no es un trasto largo que ocupa sitio, sino que al ser telescópico se queda a buen tamaño.                        El metal de la barra está bastante bien, no se queda tan fino como los de las antenas de radio. Me costó 3,99 €, no le pongo, de momento, ninguna pega. Lo único que la empresa de transporte dijo que lo había enviado al punto de recogida y no había manera de localizarlo, Amazon me devolvió el dinero y lo tuve que volver a comprar, pero vino en 2 días y porque el punto de recogida no abre por las tardes. Pero bueno, eso ya es cosa de la empresa de transportes.</p>
+                    <p class="content">{{opinion.opinion}}</p>
                 </div>
-                
+
                 <div class="row text-left mt-4">
                     <div class="like mr-3 vote"> <img src="https://i.imgur.com/mHSQOaX.png"><span class="blue-text pl-2">20</span> </div>
                     <div class="unlike vote"> <img src="https://i.imgur.com/bFBO3J7.png"><span class="text-muted pl-2">4</span> </div>
