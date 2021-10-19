@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 import { Observable, Subject } from 'rxjs';
 
@@ -10,15 +10,16 @@ import { Product } from 'src/app/models/producto.model';
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent implements OnInit {
-
-  private searchTerms = new Subject<string>();
+  @Output() busquedaEvent = new EventEmitter<string>();
+  private searchTerms: string = '';
 
   constructor() { }
 
   search(event: any, term: string): void {
     event.preventDefault();
     console.log(term);
-    this.searchTerms.next(term);
+    this.searchTerms = term;
+    this.busquedaEvent.emit(this.searchTerms);
   }
 
   ngOnInit(): void {
