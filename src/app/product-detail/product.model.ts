@@ -37,5 +37,16 @@ export interface Opinion {
     createdAt:  string;
     updatedAt:  string;
     ClienteId:  number;
+    cliente:    Cliente;
     ProductoId: number;
+}
+
+export interface Cliente {
+    id:         number;
+    username:   string;
+    password:   string;
+    email:      string;
+    imageURL:   string;
+    createdAt:  string;
+    updatedAt:  string;
 }

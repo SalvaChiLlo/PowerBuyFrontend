@@ -8,7 +8,9 @@ import { BodyComponent } from './body/body.component';
 import { FooterComponent } from './footer/footer.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { RelatedProductsComponent } from './product-detail/related-products/related-products.component';
+import { RatingComponent } from './product-detail/rating/rating.component'
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { HttpClientModule } from '@angular/common/http'
     BodyComponent,
     FooterComponent,
     MainPageComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    RelatedProductsComponent,
+    RatingComponent
   ],
   imports: [
     BrowserModule,
