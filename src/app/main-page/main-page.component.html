@@ -2,7 +2,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-3">
-      <app-categories-selector></app-categories-selector>
+      <app-categories-selector (categoriaEvent)="filtrarCategoria($event)"></app-categories-selector>
     </div>
     <div class="col-6">
       <app-search-bar (busquedaEvent)="getBusqueda($event)"></app-search-bar>

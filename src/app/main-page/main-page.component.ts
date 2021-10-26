@@ -1,4 +1,4 @@
-import { Product } from './../models/producto.model';
+import { Product, Categoria } from './../models/producto.model';
 import { CategoriasService } from './../services/categorias.service';
 import { ProductsService } from './../services/products.service';
 import { Component, OnInit } from '@angular/core';
@@ -13,6 +13,11 @@ export class MainPageComponent implements OnInit {
   productsToRender: Product[] = [];
   categories: any;
   busqueda: string = '';
+  prevBusqueda: string = '';
+  prevCategoria: string = '0';
+  categoria: string = '0';
+  productsCategorias: Product[];
+  productsBusqueda: Product[];
   constructor(private productService: ProductsService, private categoriesService: CategoriasService) { }
 
   ngOnInit(): void {
@@ -28,7 +33,8 @@ export class MainPageComponent implements OnInit {
 
   getBusqueda(busqueda: string) {
     this.busqueda = busqueda;
-    this.productsToRender = this.products.filter(product => {
+    console.log(this.categoria)
+    this.productsBusqueda = this.products.filter(product => {
       if (this.busqueda === '') {
         return true;
       } else if (this.busqueda !== '') {
@@ -37,6 +43,31 @@ export class MainPageComponent implements OnInit {
         return false;
       }
     });
+
+    this.mergeProductos();
+  }
+  filtrarCategoria(categoria: string) {
+    this.categoria = categoria
+    console.log(this.busqueda)
+    this.productsCategorias = this.products.filter(product => {
+      if (this.categoria == '0') {
+        return true
+      } else {
+        return JSON.stringify(product.categorias).toLowerCase().includes(this.categoria.toLowerCase())
+      }
+    });
+    this.mergeProductos();
   }
 
+  mergeProductos() {
+    if(this.busqueda !== '' && this.categoria !== '' && this.categoria!== '0') {
+      this.productsToRender = this.productsBusqueda.filter(pb => {
+        return this.productsCategorias.includes(pb)
+      })
+    } else if(this.busqueda !== '') {
+      this.productsToRender = this.productsBusqueda
+    } else {
+      this.productsToRender = this.productsCategorias
+    }
+  }
 }
