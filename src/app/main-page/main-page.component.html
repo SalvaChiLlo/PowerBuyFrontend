@@ -8,11 +8,11 @@
       <app-search-bar (busquedaEvent)="getBusqueda($event)"></app-search-bar>
     </div>
     <div class="col-3">
-      <app-sort-selector></app-sort-selector>
+      <app-sort-selector (selectedOrderEmitter)="getOrden($event)"></app-sort-selector>
     </div>
   </div>
 </div>
 <hr>
 <div class="product-list">
-  <app-product-list [products]="productsToRender"></app-product-list>
+  <app-product-list [products]="productsToRender" [busqueda]="busqueda"></app-product-list>
 </div>

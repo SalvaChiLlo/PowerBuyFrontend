@@ -16,4 +16,8 @@ export class ProductsService {
   public getProductById(id: number) {
     return this.http.get('http://localhost:9000/api/productos/' + id)
   }
+
+  public getClientById(id: number) {
+    return this.http.get('http://localhost:9000/api/clientes/' + id)
+  }
 }

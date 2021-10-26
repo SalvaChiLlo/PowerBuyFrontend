@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-sort-selector',
@@ -6,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sort-selector.component.css']
 })
 export class SortSelectorComponent implements OnInit {
-  selectedOption: string;
-  printedOption: string;
 
+  @Output() selectedOrderEmitter = new EventEmitter<number>();
+
+    selectedValue: number = 1;
+  
   options = [
     {name: "relevancia", value : 1},
     {name: "precioAscendente", value : 2},
@@ -21,8 +24,11 @@ export class SortSelectorComponent implements OnInit {
 
   cambio(data : any){
     console.log(data.target.value)
+    this.selectedValue = data.target.value
+    this.selectedOrderEmitter.emit(this.selectedValue)
   }
 
+  
   
   constructor() { }
 

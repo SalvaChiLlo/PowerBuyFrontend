@@ -18,6 +18,7 @@ export class MainPageComponent implements OnInit {
   categoria: string = '0';
   productsCategorias: Product[];
   productsBusqueda: Product[];
+  sortType : any;
   constructor(private productService: ProductsService, private categoriesService: CategoriasService) { }
 
   ngOnInit(): void {
@@ -38,10 +39,11 @@ export class MainPageComponent implements OnInit {
       if (this.busqueda === '') {
         return true;
       } else if (this.busqueda !== '') {
-        return JSON.stringify(product).toLowerCase().includes(this.busqueda)
+        return JSON.stringify(product).toLowerCase().includes(this.busqueda.toLowerCase())
       } else {
         return false;
       }
+
     });
 
     this.mergeProductos();
@@ -58,7 +60,49 @@ export class MainPageComponent implements OnInit {
     });
     this.mergeProductos();
   }
+  getOrden(value: number) {
+    this.sortType = value;
 
+    //con el switch no se pk no funciona
+    /*switch(value){
+        default:
+          //por defecto, como se programe en la busqueda
+          break;
+
+        case 2: //precio ascendente
+          this.productsToRender = this.products.sort((prd1, prd2) => prd1.precio - prd2.precio )
+          break;
+
+        case 3: //precio descendente
+          this.productsToRender = this.products.sort((prd1, prd2) => prd2.precio - prd1.precio )
+          break;
+
+        case 4: //alfabeticamente ascendente
+          this.productsToRender = this.products.sort(function (prd1, prd2 ){
+            if(prd1.nombre.toLocaleLowerCase() > prd2.nombre.toLocaleLowerCase()){
+                return 1;
+            }
+            else if(prd1.nombre.toLocaleLowerCase() < prd2.nombre.toLocaleLowerCase()){
+                return -1;
+            }
+            return 0;
+          });
+
+          break;
+
+        case 5:  //alfabeticamente descendente
+          this.productsToRender = this.products.sort(function (prd1, prd2 ){
+          if(prd1.nombre.toLocaleLowerCase() < prd2.nombre.toLocaleLowerCase()){
+              return 1;
+          }
+          else if(prd1.nombre.toLocaleLowerCase() > prd2.nombre.toLocaleLowerCase()){
+              return -1;
+            }
+          return 0;
+
+          });
+          break; */
+        }
   mergeProductos() {
     if(this.busqueda !== '' && this.categoria !== '' && this.categoria!== '0') {
       this.productsToRender = this.productsBusqueda.filter(pb => {
@@ -71,3 +115,5 @@ export class MainPageComponent implements OnInit {
     }
   }
 }
+
+

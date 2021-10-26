@@ -1,0 +1,86 @@
+<div class="row justify-content-center">
+  <h2>Reseñas</h2>
+  <div class="col-12 text-center mb-5">
+      <div class="card">
+          <div class="row justify-content-left d-flex">
+              <div class="col-md-4 d-flex flex-column">
+                  <div class="rating-box">
+                      <h1 class="pt-4">{{valoracionGlobal}}</h1>
+                      <p class="">de 5</p>
+                  </div>
+                  <div> <span class="fa fa-star star-active mx-1"></span> <span class="fa fa-star star-active mx-1"></span> <span class="fa fa-star star-active mx-1"></span> <span class="fa fa-star star-active mx-1"></span> <span class="fa fa-star star-inactive mx-1"></span> </div>
+              </div>
+              <div class="col-md-8" *ngIf="opiniones.length">
+                  <div class="rating-bar0 justify-content-center">
+                      <table class="text-left mx-auto">
+                          <tr>
+                              <td class="rating-label">5</td>
+                              <td class="rating-bar">
+                                  <div class="bar-container">
+                                      <div class="bar-5" [style]="{'width': valoraciones[4] + '%'}"></div>
+                                  </div>
+                              </td>
+                              <td class="text-right">{{valoraciones[4]}}%</td>
+                          </tr>
+                          <tr>
+                              <td class="rating-label">4</td>
+                              <td class="rating-bar">
+                                  <div class="bar-container">
+                                      <div class="bar-4" [style]="{'width': valoraciones[3] + '%'}"></div>
+                                  </div>
+                              </td>
+                              <td class="text-right">{{valoraciones[3]}}%</td>
+                          </tr>
+                          <tr>
+                              <td class="rating-label">3</td>
+                              <td class="rating-bar">
+                                  <div class="bar-container">
+                                      <div class="bar-3" [style]="{'width': valoraciones[2] + '%'}"></div>
+                                  </div>
+                              </td>
+                              <td class="text-right">{{valoraciones[2]}}%</td>
+                          </tr>
+                          <tr>
+                              <td class="rating-label">2</td>
+                              <td class="rating-bar">
+                                  <div class="bar-container">
+                                      <div class="bar-2" [style]="{'width': valoraciones[1] + '%'}"></div>
+                                  </div>
+                              </td>
+                              <td class="text-right">{{valoraciones[1]}}%</td>
+                          </tr>
+                          <tr>
+                              <td class="rating-label">1</td>
+                              <td class="rating-bar">
+                                  <div class="bar-container">
+                                      <div class="bar-1" [style]="{'width': valoraciones[0] + '%'}"></div>
+                                  </div>
+                              </td>
+                              <td class="text-right">{{valoraciones[0]}}%</td>
+                          </tr>
+                      </table>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="card" *ngFor="let opinion of opiniones">
+          <div class="row d-flex">
+              <div class="d-flex flex-column">
+                  <h4 class="mt-2 mb-0">{{opinion.cliente.username}}</h4>
+                  <div>
+                      <p class="text-left"><span class="text-muted">{{opinion.valoracion}} / 5</span></p>
+                      <img *ngFor="let dummy of ' '.repeat(opinion.valoracion).split(''), let x = index" src="https://i.imgur.com/Ttoac2H.png" alt="" width="20px">
+                  </div>
+
+
+              </div>
+              <div class="ml-auto">
+                  <p class="text-muted pt-5 pt-sm-3">Publicado el {{opinion.updatedAt}}</p>
+              </div>
+          </div>
+          <div class="row text-left">
+              <p class="content">{{opinion.opinion}}</p>
+          </div>
+      </div>
+  </div>
+</div>

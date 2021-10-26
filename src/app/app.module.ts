@@ -19,6 +19,8 @@ import { MatIconModule } from '@angular/material/icon'
 import localeDEBE from '@angular/common/locales/de-BE'
 import { registerLocaleData } from '@angular/common';
 import { SortSelectorComponent } from './main-page/sort-selector/sort-selector.component';
+import { RelatedProductsComponent } from './product-detail/related-products/related-products.component';
+import { RatingComponent } from './product-detail/rating/rating.component'
 
 registerLocaleData(localeDEBE)
 @NgModule({
@@ -34,7 +36,9 @@ registerLocaleData(localeDEBE)
     CategoriesSelectorComponent,
     SearchBarComponent,
     ProgressBarComponent,
-    SortSelectorComponent
+    SortSelectorComponent,
+    RelatedProductsComponent,
+    RatingComponent
   ],
   imports: [
     BrowserModule,
