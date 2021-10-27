@@ -64,13 +64,13 @@ export class MainPageComponent implements OnInit {
     this.sortType = value;
 
     if (value == 2) {
-      this.productsToRender = this.products.sort((prd1, prd2) => prd1.precio - prd2.precio)
+      this.products = this.products.sort((prd1, prd2) => prd1.precio - prd2.precio)
     }
     else if (value == 3) {
-      this.productsToRender = this.products.sort((prd1, prd2) => prd2.precio - prd1.precio)
+      this.products = this.products.sort((prd1, prd2) => prd2.precio - prd1.precio)
     }
     else if (value == 4) {
-      this.productsToRender = this.products.sort(function (prd1, prd2) {
+      this.products = this.products.sort(function (prd1, prd2) {
         if (prd1.nombre.toLocaleLowerCase() > prd2.nombre.toLocaleLowerCase()) {
           return 1;
         }
@@ -81,7 +81,7 @@ export class MainPageComponent implements OnInit {
       });
     }
     else if (value == 5) {
-      this.productsToRender = this.products.sort(function (prd1, prd2) {
+      this.products = this.products.sort(function (prd1, prd2) {
         if (prd1.nombre.toLocaleLowerCase() < prd2.nombre.toLocaleLowerCase()) {
           return 1;
         }
@@ -92,11 +92,11 @@ export class MainPageComponent implements OnInit {
       });
     }
     else if (value == 6) {
-      this.productsToRender = this.products.sort((prd1, prd2) => (prd2.cantidadInicial / prd2.cantidadDisponible) - (prd1.cantidadInicial / prd1.cantidadDisponible))
+      this.products = this.products.sort((prd1, prd2) => (prd2.cantidadInicial / prd2.cantidadDisponible) - (prd1.cantidadInicial / prd1.cantidadDisponible))
     }
     else if (value == 7) {
 
-      this.productsToRender = this.products.sort((prd1, prd2) => (prd1.cantidadInicial / prd1.cantidadDisponible) - (prd2.cantidadInicial / prd2.cantidadDisponible))
+      this.products = this.products.sort((prd1, prd2) => (prd1.cantidadInicial / prd1.cantidadDisponible) - (prd2.cantidadInicial / prd2.cantidadDisponible))
     }
 
     this.mergeProductos()
@@ -109,8 +109,10 @@ export class MainPageComponent implements OnInit {
       })
     } else if (this.busqueda !== '') {
       this.productsToRender = this.productsBusqueda
-    } else {
+    } else if (this.categoria !== '0') {
       this.productsToRender = this.productsCategorias
+    } else {
+      this.productsToRender = [...this.products]
     }
   }
 }

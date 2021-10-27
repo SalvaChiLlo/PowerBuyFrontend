@@ -28,7 +28,6 @@ export class ProductCardComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    console.log(this.product)
     this.price = this.product.precio;
 
     if (this.product.imagenes) {

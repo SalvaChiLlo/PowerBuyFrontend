@@ -44,8 +44,6 @@ export class ProductListComponent implements OnInit, OnChanges {
       this.lastProd = last;
     }
     this.productsToRender = this.products.slice(first, last);
-    console.log(first, last)
-    console.log(this.productsToRender)
   }
 
   previousPage() {
