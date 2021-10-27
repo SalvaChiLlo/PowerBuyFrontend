@@ -10,10 +10,10 @@ import { Product } from '../product.model';
 })
 export class RatingComponent implements OnInit, OnChanges {
 
-  @Input() opiniones:Opinion[];
+  @Input() opiniones: Opinion[];
   productos: Product[] = [];
-  _valoraciones: any = [0,0,0,0,0]
-  valoraciones: any = [0,0,0,0,0]
+  _valoraciones: any = [0, 0, 0, 0, 0]
+  valoraciones: any = [0, 0, 0, 0, 0]
   valoracionGlobal: number = 0;
   productosAMostrar: Product[] = [];
   numProductosAMostrar = 3;
@@ -23,22 +23,23 @@ export class RatingComponent implements OnInit, OnChanges {
 
   }
   ngOnChanges(): void {
-    // this.opiniones.forEach((o:Opinion) => {
-    //   this._valoraciones[o.valoracion-1]++
-    //   this.puntuaciones.push(o.valoracion)
-    // });
+    this.opiniones.forEach((o: Opinion) => {
+      this._valoraciones[o.valoracion - 1]++
+      this.puntuaciones.push(o.valoracion)
+    });
+    if (this.puntuaciones.length) {
+      this.valoracionGlobal = this.puntuaciones.reduce((previousValue, currentValue) => previousValue + currentValue)
 
-    // this.valoracionGlobal = this.puntuaciones.reduce((previousValue, currentValue) => previousValue + currentValue)
-
-    // this.valoraciones[0] = Math.floor((this._valoraciones[0] / this.opiniones.length) * 100)
-    // this.valoraciones[1] = Math.floor((this._valoraciones[1] / this.opiniones.length) * 100)
-    // this.valoraciones[2] = Math.floor((this._valoraciones[2] / this.opiniones.length) * 100)
-    // this.valoraciones[3] = Math.floor((this._valoraciones[3] / this.opiniones.length) * 100)
-    // this.valoraciones[4] = Math.floor((this._valoraciones[4] / this.opiniones.length) * 100)
-    // this.valoracionGlobal = Math.floor(this.valoracionGlobal / this.opiniones.length * 10) / 10
+      this.valoraciones[0] = Math.floor((this._valoraciones[0] / this.opiniones.length) * 100)
+      this.valoraciones[1] = Math.floor((this._valoraciones[1] / this.opiniones.length) * 100)
+      this.valoraciones[2] = Math.floor((this._valoraciones[2] / this.opiniones.length) * 100)
+      this.valoraciones[3] = Math.floor((this._valoraciones[3] / this.opiniones.length) * 100)
+      this.valoraciones[4] = Math.floor((this._valoraciones[4] / this.opiniones.length) * 100)
+      this.valoracionGlobal = Math.floor(this.valoracionGlobal / this.opiniones.length * 10) / 10
+    }
   }
 
   ngOnInit(): void {
 
-   }
+  }
 }
