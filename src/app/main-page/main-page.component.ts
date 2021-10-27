@@ -60,17 +60,39 @@ export class MainPageComponent implements OnInit {
     });
     this.mergeProductos();
   }
-  getOrden(value: number) {
+  getOrden(value: number, shouldMerge: boolean) {
     this.sortType = value;
 
     if (value == 2) {
       this.products = this.products.sort((prd1, prd2) => prd1.precio - prd2.precio)
+      this.productsBusqueda = this.productsBusqueda?.sort((prd1, prd2) => prd1.precio - prd2.precio)
+      this.productsCategorias = this.productsCategorias?.sort((prd1, prd2) => prd1.precio - prd2.precio)
     }
     else if (value == 3) {
       this.products = this.products.sort((prd1, prd2) => prd2.precio - prd1.precio)
+      this.productsBusqueda = this.productsBusqueda?.sort((prd1, prd2) => prd2.precio - prd1.precio)
+      this.productsCategorias = this.productsCategorias?.sort((prd1, prd2) => prd2.precio - prd1.precio)
     }
     else if (value == 4) {
       this.products = this.products.sort(function (prd1, prd2) {
+        if (prd1.nombre.toLocaleLowerCase() > prd2.nombre.toLocaleLowerCase()) {
+          return 1;
+        }
+        else if (prd1.nombre.toLocaleLowerCase() < prd2.nombre.toLocaleLowerCase()) {
+          return -1;
+        }
+        return 0;
+      });
+      this.productsCategorias = this.productsCategorias?.sort(function (prd1, prd2) {
+        if (prd1.nombre.toLocaleLowerCase() > prd2.nombre.toLocaleLowerCase()) {
+          return 1;
+        }
+        else if (prd1.nombre.toLocaleLowerCase() < prd2.nombre.toLocaleLowerCase()) {
+          return -1;
+        }
+        return 0;
+      });
+      this.productsBusqueda = this.productsBusqueda?.sort(function (prd1, prd2) {
         if (prd1.nombre.toLocaleLowerCase() > prd2.nombre.toLocaleLowerCase()) {
           return 1;
         }
@@ -90,16 +112,40 @@ export class MainPageComponent implements OnInit {
         }
         return 0;
       });
+      this.productsBusqueda = this.productsBusqueda?.sort(function (prd1, prd2) {
+        if (prd1.nombre.toLocaleLowerCase() < prd2.nombre.toLocaleLowerCase()) {
+          return 1;
+        }
+        else if (prd1.nombre.toLocaleLowerCase() > prd2.nombre.toLocaleLowerCase()) {
+          return -1;
+        }
+        return 0;
+      });
+      this.productsCategorias = this.productsCategorias?.sort(function (prd1, prd2) {
+        if (prd1.nombre.toLocaleLowerCase() < prd2.nombre.toLocaleLowerCase()) {
+          return 1;
+        }
+        else if (prd1.nombre.toLocaleLowerCase() > prd2.nombre.toLocaleLowerCase()) {
+          return -1;
+        }
+        return 0;
+      });
     }
     else if (value == 6) {
       this.products = this.products.sort((prd1, prd2) => (prd2.cantidadInicial / prd2.cantidadDisponible) - (prd1.cantidadInicial / prd1.cantidadDisponible))
+      this.productsBusqueda = this.productsBusqueda?.sort((prd1, prd2) => (prd2.cantidadInicial / prd2.cantidadDisponible) - (prd1.cantidadInicial / prd1.cantidadDisponible))
+      this.productsCategorias = this.productsCategorias?.sort((prd1, prd2) => (prd2.cantidadInicial / prd2.cantidadDisponible) - (prd1.cantidadInicial / prd1.cantidadDisponible))
     }
     else if (value == 7) {
 
       this.products = this.products.sort((prd1, prd2) => (prd1.cantidadInicial / prd1.cantidadDisponible) - (prd2.cantidadInicial / prd2.cantidadDisponible))
+      this.productsCategorias = this.productsCategorias?.sort((prd1, prd2) => (prd1.cantidadInicial / prd1.cantidadDisponible) - (prd2.cantidadInicial / prd2.cantidadDisponible))
+      this.productsBusqueda = this.productsBusqueda?.sort((prd1, prd2) => (prd1.cantidadInicial / prd1.cantidadDisponible) - (prd2.cantidadInicial / prd2.cantidadDisponible))
     }
 
-    this.mergeProductos()
+    if (shouldMerge) {
+      this.mergeProductos()
+    }
   }
 
   mergeProductos() {
@@ -107,12 +153,20 @@ export class MainPageComponent implements OnInit {
       this.productsToRender = this.productsBusqueda.filter(pb => {
         return this.productsCategorias.includes(pb)
       })
+      // this.getOrden(this.sortType, false)
+      console.log(this.productsToRender)
     } else if (this.busqueda !== '') {
-      this.productsToRender = this.productsBusqueda
+      this.productsToRender = [...this.productsBusqueda]
+      // this.getOrden(this.sortType, false)
+      console.log(this.productsToRender)
     } else if (this.categoria !== '0') {
-      this.productsToRender = this.productsCategorias
+      this.productsToRender = [...this.productsCategorias]
+      // this.getOrden(this.sortType, false)
+      console.log(this.productsToRender)
     } else {
       this.productsToRender = [...this.products]
+      // this.getOrden(this.sortType, false)
+      console.log(this.products)
     }
   }
 }
