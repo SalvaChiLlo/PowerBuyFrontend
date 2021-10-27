@@ -1,0 +1,6 @@
+<form>
+  <input class="form-control" type="search" #searchBar id="search1" placeholder="Search" aria-label="Search">
+  <button class="btn btn-outline-success" type="submit" (click)="search($event,searchBar.value)">
+    <mat-icon>search</mat-icon>
+  </button>
+</form>

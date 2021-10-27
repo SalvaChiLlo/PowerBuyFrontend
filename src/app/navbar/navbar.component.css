@@ -1,0 +1,19 @@
+.submenu {
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+mat-icon {
+  font-size: 2.5em;
+  width: fit-content;
+  margin-left: 1rem;
+}
+.separator {
+  margin-right: 1rem;
+}
+
+nav {
+  border-bottom: 1px solid #ced4da;
+}

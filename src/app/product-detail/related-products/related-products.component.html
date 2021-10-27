@@ -1,0 +1,12 @@
+<h2>Productos relacionados</h2>
+<div class="row" *ngIf="productosAMostrar.length">
+  <div class="col-4">
+    <app-product-card [product]="productosAMostrar[0]"></app-product-card>
+  </div>
+  <div class="col-4">
+    <app-product-card [product]="productosAMostrar[1]"></app-product-card>
+  </div>
+  <div class="col-4">
+    <app-product-card [product]="productosAMostrar[2]"></app-product-card>
+  </div>
+</div>

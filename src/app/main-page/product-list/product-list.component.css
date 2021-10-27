@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  width: 100%;
+}
+
+.product-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+@media (max-width: 1200px) {
+  .product-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .product-list {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
+
+.pb-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pb-pagination p {
+  margin: 0;
+}

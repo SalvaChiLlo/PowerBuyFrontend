@@ -1,1 +1,18 @@
-<p>main-page works!</p>
+<hr class="first">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-3">
+      <app-categories-selector (categoriaEvent)="filtrarCategoria($event)"></app-categories-selector>
+    </div>
+    <div class="col-6">
+      <app-search-bar (busquedaEvent)="getBusqueda($event)"></app-search-bar>
+    </div>
+    <div class="col-3">
+      <app-sort-selector (selectedOrderEmitter)="getOrden($event, true)"></app-sort-selector>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="product-list">
+  <app-product-list [products]="productsToRender" [busqueda]="busqueda"></app-product-list>
+</div>
