@@ -1,5 +1,5 @@
+import { Product } from './../../models/producto.model';
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { Product } from 'src/app/product-detail/product.model';
 
 @Component({
   selector: 'app-product-card',

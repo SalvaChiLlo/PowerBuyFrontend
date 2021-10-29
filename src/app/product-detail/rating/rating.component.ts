@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Opinion, Product } from 'src/app/models/producto.model';
 import { ProductsService } from 'src/app/services/products.service';
-import { Opinion } from '../product.model';
-import { Product } from '../product.model';
+
 
 @Component({
   selector: 'app-rating',

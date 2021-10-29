@@ -1,4 +1,4 @@
-import { CategoriasService} from './../../services/categorias.service';
+import { CategoriasService } from './../../services/categorias.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
@@ -10,10 +10,10 @@ import { ActivatedRoute } from '@angular/router';
 export class CategoriesSelectorComponent implements OnInit {
   @Output() categoriaEvent = new EventEmitter<string>();
   private searchTerms: string = '';
-  categorias : any
-  nombre : string
-  opcionSeleccionado: string  = '0'
-  public selected : string
+  categorias: any
+  nombre: string
+  opcionSeleccionado: string = '0'
+  public selected: string
   constructor(private route: ActivatedRoute, private categoriasService: CategoriasService) {
 
   }
@@ -26,17 +26,15 @@ export class CategoriesSelectorComponent implements OnInit {
   }
 
   private getCategorias() {
-      this.categoriasService.getAllCategories().subscribe((categorias:any) => {
-        this.categorias = categorias
-        console.log(this.categorias)
+    this.categoriasService.getAllCategories().subscribe((categorias: any) => {
+      this.categorias = categorias
 
-      })
+    })
   }
 
-  public filtrarCategorias(e : any){
+  public filtrarCategorias(e: any) {
     event.preventDefault()
     this.nombre = e.target.value
-    console.log(this.nombre)
     this.searchTerms = this.nombre
     this.categoriaEvent.emit(this.searchTerms)
   }

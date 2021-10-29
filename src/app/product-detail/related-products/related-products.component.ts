@@ -1,7 +1,6 @@
+import { Product } from './../../models/producto.model';
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service';
-import { Product } from '../product.model';
-
 @Component({
   selector: 'app-related-products',
   templateUrl: './related-products.component.html',
@@ -26,9 +25,8 @@ export class RelatedProductsComponent implements OnInit {
 
 
   setProductosAMostrar() {
-    for (let i = 0 ; i < this.numProductosAMostrar; i++) {
-      this.productosAMostrar[i] = this.productos[Math.floor(Math.random() * this.productos.length-1)]
+    for (let i = 0; i < this.numProductosAMostrar; i++) {
+      this.productosAMostrar[i] = this.productos[Math.floor(Math.random() * this.productos.length - 1)]
     }
-    console.log(this.productosAMostrar)
   }
 }

@@ -1,4 +1,4 @@
-import { Product, Categoria } from './../models/producto.model';
+import { Product, CategoriaCategoria } from './../models/producto.model';
 import { CategoriasService } from './../services/categorias.service';
 import { ProductsService } from './../services/products.service';
 import { Component, OnInit } from '@angular/core';
@@ -25,6 +25,7 @@ export class MainPageComponent implements OnInit {
     this.productService.getAllProducts().subscribe((products: any) => {
       this.products = products
       this.productsToRender = this.products
+      console.log(this.products)
     })
 
     this.categoriesService.getAllCategories().subscribe((categories: any) => {
@@ -34,7 +35,6 @@ export class MainPageComponent implements OnInit {
 
   getBusqueda(busqueda: string) {
     this.busqueda = busqueda;
-    console.log(this.categoria)
     this.productsBusqueda = this.products.filter(product => {
       if (this.busqueda === '') {
         return true;
@@ -50,12 +50,11 @@ export class MainPageComponent implements OnInit {
   }
   filtrarCategoria(categoria: string) {
     this.categoria = categoria
-    console.log(this.busqueda)
     this.productsCategorias = this.products.filter(product => {
       if (this.categoria == '0') {
         return true
       } else {
-        return JSON.stringify(product.categorias).toLowerCase().includes(this.categoria.toLowerCase())
+        return JSON.stringify(product.Categorias).toLowerCase().includes(this.categoria.toLowerCase())
       }
     });
     this.mergeProductos();
@@ -154,19 +153,15 @@ export class MainPageComponent implements OnInit {
         return this.productsCategorias.includes(pb)
       })
       // this.getOrden(this.sortType, false)
-      console.log(this.productsToRender)
     } else if (this.busqueda !== '') {
       this.productsToRender = [...this.productsBusqueda]
       // this.getOrden(this.sortType, false)
-      console.log(this.productsToRender)
     } else if (this.categoria !== '0') {
       this.productsToRender = [...this.productsCategorias]
       // this.getOrden(this.sortType, false)
-      console.log(this.productsToRender)
     } else {
       this.productsToRender = [...this.products]
       // this.getOrden(this.sortType, false)
-      console.log(this.products)
     }
   }
 }

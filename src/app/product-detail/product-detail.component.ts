@@ -1,7 +1,7 @@
 import { ProductsService } from './../services/products.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Opinion, Product } from './product.model';
+import { Opinion, Product } from '../models/producto.model';
 
 @Component({
   selector: 'app-product-detail',
@@ -21,9 +21,9 @@ export class ProductDetailComponent implements OnInit {
     precio: -1,
     createdAt: '',
     updatedAt: '',
-    opiniones: [],
-    categorias: []
-};
+    Opinions: [],
+    Categorias: []
+  };
   public imagenes: string[] = [];
   public opiniones: Opinion[] = [];
   public progress: number = 0;
@@ -38,12 +38,10 @@ export class ProductDetailComponent implements OnInit {
   }
 
   private getProduct() {
-    this.productService.getProductById(this.productId).subscribe((product:any) => {
+    this.productService.getProductById(this.productId).subscribe((product: any) => {
       this.product = product
       this.imagenes = JSON.parse(product.imagenes)
-      this.opiniones = this.product.opiniones
-      console.log(this.product)
-      console.log(this.opiniones)
+      this.opiniones = this.product.Opinions
 
       this.progress = Math.floor((product.cantidadDisponible / product.cantidadInicial) * 100)
     })
