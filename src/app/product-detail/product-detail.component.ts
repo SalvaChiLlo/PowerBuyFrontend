@@ -1,5 +1,5 @@
 import { ProductsService } from './../services/products.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Opinion, Producto } from '../models/producto.model';
 
@@ -27,6 +27,7 @@ export class ProductDetailComponent implements OnInit {
   public imagenes: string[] = [];
   public opiniones: Opinion[] = [];
   public progress: number = 0;
+  timestamp: number = 0;
   constructor(private route: ActivatedRoute, private productService: ProductsService) { }
 
   ngOnInit(): void {
@@ -38,6 +39,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   private getProduct() {
+    this.timestamp = Date.now();
     this.productService.getProductById(this.productId).subscribe((product: any) => {
       this.product = product[0]
       this.imagenes = this.product.imagenes ? JSON.parse(this.product.imagenes) : ['https://drive.google.com/uc?id=1B7MZEPUkmFHkyynxwA3gkLgnGoEPvaf5']

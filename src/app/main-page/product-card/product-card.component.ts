@@ -15,29 +15,32 @@ export class ProductCardComponent implements OnInit, OnChanges {
   constructor() { }
   ngOnChanges(changes: SimpleChanges): void {
     this.image = 'https://drive.google.com/uc?id=1B7MZEPUkmFHkyynxwA3gkLgnGoEPvaf5';
-    this.price = this.product.precio;
+    if (this.product && this.product.id !== -1) {
+      this.price = this.product.precio;
 
-    if (this.product.imagenes) {
-      const images = JSON.parse(this.product.imagenes);
-      if (images) {
-        this.image = images[0]
+      if (this.product.imagenes) {
+        const images = JSON.parse(this.product.imagenes);
+        if (images) {
+          this.image = images[0]
+        }
       }
+      this.formatTitulo();
     }
-
-    this.formatTitulo();
   }
 
   ngOnInit(): void {
-    this.price = this.product.precio;
+    if (this.product) {
+      this.price = this.product.precio;
 
-    if (this.product.imagenes) {
-      const images = JSON.parse(this.product.imagenes);
-      if (images) {
-        this.image = images[0]
+      if (this.product.imagenes) {
+        const images = JSON.parse(this.product.imagenes);
+        if (images) {
+          this.image = images[0]
+        }
       }
-    }
 
-    this.formatTitulo();
+      this.formatTitulo();
+    }
   }
 
   private formatTitulo() {

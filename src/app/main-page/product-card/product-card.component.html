@@ -1,4 +1,5 @@
-<div [routerLink]="'/product/'+product.id" (click)="scroll()" class="card m-2" style="max-width: 540px;">
+<div *ngIf="product" [routerLink]="'/product/'+product.id" (click)="scroll()" class="card m-2"
+  style="max-width: 540px;">
   <div class="row g-0 card-content">
     <div class="col-4 fill img-container">
       <img [src]="image" alt="...">

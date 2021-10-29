@@ -1,16 +1,16 @@
 import { Producto } from './../../models/producto.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service';
 @Component({
   selector: 'app-related-products',
   templateUrl: './related-products.component.html',
   styleUrls: ['./related-products.component.css']
 })
-export class RelatedProductsComponent implements OnInit {
+export class RelatedProductsComponent implements OnInit, OnChanges {
   productos: Producto[] = [];
   productosAMostrar: Producto[] = [];
   numProductosAMostrar = 3;
-
+  @Input('update') update: number;
   constructor(private productService: ProductsService) {
     this.productService.getAllProducts().subscribe(productos => {
       this.productos = productos
@@ -20,6 +20,10 @@ export class RelatedProductsComponent implements OnInit {
 
     });
   }
+  ngOnChanges(changes: SimpleChanges): void {
+    this.setProductosAMostrar()
+  }
+
   ngOnInit(): void {
   }
 
