@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { Opinion, Product } from 'src/app/models/producto.model';
+import { Opinion, Producto } from 'src/app/models/producto.model';
 import { ProductsService } from 'src/app/services/products.service';
 
 
@@ -11,11 +11,11 @@ import { ProductsService } from 'src/app/services/products.service';
 export class RatingComponent implements OnInit, OnChanges {
 
   @Input() opiniones: Opinion[];
-  productos: Product[] = [];
+  productos: Producto[] = [];
   _valoraciones: any = [0, 0, 0, 0, 0]
   valoraciones: any = [0, 0, 0, 0, 0]
   valoracionGlobal: number = 0;
-  productosAMostrar: Product[] = [];
+  productosAMostrar: Producto[] = [];
   numProductosAMostrar = 3;
   puntuaciones: number[] = [];
 
@@ -23,18 +23,19 @@ export class RatingComponent implements OnInit, OnChanges {
 
   }
   ngOnChanges(): void {
+    this._valoraciones = Array(5).fill(0);
+    this.puntuaciones = [];
     this.opiniones.forEach((o: Opinion) => {
       this._valoraciones[o.valoracion - 1]++
       this.puntuaciones.push(o.valoracion)
     });
+
     if (this.puntuaciones.length) {
       this.valoracionGlobal = this.puntuaciones.reduce((previousValue, currentValue) => previousValue + currentValue)
 
-      this.valoraciones[0] = Math.floor((this._valoraciones[0] / this.opiniones.length) * 100)
-      this.valoraciones[1] = Math.floor((this._valoraciones[1] / this.opiniones.length) * 100)
-      this.valoraciones[2] = Math.floor((this._valoraciones[2] / this.opiniones.length) * 100)
-      this.valoraciones[3] = Math.floor((this._valoraciones[3] / this.opiniones.length) * 100)
-      this.valoraciones[4] = Math.floor((this._valoraciones[4] / this.opiniones.length) * 100)
+      this.valoraciones = this._valoraciones.map((valoracion: any) => {
+        return valoracion ? Math.floor((valoracion / this.opiniones.length) * 100) : 0
+      })
       this.valoracionGlobal = Math.floor(this.valoracionGlobal / this.opiniones.length * 10) / 10
     }
   }

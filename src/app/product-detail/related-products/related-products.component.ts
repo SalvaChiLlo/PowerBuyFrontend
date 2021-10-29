@@ -1,4 +1,4 @@
-import { Product } from './../../models/producto.model';
+import { Producto } from './../../models/producto.model';
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service';
 @Component({
@@ -7,8 +7,8 @@ import { ProductsService } from 'src/app/services/products.service';
   styleUrls: ['./related-products.component.css']
 })
 export class RelatedProductsComponent implements OnInit {
-  productos: Product[] = [];
-  productosAMostrar: Product[] = [];
+  productos: Producto[] = [];
+  productosAMostrar: Producto[] = [];
   numProductosAMostrar = 3;
 
   constructor(private productService: ProductsService) {

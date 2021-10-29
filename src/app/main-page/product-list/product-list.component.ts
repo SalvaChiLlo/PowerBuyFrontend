@@ -1,4 +1,4 @@
-import { Product } from './../../models/producto.model';
+import { Producto } from './../../models/producto.model';
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 @Component({
@@ -7,11 +7,11 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit, OnChanges {
-  @Input() products: Product[] = [];
+  @Input() products: Producto[] = [];
   @Input() busqueda: string = "";
   currentPage: number = 1;
   numberOfPages: number = 1;
-  productsToRender: Product[] = [];
+  productsToRender: Producto[] = [];
   productsPerPage = 48;
   firstProd = 0;
   lastProd = 0;

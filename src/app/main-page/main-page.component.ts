@@ -1,4 +1,4 @@
-import { Product, CategoriaCategoria } from './../models/producto.model';
+import { Producto } from './../models/producto.model';
 import { CategoriasService } from './../services/categorias.service';
 import { ProductsService } from './../services/products.service';
 import { Component, OnInit } from '@angular/core';
@@ -9,15 +9,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main-page.component.css']
 })
 export class MainPageComponent implements OnInit {
-  products: Product[];
-  productsToRender: Product[] = [];
+  products: Producto[];
+  productsToRender: Producto[] = [];
   categories: any;
   busqueda: string = '';
   prevBusqueda: string = '';
   prevCategoria: string = '0';
   categoria: string = '0';
-  productsCategorias: Product[];
-  productsBusqueda: Product[];
+  productsCategorias: Producto[];
+  productsBusqueda: Producto[];
   sortType: any;
   constructor(private productService: ProductsService, private categoriesService: CategoriasService) { }
 
@@ -54,7 +54,7 @@ export class MainPageComponent implements OnInit {
       if (this.categoria == '0') {
         return true
       } else {
-        return JSON.stringify(product.Categorias).toLowerCase().includes(this.categoria.toLowerCase())
+        return JSON.stringify(product.CategoriaProductos).toLowerCase().includes(this.categoria.toLowerCase())
       }
     });
     this.mergeProductos();
