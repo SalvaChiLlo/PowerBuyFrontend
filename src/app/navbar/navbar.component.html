@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+<nav #navBar class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
       <img src="/assets/PowerBuy_Logo.png" alt="PowerBuy logo" width="100px">
@@ -31,10 +31,25 @@
         </li>
       </ul>
       <div class="d-flex submenu">
-        <app-profile-picture-viewer routerLink="areaPersonal" class="btn userimg" *ngIf="client" [rounded]="true"
-          [image]="userImage || placeholderImage" [width]="42" [height]="42">
-        </app-profile-picture-viewer>
-        <button *ngIf="!client" class="btn btn-primary iniciar-sesion" routerLink="/signin">Iniciar sesión</button>
+        <div class="dropdown" *ngIf="client">
+          <app-profile-picture-viewer class="btn userimg dropdown-toggle" [rounded]="true"
+            [image]="userImage || placeholderImage" [width]="42" [height]="42" data-bs-toggle="dropdown"
+            aria-expanded="false">
+          </app-profile-picture-viewer>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+            <li><button (click)="close()" routerLink="/areaPersonal" class="dropdown-item" href="#">Área
+                Personal</button>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><button (click)="logout();close();" class="dropdown-item text-danger fw-bold" href="#">Cerrar
+                Sesión</button>
+            </li>
+          </ul>
+        </div>
+        <button *ngIf="!client" (click)="close()" class="btn btn-primary iniciar-sesion" routerLink="/signin">Iniciar
+          sesión</button>
         <mat-icon class="separator" fontSet="material-icons">shopping_cart</mat-icon>
       </div>
     </div>

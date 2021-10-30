@@ -34,4 +34,9 @@ export class FooterComponent implements OnInit {
     this.router.navigate(['/home'])
     window.scroll(0, 0)
   }
+
+  navigateTo(dir: string) {
+    this.router.navigate([dir])
+    window.scroll(0, 0)
+  }
 }
