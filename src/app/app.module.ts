@@ -21,8 +21,8 @@ import { registerLocaleData } from '@angular/common';
 import { SortSelectorComponent } from './main-page/sort-selector/sort-selector.component';
 import { RelatedProductsComponent } from './product-detail/related-products/related-products.component';
 import { RatingComponent } from './product-detail/rating/rating.component';
-import { RegisterComponent } from './login/register/register.component';
-import { IniciarSesionComponent } from './login/iniciar-sesion/iniciar-sesion.component'
+import { SigninComponent } from './login/signin/signin.component';
+import { SignupComponent } from './login/signup/signup.component';
 
 registerLocaleData(localeDEBE)
 @NgModule({
@@ -41,8 +41,8 @@ registerLocaleData(localeDEBE)
     SortSelectorComponent,
     RelatedProductsComponent,
     RatingComponent,
-    RegisterComponent,
-    IniciarSesionComponent
+    SigninComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
