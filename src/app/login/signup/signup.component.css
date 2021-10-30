@@ -80,3 +80,7 @@ p small {
   transform: scale(0.97);
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
 }
+
+.input-error {
+  border-bottom: 2px solid #c02e2e;
+}

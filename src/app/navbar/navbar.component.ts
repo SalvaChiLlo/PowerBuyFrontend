@@ -20,10 +20,8 @@ export class NavbarComponent implements OnInit {
   }
   ngOnInit(): void {
     this.clienteService.currentClient.subscribe(client => {
-      console.log(client)
       this.client = client
       if (client) {
-        console.log(client.imageURL)
         this.userImage = client.imageURL;
       }
     })

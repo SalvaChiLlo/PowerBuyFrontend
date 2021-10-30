@@ -21,10 +21,11 @@ export class ClientesService implements OnChanges {
       if (isLoggedIn) {
         setTimeout(() => {
           this.user.subscribe(user => {
-            console.log(user)
-            this.getClientByEmail(user.email).subscribe(client => {
-              this.currentClient.next(client[0])
-            })
+            if (user) {
+              this.getClientByEmail(user.email).subscribe(client => {
+                this.currentClient.next(client[0])
+              })
+            }
           })
         }, 100);
       }
@@ -32,7 +33,6 @@ export class ClientesService implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes)
   }
 
   public getClientById(id: number | string): Observable<Cliente[]> {

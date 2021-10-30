@@ -6,6 +6,8 @@ import { traceUntilFirst } from '@angular/fire/performance';
 import { ClientesService } from 'src/app/services/clientes.service';
 import { Storage } from '@angular/fire/storage';
 import { deleteUser } from '@firebase/auth';
+import compress from 'compress-base64';
+import { FirebaseError } from '@angular/fire/app';
 
 @Component({
   selector: 'app-signup',
@@ -22,6 +24,11 @@ export class SignupComponent implements OnInit {
   loading: boolean = false;
   defaultImage: string = `https://robohash.org/${Math.floor(Math.random() * 9000)}.png`
   error: boolean = false;
+  errorMessage: string = 'El correo o la contraseña son incorrectos.';
+
+  emailError: boolean = false;
+  passwordError: boolean = false;
+  usernameError: boolean = false;
 
   constructor(
     private router: Router,
@@ -35,8 +42,6 @@ export class SignupComponent implements OnInit {
         traceUntilFirst('auth'),
         map(u => !!u)
       ).subscribe(isLoggedIn => {
-        console.log(isLoggedIn)
-        console.log(this.auth.currentUser)
       });
     }
   }
@@ -49,7 +54,15 @@ export class SignupComponent implements OnInit {
     event.preventDefault();
     this.loading = true
     try {
-      if (this.email !== '' && this.password !== '') {
+      this.error = false;
+      this.emailError = false;
+      this.passwordError = false;
+      this.usernameError = false;
+      this.errorMessage = '';
+      const validationEmail = this.validateEmail(this.email)
+      const validationUsername = this.validateUsername(this.username)
+      const validationPassword = this.validatePassword(this.password)
+      if (validationEmail && validationPassword && validationUsername) {
         const fbResponse = await createUserWithEmailAndPassword(this.auth, this.email, this.password)
         if (fbResponse.user.email) {
           this.clienteService.createClient({
@@ -58,12 +71,13 @@ export class SignupComponent implements OnInit {
             imageURL: this.imagePreview || this.defaultImage
           }).subscribe(
             cliente => {
-              console.log(cliente)
               this.clienteService.currentClient.next(cliente)
               this.router.navigate(['/home'])
             },
             error => {
               this.error = true
+              this.errorMessage = 'El correo o la contraseña son incorrectos.';
+              console.log(error)
               deleteUser(this.auth.currentUser)
               signOut(this.auth)
             }
@@ -72,10 +86,18 @@ export class SignupComponent implements OnInit {
       }
     } catch (e) {
       this.error = true
+      this.errorMessage = 'El correo o la contraseña son incorrectos.';
+      console.log((e as FirebaseError).message)
+      if ((e as FirebaseError).message === 'Firebase: Error (auth/email-already-in-use).') {
+        this.errorMessage = 'El correo que has introducido ya está en uso';
+      }
+
       deleteUser(this.auth.currentUser)
       signOut(this.auth)
     } finally {
-      this.loading = false;
+      setTimeout(() => {
+        this.loading = false;
+      }, 2000);
       window.scroll(0, 0);
     }
 
@@ -83,13 +105,58 @@ export class SignupComponent implements OnInit {
   }
 
   async processImage(event: any) {
-    if (event?.target && event?.target?.files[0]) {
-      this.file = event?.target?.files[0];
-      const reader = new FileReader();
-      reader.onload = e => this.imagePreview = reader.result;
-      reader.readAsDataURL(this.file);
-      console.log(await reader.result)
+    if (typeof FileReader === 'function') {
+
+      if (event?.target && event?.target?.files[0]) {
+        this.file = event?.target?.files[0];
+        const reader = new FileReader();
+        reader.onload = event => {
+          compress(event.target.result + '', {
+            width: 200,
+            max: 100,
+            min: 20,
+            quality: 0.8
+          }).then(result => {
+            this.imagePreview = result
+          })
+        };
+        reader.readAsDataURL(this.file);
+      } else {
+        alert('Your browser does not support FileReader');
+      }
     }
+  }
+
+  validatePassword(password: string): boolean {
+    if (password.length < 8) {
+      this.error = true;
+      this.passwordError = true;
+      this.errorMessage += 'La contraseña debe de ser de al menos 8 carácteres. ';
+      return false
+    }
+    return true;
+  }
+
+  validateUsername(username: string): boolean {
+    if (username.length < 5) {
+      this.error = true;
+      this.usernameError = true;
+      this.errorMessage += 'El nombre de usuario debe de ser de al menos 5 carácteres. ';
+      return false
+    }
+    return true;
+  }
+
+
+  validateEmail(email: string): boolean {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (re.test(email.toLowerCase()) === false) {
+      this.error = true;
+      this.emailError = true;
+      this.errorMessage += 'El correo no tiene el formato correcto. ';
+      return false;
+    }
+    return true
   }
 }
 

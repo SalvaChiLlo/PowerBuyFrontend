@@ -11,26 +11,28 @@
         <div class="row">
           <div class="col">
             <div class="alert alert-danger" role="alert" *ngIf="error">
-              El correo o la contraseña son incorrectos.
+              {{errorMessage}}
             </div>
           </div>
         </div>
         <div class="row my-3">
           <div class="col login-inputs">
-            <input required type="text" name="email" id="email" [(ngModel)]="email">
+            <input [class.input-error]="emailError" required type="text" name="email" id="email" [(ngModel)]="email">
             <span [class.active]='email.length'>Email</span>
           </div>
         </div>
         <div class="row">
           <div class="col login-inputs">
-            <input required type="text" name="username" id="username" [(ngModel)]="username">
+            <input [class.input-error]="usernameError" required type="text" name="username" id="username"
+              [(ngModel)]="username">
             <span [class.active]='username.length'>Nombre de usuario</span>
           </div>
         </div>
         <div class="row mt-3">
           <div class="col login-inputs">
-            <input [type]="show ? 'text ': 'password'" name="password" id="password" [(ngModel)]="password">
-            <span [class.active]='password.length'>Password</span>
+            <input [class.input-error]="passwordError" [type]="show ? 'text ': 'password'" name="password" id="password"
+              [(ngModel)]="password">
+            <span [class.active]='password.length'>Contraseña</span>
             <mat-icon class="btn" (click)="show = !show">visibility</mat-icon>
           </div>
         </div>

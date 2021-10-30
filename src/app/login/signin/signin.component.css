@@ -46,3 +46,7 @@ p small {
 [type="submit"] {
   font-weight: bold;
 }
+
+.input-error {
+  border-bottom: 2px solid #c02e2e;
+}
