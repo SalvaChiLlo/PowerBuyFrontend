@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "powerbuypin": {
+      "hosting": {
+        "PowerBuyFront": [
+          "powerbuypin"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "powerbuypin"
+  }
+}

@@ -13,6 +13,7 @@ export class CategoriesSelectorComponent implements OnInit {
   categorias: any
   nombre: string
   opcionSeleccionado: string = '0'
+  categoria: string = '0'
   public selected: string
   constructor(private route: ActivatedRoute, private categoriasService: CategoriasService) {
 

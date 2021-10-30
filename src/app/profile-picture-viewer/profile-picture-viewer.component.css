@@ -1,0 +1,12 @@
+.img-container {
+  overflow: hidden;
+  border: 1px solid #808080;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  max-height: 100%;
+  max-width: 100%;
+}

@@ -43,13 +43,13 @@ export interface Opinion {
 }
 
 export interface Cliente {
-  id: number;
+  id?: number;
   username: string;
-  password: string;
   email: string;
-  imageURL: string;
-  createdAt: string;
-  updatedAt: string;
+  imageURL?: string;
+  imageBLOB?: any;
+  createdAt?: string;
+  updatedAt?: string;
   Opinions?: Opinion[];
   CategoriaProductos?: CategoriaProducto[];
 }

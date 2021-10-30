@@ -31,7 +31,10 @@
         </li>
       </ul>
       <div class="d-flex submenu">
-        <mat-icon fontSet="material-icons">account_circle</mat-icon>
+        <app-profile-picture-viewer *ngIf="client" [rounded]="true" [image]="userImage || placeholderImage" [width]="42"
+          [height]="42">
+        </app-profile-picture-viewer>
+        <button *ngIf="!client" class="btn btn-primary" routerLink="/signin">Iniciar sesión</button>
         <mat-icon class="separator" fontSet="material-icons">shopping_cart</mat-icon>
       </div>
     </div>

@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Auth, authState } from '@angular/fire/auth';
+import { traceUntilFirst } from '@angular/fire/performance';
+import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
+import { Cliente } from '../models/producto.model';
+import { ClientesService } from '../services/clientes.service';
 
 @Component({
   selector: 'app-navbar',
@@ -6,10 +12,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  placeholderImage = 'https://drive.google.com/uc?id=1MDeTJsllJwe1gbJRR_xhDOm0k3WNtaVs'
+  userImage: string;
+  client: Cliente | null;
+  constructor(private router: Router, private auth: Auth, private clienteService: ClientesService) {
 
-  constructor() { }
-
+  }
   ngOnInit(): void {
+    this.clienteService.currentClient.subscribe(client => {
+      console.log(client)
+      this.client = client
+      if (client) {
+        console.log(client.imageURL)
+        this.userImage = client.imageURL;
+      }
+    })
   }
 
 }
