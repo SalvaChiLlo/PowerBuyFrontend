@@ -31,10 +31,10 @@
         </li>
       </ul>
       <div class="d-flex submenu">
-        <app-profile-picture-viewer *ngIf="client" [rounded]="true" [image]="userImage || placeholderImage" [width]="42"
-          [height]="42">
+        <app-profile-picture-viewer class="btn userimg" *ngIf="client" [rounded]="true"
+          [image]="userImage || placeholderImage" [width]="42" [height]="42">
         </app-profile-picture-viewer>
-        <button *ngIf="!client" class="btn btn-primary" routerLink="/signin">Iniciar sesión</button>
+        <button *ngIf="!client" class="btn btn-primary iniciar-sesion" routerLink="/signin">Iniciar sesión</button>
         <mat-icon class="separator" fontSet="material-icons">shopping_cart</mat-icon>
       </div>
     </div>

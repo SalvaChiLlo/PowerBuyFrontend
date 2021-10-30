@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { traceUntilFirst } from '@angular/fire/performance';
 import { ClientesService } from 'src/app/services/clientes.service';
+import { Storage } from '@angular/fire/storage';
+import { deleteUser } from '@firebase/auth';
 
 @Component({
   selector: 'app-signup',
@@ -21,7 +23,12 @@ export class SignupComponent implements OnInit {
   defaultImage: string = `https://robohash.org/${Math.floor(Math.random() * 9000)}.png`
   error: boolean = false;
 
-  constructor(private router: Router, private auth: Auth, private clienteService: ClientesService) {
+  constructor(
+    private router: Router,
+    private auth: Auth,
+    private clienteService: ClientesService,
+    private storage: Storage
+  ) {
     if (auth) {
       const user = authState(this.auth);
       const userDisposable = authState(this.auth).pipe(
@@ -48,7 +55,7 @@ export class SignupComponent implements OnInit {
           this.clienteService.createClient({
             email: this.email,
             username: this.username,
-            imageURL: this.defaultImage
+            imageURL: this.imagePreview || this.defaultImage
           }).subscribe(
             cliente => {
               console.log(cliente)
@@ -57,6 +64,7 @@ export class SignupComponent implements OnInit {
             },
             error => {
               this.error = true
+              deleteUser(this.auth.currentUser)
               signOut(this.auth)
             }
           )
@@ -64,6 +72,7 @@ export class SignupComponent implements OnInit {
       }
     } catch (e) {
       this.error = true
+      deleteUser(this.auth.currentUser)
       signOut(this.auth)
     } finally {
       this.loading = false;
@@ -73,12 +82,13 @@ export class SignupComponent implements OnInit {
 
   }
 
-  processImage(event: any) {
+  async processImage(event: any) {
     if (event?.target && event?.target?.files[0]) {
       this.file = event?.target?.files[0];
       const reader = new FileReader();
       reader.onload = e => this.imagePreview = reader.result;
       reader.readAsDataURL(this.file);
+      console.log(await reader.result)
     }
   }
 }
