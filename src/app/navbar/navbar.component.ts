@@ -37,9 +37,9 @@ export class NavbarComponent implements OnInit {
   }
 
   close() {
-    // let navToggle = document.getElementsByClassName('navbar-toggler-icon');
-    // if (navToggle.length) {
-    //   (navToggle[0] as HTMLElement).click();
-    // }
+    let navToggle = document.getElementsByClassName('navbar-toggler-icon');
+    if (navToggle.length) {
+      (navToggle[0] as HTMLElement).click();
+    }
   }
 }
