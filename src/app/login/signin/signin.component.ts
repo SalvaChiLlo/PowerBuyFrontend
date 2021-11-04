@@ -57,6 +57,8 @@ export class SigninComponent implements OnInit {
               this.error = true;
               this.errorMessage = 'El correo o la contraseña son incorrectos.';
               signOut(this.auth)
+              this.loading = false;
+
             }
           )
         }
@@ -66,10 +68,8 @@ export class SigninComponent implements OnInit {
     } catch (e) {
       this.error = true;
       this.errorMessage = 'El correo o la contraseña son incorrectos.';
+      this.loading = false;
     } finally {
-      setTimeout(() => {
-        this.loading = false;
-      }, 2000);
       window.scroll(0, 0);
     }
   }

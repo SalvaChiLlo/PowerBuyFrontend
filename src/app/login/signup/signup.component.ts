@@ -80,6 +80,7 @@ export class SignupComponent implements OnInit {
               console.log(error)
               deleteUser(this.auth.currentUser)
               signOut(this.auth)
+              this.loading = false;
             }
           )
         }
@@ -91,13 +92,10 @@ export class SignupComponent implements OnInit {
       if ((e as FirebaseError).message === 'Firebase: Error (auth/email-already-in-use).') {
         this.errorMessage = 'El correo que has introducido ya está en uso';
       }
-
+      this.loading = false;
       deleteUser(this.auth.currentUser)
       signOut(this.auth)
     } finally {
-      setTimeout(() => {
-        this.loading = false;
-      }, 2000);
       window.scroll(0, 0);
     }
 
