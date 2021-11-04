@@ -6,8 +6,8 @@ import { traceUntilFirst } from '@angular/fire/performance';
 import { ClientesService } from 'src/app/services/clientes.service';
 import { Storage } from '@angular/fire/storage';
 import { deleteUser } from '@firebase/auth';
-import compress from 'compress-base64';
 import { FirebaseError } from '@angular/fire/app';
+import imageCompression from 'browser-image-compression';
 
 @Component({
   selector: 'app-signup',
@@ -109,16 +109,14 @@ export class SignupComponent implements OnInit {
 
       if (event?.target && event?.target?.files[0]) {
         this.file = event?.target?.files[0];
+        this.file = await imageCompression(this.file, {
+          maxSizeMB: 1,
+          maxWidthOrHeight: 1920,
+          useWebWorker: true
+        })
         const reader = new FileReader();
         reader.onload = event => {
-          compress(event.target.result + '', {
-            width: 200,
-            max: 100,
-            min: 20,
-            quality: 0.8
-          }).then(result => {
-            this.imagePreview = result
-          })
+          this.imagePreview = event.target.result
         };
         reader.readAsDataURL(this.file);
       } else {
