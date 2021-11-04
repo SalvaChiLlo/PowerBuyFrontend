@@ -1,3 +1,6 @@
+<div *ngIf="product.id === -1" class="main-page-loading container d-flex justify-content-center align-items-center">
+  <app-spinner [size]="100" class=""></app-spinner>
+</div>
 <div class="container" *ngIf="product.id !== -1">
   <!-- Start product view -->
   <div class="row">
