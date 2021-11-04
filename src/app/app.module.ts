@@ -33,6 +33,7 @@ import { provideDatabase, getDatabase } from '@angular/fire/database';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { provideStorage, getStorage } from '@angular/fire/storage';
 import { ProvisionalAreaComponent } from './provisional-area/provisional-area.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 registerLocaleData(localeDEBE)
 @NgModule({
@@ -70,6 +71,12 @@ registerLocaleData(localeDEBE)
     provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'de-be' },
