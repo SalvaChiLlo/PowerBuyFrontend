@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { Auth, authState, User } from '@angular/fire/auth';
 import { Observable, Subject } from 'rxjs';
 import { Cliente } from './../models/producto.model';
@@ -36,15 +37,15 @@ export class ClientesService implements OnChanges {
   }
 
   public getClientById(id: number | string): Observable<Cliente[]> {
-    return this.http.get<Cliente[]>(`http://localhost:9000/api/clientes/${id}`)
+    return this.http.get<Cliente[]>(environment.baseBackendURL + `/api/clientes/${id}`)
   }
 
   public getClientByEmail(email: string): Observable<Cliente[]> {
-    return this.http.get<Cliente[]>(`http://localhost:9000/api/clientes/${email}?email=true`)
+    return this.http.get<Cliente[]>(environment.baseBackendURL + `/api/clientes/${email}?email=true`)
   }
 
   public createClient(cliente: Cliente): Observable<Cliente> {
-    return this.http.post<Cliente>('http://localhost:9000/api/clientes', cliente)
+    return this.http.post<Cliente>(environment.baseBackendURL + '/api/clientes', cliente)
   }
 
   public checkIfClientIsLogged() {

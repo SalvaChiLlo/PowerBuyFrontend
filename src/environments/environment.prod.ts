@@ -1,5 +1,5 @@
 export const environment = {
-  production: false,
+  production: true,
   firebase: {
     projectId: 'powerbuypin',
     appId: '1:271306468951:web:e3da914228559a0386fd12',
@@ -8,5 +8,6 @@ export const environment = {
     authDomain: 'powerbuypin.firebaseapp.com',
     messagingSenderId: '271306468951',
     measurementId: 'G-6T0L1NLVS1',
-  }
+  },
+  baseBackendURL: 'https://powerbuypin.herokuapp.com'
 };

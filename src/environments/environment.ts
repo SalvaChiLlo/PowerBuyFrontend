@@ -12,7 +12,8 @@ export const environment = {
     authDomain: 'powerbuypin.firebaseapp.com',
     messagingSenderId: '271306468951',
     measurementId: 'G-6T0L1NLVS1',
-  }
+  },
+  baseBackendURL: 'http://localhost:9000'
 };
 
 /*
