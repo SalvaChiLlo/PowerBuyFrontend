@@ -58,7 +58,6 @@ export class SigninComponent implements OnInit {
               this.errorMessage = 'El correo o la contraseña son incorrectos.';
               signOut(this.auth)
               this.loading = false;
-
             }
           )
         }
@@ -78,7 +77,8 @@ export class SigninComponent implements OnInit {
       this.error = true;
       this.passwordError = true;
       this.errorMessage += 'La contraseña debe de ser de al menos 8 carácteres. ';
-
+      this.loading = false;
+      this.loading = false;
       return false
     }
     return true;
@@ -91,6 +91,7 @@ export class SigninComponent implements OnInit {
       this.error = true;
       this.emailError = true;
       this.errorMessage += 'El correo no tiene el formato correcto. ';
+      this.loading = false;
       return false;
     }
     return true

@@ -17,7 +17,7 @@
         </div>
         <div class="row mt-3">
           <div class="col login-inputs">
-            <input [class.input-error]="emailError" type="text" name="email" id="email" [(ngModel)]="email"
+            <input [class.input-error]="emailError" type="email" name="email" id="email" [(ngModel)]="email"
               pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/">
             <span [class.active]='email.length'>Email</span>
           </div>

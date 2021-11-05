@@ -128,6 +128,7 @@ export class SignupComponent implements OnInit {
       this.error = true;
       this.passwordError = true;
       this.errorMessage += 'La contraseña debe de ser de al menos 8 carácteres. ';
+      this.loading = false;
       return false
     }
     return true;
@@ -138,6 +139,7 @@ export class SignupComponent implements OnInit {
       this.error = true;
       this.usernameError = true;
       this.errorMessage += 'El nombre de usuario debe de ser de al menos 5 carácteres. ';
+      this.loading = false;
       return false
     }
     return true;
@@ -150,6 +152,7 @@ export class SignupComponent implements OnInit {
       this.error = true;
       this.emailError = true;
       this.errorMessage += 'El correo no tiene el formato correcto. ';
+      this.loading = false;
       return false;
     }
     return true
