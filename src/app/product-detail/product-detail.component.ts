@@ -23,7 +23,7 @@ export class ProductDetailComponent implements OnInit {
     updatedAt: '',
     Opinions: [],
     CategoriaProductos: []
-  };
+};
   public imagenes: string[] = [];
   public opiniones: Opinion[] = [];
   public progress: number = 0;
@@ -39,11 +39,14 @@ export class ProductDetailComponent implements OnInit {
   }
 
   private getProduct() {
-    this.timestamp = Date.now();
     this.productService.getProductById(this.productId).subscribe((product: any) => {
       this.product = product[0]
-      this.imagenes = this.product.imagenes ? JSON.parse(this.product.imagenes) : ['https://drive.google.com/uc?id=1B7MZEPUkmFHkyynxwA3gkLgnGoEPvaf5']
+      this.imagenes = JSON.parse(this.product.imagenes)
       this.opiniones = this.product.Opinions
+      console.log(this.product)
+      console.log(this.opiniones)
+      console.log(this.product)
+
       this.progress = Math.floor((this.product.cantidadDisponible / this.product.cantidadInicial) * 100)
     })
   }

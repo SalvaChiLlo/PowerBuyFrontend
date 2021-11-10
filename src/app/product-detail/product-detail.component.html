@@ -55,14 +55,13 @@
         </div>
       </div>
     </div>
-  </div>
-  <!-- End product view -->
-  <hr>
-  <!-- Start related products -->
-  <app-related-products [update]="timestamp"></app-related-products>
-  <!-- End related products -->
-  <hr>
-  <!-- Start reviews -->
-  <app-rating [opiniones]="product.Opinions"></app-rating>
-  <!-- End reviews -->
+    <!-- End product view -->
+    <hr>
+    <!-- Start related products -->
+    <app-related-products></app-related-products>
+    <!-- End related products -->
+    <hr>
+    <!-- Start reviews -->
+    <app-rating [opiniones]="product.Opinions" [productoId]="product.id"></app-rating>
+    <!-- End reviews -->
 </div>
