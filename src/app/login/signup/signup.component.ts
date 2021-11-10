@@ -77,7 +77,6 @@ export class SignupComponent implements OnInit {
             error => {
               this.error = true
               this.errorMessage = 'El correo o la contraseña son incorrectos.';
-              console.log(error)
               deleteUser(this.auth.currentUser)
               signOut(this.auth)
               this.loading = false;
@@ -88,7 +87,6 @@ export class SignupComponent implements OnInit {
     } catch (e) {
       this.error = true
       this.errorMessage = 'El correo o la contraseña son incorrectos.';
-      console.log((e as FirebaseError).message)
       if ((e as FirebaseError).message === 'Firebase: Error (auth/email-already-in-use).') {
         this.errorMessage = 'El correo que has introducido ya está en uso';
       }

@@ -29,7 +29,6 @@ export class NavbarComponent implements OnInit {
   }
 
   async logout() {
-    console.log('Logout')
     this.clienteService.currentClient.next(null);
     await signOut(this.auth);
     this.router.navigate(['/home'])

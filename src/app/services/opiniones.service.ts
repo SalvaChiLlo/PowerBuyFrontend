@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
@@ -12,8 +13,8 @@ export class OpinionesService {
 
   }
 
-  public createOpinion(opinion: Opinion) {
-    return this.http.post<Opinion>(environment.baseBackendURL + '/api/reviews', opinion)
+  public createOpinion(opinion: Opinion): Observable<Opinion[]> {
+    return this.http.post<Opinion[]>(environment.baseBackendURL + '/api/reviews', opinion)
 
   }
 }
