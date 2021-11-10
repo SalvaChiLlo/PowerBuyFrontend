@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { Product } from 'src/app/product-detail/product.model';
+import { Producto } from '../../models/producto.model';
 
 @Component({
   selector: 'app-product-card',
@@ -7,7 +7,7 @@ import { Product } from 'src/app/product-detail/product.model';
   styleUrls: ['./product-card.component.css']
 })
 export class ProductCardComponent implements OnInit, OnChanges {
-  @Input() product: Product;
+  @Input() product: Producto;
   price: number = -1;
   image: string = 'https://drive.google.com/uc?id=1B7MZEPUkmFHkyynxwA3gkLgnGoEPvaf5';
   titulo: string = '';

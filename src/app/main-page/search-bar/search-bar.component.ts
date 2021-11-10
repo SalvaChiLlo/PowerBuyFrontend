@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 import { Observable, Subject } from 'rxjs';
 
-import { Product } from 'src/app/models/producto.model';
+import { Producto } from 'src/app/models/producto.model';
 
 @Component({
   selector: 'app-search-bar',
