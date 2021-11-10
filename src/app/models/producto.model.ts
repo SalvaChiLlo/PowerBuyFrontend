@@ -31,11 +31,11 @@ export interface Categoria {
 }
 
 export interface Opinion {
-  id: number;
+  id?: number;
   valoracion: number;
   opinion: string;
-  createdAt: string;
-  updatedAt: string;
+  createdAt?: string;
+  updatedAt?: string;
   ClienteId: number;
   ProductoId: number;
   Cliente?: Cliente;
