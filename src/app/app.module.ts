@@ -67,7 +67,6 @@ registerLocaleData(localeDEBE)
     MatIconModule,
     NgbModule,
     FormsModule,
-    ReactiveFormsModule
     ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
