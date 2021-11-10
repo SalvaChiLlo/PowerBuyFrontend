@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { ClientesService } from 'src/app/services/clientes.service';
 import { OpinionesService } from 'src/app/services/opiniones.service';
 import { ProductsService } from 'src/app/services/products.service';
@@ -10,7 +10,7 @@ import { Auth } from '@angular/fire/auth';
   templateUrl: './rating.component.html',
   styleUrls: ['./rating.component.css']
 })
-export class RatingComponent implements OnInit, OnChanges {
+export class RatingComponent implements OnChanges {
 
   @Input() opiniones: Opinion[] = [];
   @Input() productoId: number = -1;
@@ -42,8 +42,6 @@ export class RatingComponent implements OnInit, OnChanges {
   ngOnChanges(): void {
     this.calculateRating();
   }
-
-  ngOnInit(): void { }
 
   submit(): void {
 
