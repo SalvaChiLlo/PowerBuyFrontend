@@ -29,8 +29,9 @@ a:hover {
   height: 130px;
   margin-right: auto;
   margin-left: auto;
-  background-color: #FBC02D;
-  color: #fff
+  background-color: #f26530;
+  color: #fff;
+  border-radius: 30px;
 }
 
 .rating-label {
@@ -56,35 +57,35 @@ a:hover {
 .bar-5 {
   width: 70%;
   height: 13px;
-  background-color: #FBC02D;
+  background-color: #f26530;
   border-radius: 20px
 }
 
 .bar-4 {
   width: 30%;
   height: 13px;
-  background-color: #FBC02D;
+  background-color: #f26530;
   border-radius: 20px
 }
 
 .bar-3 {
   width: 20%;
   height: 13px;
-  background-color: #FBC02D;
+  background-color: #f26530;
   border-radius: 20px
 }
 
 .bar-2 {
   width: 10%;
   height: 13px;
-  background-color: #FBC02D;
+  background-color: #f26530;
   border-radius: 20px
 }
 
 .bar-1 {
   width: 0%;
   height: 13px;
-  background-color: #FBC02D;
+  background-color: #f26530;
   border-radius: 20px
 }
 
@@ -93,7 +94,7 @@ td {
 }
 
 .star-active {
-  color: #FBC02D;
+  color: #f26530;
   margin-top: 10px;
   margin-bottom: 10px
 }
@@ -132,4 +133,18 @@ td {
 
 .vote {
   cursor: pointer
+}
+
+.star {
+  font-size: 1.5rem;
+  color: #b0c4de;
+}
+.filled {
+  color: #f26530;
+}
+.bad {
+  color: #deb0b0;
+}
+.filled.bad {
+  color: #ff1e1e;
 }

@@ -2,6 +2,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 import { Observable, Subject } from 'rxjs';
 
+import { Producto } from 'src/app/models/producto.model';
+
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',

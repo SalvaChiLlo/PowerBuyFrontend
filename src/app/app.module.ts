@@ -20,7 +20,9 @@ import localeDEBE from '@angular/common/locales/de-BE'
 import { registerLocaleData } from '@angular/common';
 import { SortSelectorComponent } from './main-page/sort-selector/sort-selector.component';
 import { RelatedProductsComponent } from './product-detail/related-products/related-products.component';
-import { RatingComponent } from './product-detail/rating/rating.component'
+import { RatingComponent } from './product-detail/rating/rating.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import { FormsModule } from '@angular/forms';
 
 registerLocaleData(localeDEBE)
 @NgModule({
@@ -45,7 +47,9 @@ registerLocaleData(localeDEBE)
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    NgbModule,
+    FormsModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'de-be' }],
   bootstrap: [AppComponent]

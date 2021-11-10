@@ -1,4 +1,4 @@
-import { Producto } from './../models/producto.model';
+import { Producto, Categoria } from './../models/producto.model';
 import { CategoriasService } from './../services/categorias.service';
 import { ProductsService } from './../services/products.service';
 import { Component, OnInit } from '@angular/core';
