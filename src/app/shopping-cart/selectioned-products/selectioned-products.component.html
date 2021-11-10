@@ -1,0 +1,7 @@
+<h3>Carro de Compra</h3>
+<hr>
+<div class="container-fluid mt-4" *ngIf="productsToRender.length > 0">
+    <div class="product-list">
+        <app-product-card *ngFor="let product of productsToRender" [product]="product"></app-product-card>
+    </div>
+</div>

@@ -20,7 +20,11 @@ import localeDEBE from '@angular/common/locales/de-BE'
 import { registerLocaleData } from '@angular/common';
 import { SortSelectorComponent } from './main-page/sort-selector/sort-selector.component';
 import { RelatedProductsComponent } from './product-detail/related-products/related-products.component';
-import { RatingComponent } from './product-detail/rating/rating.component'
+import { RatingComponent } from './product-detail/rating/rating.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { SelectionedProductsComponent } from './shopping-cart/selectioned-products/selectioned-products.component';
+import { SummaryComponent } from './shopping-cart/summary/summary.component';
+import { CardSlideComponent } from './shopping-cart/card-slide/card-slide.component'
 
 registerLocaleData(localeDEBE)
 @NgModule({
@@ -38,7 +42,11 @@ registerLocaleData(localeDEBE)
     ProgressBarComponent,
     SortSelectorComponent,
     RelatedProductsComponent,
-    RatingComponent
+    RatingComponent,
+    ShoppingCartComponent,
+    SelectionedProductsComponent,
+    SummaryComponent,
+    CardSlideComponent
   ],
   imports: [
     BrowserModule,

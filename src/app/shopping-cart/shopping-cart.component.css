@@ -1,0 +1,7 @@
+hr {
+    margin: 0;
+  }
+  
+  hr.first {
+    margin-top: 0;
+  }
