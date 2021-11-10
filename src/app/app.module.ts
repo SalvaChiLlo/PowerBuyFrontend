@@ -22,7 +22,7 @@ import { SortSelectorComponent } from './main-page/sort-selector/sort-selector.c
 import { RelatedProductsComponent } from './product-detail/related-products/related-products.component';
 import { RatingComponent } from './product-detail/rating/rating.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 registerLocaleData(localeDEBE)
 @NgModule({
@@ -49,7 +49,8 @@ registerLocaleData(localeDEBE)
     BrowserAnimationsModule,
     MatIconModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'de-be' }],
   bootstrap: [AppComponent]
