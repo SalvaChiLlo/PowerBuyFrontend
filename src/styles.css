@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "material-icons/iconfont/material-icons.css";
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap");
 
 html,
 body {
@@ -8,7 +9,31 @@ body {
 }
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: "Nunito", sans-serif;
+}
+
+.login-inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-inputs input {
+  border: none;
+  border-bottom: 1px solid #808080;
+  background: transparent;
+  transition: all 0.5s ease;
+}
+
+.login-inputs span {
+  margin-bottom: 0;
+}
+
+.login-inputs input:hover,
+.login-inputs input:focus {
+  padding: 3px;
+  border-bottom: 3px solid #2078f9;
+  background-color: #e3e4e691;
+  outline: none;
 }
 
 .sr-only {

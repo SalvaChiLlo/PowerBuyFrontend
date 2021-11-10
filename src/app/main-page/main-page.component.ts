@@ -25,7 +25,6 @@ export class MainPageComponent implements OnInit {
     this.productService.getAllProducts().subscribe((products: any) => {
       this.products = products
       this.productsToRender = this.products
-      console.log(this.products)
     })
 
     this.categoriesService.getAllCategories().subscribe((categories: any) => {

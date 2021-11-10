@@ -1,8 +1,8 @@
 <div>
-  <select class="form-select" aria-label="Default select example" (change)="filtrarCategorias($event)" required >
+  <select class="form-select" aria-label="Default select example" (change)="filtrarCategorias($event)" required
+    [(ngModel)]="categoria">
     <option value="0">Todas las categorias</option>
     <option *ngFor="let categoria of categorias" value="{{categoria.categoria}}">{{categoria.categoria}}</option>
   </select>
 
 </div>
-

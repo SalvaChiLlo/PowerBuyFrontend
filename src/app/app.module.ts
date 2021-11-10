@@ -22,7 +22,19 @@ import { SortSelectorComponent } from './main-page/sort-selector/sort-selector.c
 import { RelatedProductsComponent } from './product-detail/related-products/related-products.component';
 import { RatingComponent } from './product-detail/rating/rating.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import { SigninComponent } from './login/signin/signin.component';
+import { SignupComponent } from './login/signup/signup.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { ProfilePictureViewerComponent } from './profile-picture-viewer/profile-picture-viewer.component';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideDatabase, getDatabase } from '@angular/fire/database';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { provideStorage, getStorage } from '@angular/fire/storage';
+import { ProvisionalAreaComponent } from './provisional-area/provisional-area.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 registerLocaleData(localeDEBE)
 @NgModule({
@@ -40,7 +52,12 @@ registerLocaleData(localeDEBE)
     ProgressBarComponent,
     SortSelectorComponent,
     RelatedProductsComponent,
-    RatingComponent
+    RatingComponent,
+    SigninComponent,
+    SignupComponent,
+    SpinnerComponent,
+    ProfilePictureViewerComponent,
+    ProvisionalAreaComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,8 +68,22 @@ registerLocaleData(localeDEBE)
     NgbModule,
     FormsModule,
     ReactiveFormsModule
+    ReactiveFormsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideDatabase(() => getDatabase()),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'de-be' }],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'de-be' },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
