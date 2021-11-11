@@ -34,6 +34,7 @@ export class RatingComponent implements OnChanges {
     public clienteService: ClientesService,
     private auth: Auth
   ) {
+    this.currentCliente = this.clienteService.cliente;
     this.clienteService.currentClient.subscribe(cliente => {
       this.currentCliente = cliente
       this.isLoggedIn = cliente ? true : false
