@@ -34,10 +34,12 @@ export class RatingComponent implements OnChanges {
     public clienteService: ClientesService,
     private auth: Auth
   ) {
-    this.currentCliente = this.clienteService.cliente;
-    this.clienteService.currentClient.subscribe(cliente => {
+    this.currentCliente = this.clienteService.currentCliente;
+    this.clienteService.currentClientSubject.subscribe(cliente => {
+      console.log(cliente, 'Cliente')
+      console.log(this.clienteService.currentCliente)
       this.currentCliente = cliente
-      this.isLoggedIn = cliente ? true : false
+      this.isLoggedIn = cliente === null ? false : true
     })
   }
   ngOnChanges(): void {

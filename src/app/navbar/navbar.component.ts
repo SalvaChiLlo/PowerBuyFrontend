@@ -20,7 +20,7 @@ export class NavbarComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    this.clienteService.currentClient.subscribe(client => {
+    this.clienteService.currentClientSubject.subscribe(client => {
       this.client = client
       if (client) {
         this.userImage = client.imageURL;
@@ -29,8 +29,8 @@ export class NavbarComponent implements OnInit {
   }
 
   async logout() {
-    this.clienteService.currentClient.next(null);
-    this.clienteService.cliente = null;
+    this.clienteService.currentClientSubject.next(null);
+    this.clienteService.currentCliente = null;
     await signOut(this.auth);
     this.router.navigate(['/home'])
     window.scroll(0, 0)

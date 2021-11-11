@@ -47,7 +47,7 @@ export class SigninComponent implements OnInit {
             clientes => {
               if (clientes.length) {
                 const cliente = clientes[0];
-                this.clienteService.currentClient.next(cliente);
+                this.clienteService.currentClientSubject.next(cliente);
                 this.router.navigate(['/home'])
               } else {
                 signOut(this.auth);

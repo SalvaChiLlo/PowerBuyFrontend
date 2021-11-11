@@ -71,7 +71,7 @@ export class SignupComponent implements OnInit {
             imageURL: this.imagePreview || this.defaultImage
           }).subscribe(
             cliente => {
-              this.clienteService.currentClient.next(cliente)
+              this.clienteService.currentClientSubject.next(cliente)
               this.router.navigate(['/home'])
             },
             error => {

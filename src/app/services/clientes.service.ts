@@ -11,8 +11,8 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ClientesService implements OnChanges {
-  currentClient = new Subject<Cliente>();
-  cliente: Cliente;
+  currentClientSubject = new Subject<Cliente>();
+  currentCliente: Cliente;
   isLoggedIn = new Subject<boolean>();
   private user: Observable<User>;
   private userDisposable: any;
@@ -25,14 +25,19 @@ export class ClientesService implements OnChanges {
           this.user.subscribe(user => {
             if (user) {
               this.getClientByEmail(user.email).subscribe(client => {
-                this.currentClient.next(client[0])
-                this.cliente = client[0]
+                this.currentClientSubject.next(client[0])
+                this.currentCliente = client[0]
               })
             }
           })
         }, 100);
       } else {
-        this.cliente = null;
+        this.currentCliente = null;
+      }
+    })
+    this.currentClientSubject.subscribe(cliente => {
+      if (cliente === null) {
+        this.currentCliente = null;
       }
     })
   }
