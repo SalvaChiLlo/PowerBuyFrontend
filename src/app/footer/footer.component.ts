@@ -29,6 +29,7 @@ export class FooterComponent implements OnInit {
 
   async logout() {
     this.clienteService.currentClient.next(null);
+    this.clienteService.cliente = null;
     await signOut(this.auth);
     this.router.navigate(['/home'])
     window.scroll(0, 0)

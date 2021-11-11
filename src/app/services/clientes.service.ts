@@ -31,6 +31,8 @@ export class ClientesService implements OnChanges {
             }
           })
         }, 100);
+      } else {
+        this.cliente = null;
       }
     })
   }
