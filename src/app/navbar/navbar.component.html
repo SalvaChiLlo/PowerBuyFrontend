@@ -31,7 +31,11 @@
         </li>
       </ul>
       <div class="d-flex submenu">
-        <mat-icon fontSet="material-icons">account_circle</mat-icon>
+        <a class="navbar-brand" [routerLink]="'/user/'+id" (click)="scroll()">
+          <mat-icon fontSet="material-icons">
+            account_circle
+          </mat-icon>
+        </a>
         <mat-icon class="separator" fontSet="material-icons">shopping_cart</mat-icon>
       </div>
     </div>

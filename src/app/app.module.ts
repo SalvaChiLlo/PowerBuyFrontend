@@ -8,6 +8,7 @@ import { BodyComponent } from './body/body.component';
 import { FooterComponent } from './footer/footer.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductCardComponent } from './main-page/product-card/product-card.component';
 import { ProductListComponent } from './main-page/product-list/product-list.component';
@@ -31,6 +32,7 @@ registerLocaleData(localeDEBE)
     FooterComponent,
     MainPageComponent,
     ProductDetailComponent,
+    UserDetailComponent,
     ProductCardComponent,
     ProductListComponent,
     CategoriesSelectorComponent,
