@@ -70,4 +70,19 @@ describe('Vamos a probar el que el inicio de sesión funcione correctamente', ()
     cy.location('pathname').should('eq', '/home');
     cy.get('.btn > .img-container > img').should('exist').click();
   })
+
+  it('Probamos la ruta protegida', () => {
+    cy.visit('http://localhost:4200/signin');
+    cy.wait(1000);
+    cy.location('pathname').should('eq', '/home')
+    cy.visit('http://localhost:4200/singup');
+    cy.wait(1000);
+    cy.location('pathname').should('eq', '/home')
+  })
+
+  it('Cerramos sesión', () => {
+    cy.get('.btn > .img-container > img').should('exist').click();
+    cy.get('.d-flex > .dropdown > .dropdown-menu > :nth-child(3) > .dropdown-item').click({ force: true });
+    cy.get('.d-flex > .btn').should('exist');
+  })
 })

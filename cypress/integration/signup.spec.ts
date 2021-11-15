@@ -78,6 +78,15 @@ describe('En este test  comprobaremos el correcto funcionamiento del proceso de 
     cy.get('.btn > .img-container > img').should('exist').click();
   })
 
+  it('Probamos la ruta protegida', () => {
+    cy.visit('http://localhost:4200/signin');
+    cy.wait(1000);
+    cy.location('pathname').should('eq', '/home')
+    cy.visit('http://localhost:4200/singup');
+    cy.wait(1000);
+    cy.location('pathname').should('eq', '/home')
+  })
+
   it('Comprobamos que la sesión persiste después de cargar la página', () => {
     cy.visit('http://localhost:4200');
     cy.location('pathname').should('eq', '/home');
