@@ -2,7 +2,7 @@
   "name": "PowerBuyFront",
   "short_name": "PowerBuyFront",
   "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "background_color": "#EA5B0C",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
