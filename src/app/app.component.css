@@ -10,6 +10,7 @@
   max-width: none;
   display: flex;
   flex-direction: column;
+  background-color: white;
 }
 
 app-body {

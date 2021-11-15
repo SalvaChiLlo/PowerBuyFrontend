@@ -9,7 +9,12 @@ body {
 }
 body {
   margin: 0;
+  background-color: #ea5b0c;
   font-family: "Nunito", sans-serif;
+}
+
+app-body {
+  background-color: white;
 }
 
 .login-inputs {
