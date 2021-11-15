@@ -2,7 +2,7 @@ describe('Vamos a probar la búsqueda de productos', () => {
   it('Comprobamos que existe la barra del buscador', () => {
     cy.visit('http://localhost:4200');
     cy.location('pathname').should('eq', '/home')
-    cy.wait(15000)
+    cy.wait(5000)
     cy.get('#search1').should('exist');
   });
 

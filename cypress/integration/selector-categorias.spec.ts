@@ -2,7 +2,7 @@ describe('Vamos a comprobar el funcionamiento de filtrado de categorías', () =>
   it('Comprobamos que existe el selector de categorías', () => {
     cy.visit('http://localhost:4200');
     cy.location('pathname').should('eq', '/home')
-    cy.wait(15000)
+    cy.wait(5000)
     cy.get('div > .form-select').should('exist');
   });
 
