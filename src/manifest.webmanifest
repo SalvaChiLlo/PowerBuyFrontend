@@ -1,7 +1,7 @@
 {
-  "name": "PowerBuyFront",
-  "short_name": "PowerBuyFront",
-  "theme_color": "#1976d2",
+  "name": "PowerBuy",
+  "short_name": "PowerBuy",
+  "theme_color": "#EA5B0C",
   "background_color": "#EA5B0C",
   "display": "standalone",
   "scope": "./",
