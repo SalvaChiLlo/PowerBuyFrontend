@@ -30,8 +30,8 @@ const routes: Routes = [
     data: { authGuardPipe: () => redirectLoggedInTo(['/home']) }
   },
   {
-    path: 'areaPersonal',
-    component: ProvisionalAreaComponent,
+    path: 'user/:id',
+    component: UserDetailComponent,
     canActivate: [AuthGuard],
     data: { authGuardPipe: () => redirectUnauthorizedTo(['/home']) }
   },
@@ -46,7 +46,7 @@ const routes: Routes = [
   },
   { path: 'home', component: MainPageComponent },
   { path: 'product/:id', component: ProductDetailComponent },
-  { path: 'user/:id', component:UserDetailComponent} ,
+  { path: 'user/:id', component: UserDetailComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home' }
 ];
