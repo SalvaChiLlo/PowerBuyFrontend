@@ -21,7 +21,6 @@ export class UserDetailComponent implements OnInit {
     updatedAt: ''
   };
   public imagen: string;
-  timestamp: number = 0;
   constructor(private route: ActivatedRoute, private clientesService: ClientesService) { }
 
   ngOnInit(): void {
@@ -32,7 +31,6 @@ export class UserDetailComponent implements OnInit {
   }
 
   private getUser() {
-    this.timestamp = Date.now();
     this.clientesService.getClientById(this.userId).subscribe((user: any) => {
       this.user = user[0]
       this.imagen = this.user.imageURL ? JSON.parse(this.user.imageURL) : ['https://drive.google.com/uc?id=1B7MZEPUkmFHkyynxwA3gkLgnGoEPvaf5']
