@@ -48,4 +48,11 @@ export class ProductDetailComponent implements OnInit {
     })
   }
 
+  participarProducto() {
+    if (this.product.cantidadDisponible > 0) {
+      console.log(this.product);
+      this.productService.addProductToCart(this.product);
+    }
+  }
+
 }

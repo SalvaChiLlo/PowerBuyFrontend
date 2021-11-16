@@ -1,21 +1,20 @@
 <h3>Resumen</h3>
 <hr>
-<div class="container-fluid mt-4" *ngIf="products.length > 0">
-    <div class= "row">
-        <div class= "col-3"><p>SUBTOTAL</p></div>
-        <div class="col-3">{{subtotal|currency:'EUR':'symbol'}} </div>
-    </div>
-    <div class= "row">
-        <div class= "col-3"><p>ENVIO</p></div>
-        <div class="col-3">{{envio|currency:'EUR':'symbol'}} </div>
-    </div>
-    <div class= "row">
-        <div class= "col-3"><p>IMPUESTOS</p></div>
-        <div class="col-3">{{impuestos|currency:'EUR':'symbol'}} </div>
-    </div>
-    <hr>
-    <div class= "row">
-        <div class= "col-3"><p>TOTAL</p></div>
-        <div class="col-3">{{total|currency:'EUR':'symbol'}} </div>
-    </div>
+<div class= "row">
+    <div class= "col-3"><p>SUBTOTAL</p></div>
+    <div class="col-3">{{subtotal|currency:'EUR':'symbol'}} </div>
 </div>
+<div class= "row">
+    <div class= "col-3"><p>ENVIO</p></div>
+    <div class="col-3">{{envio|currency:'EUR':'symbol'}} </div>
+</div>
+<div class= "row">
+    <div class= "col-3"><p>IMPUESTOS</p></div>
+    <div class="col-3">{{impuestos|currency:'EUR':'symbol'}} </div>
+</div>
+<hr>
+<div class= "row">
+    <div class= "col-3"><p>TOTAL</p></div>
+    <div class="col-3">{{total|currency:'EUR':'symbol'}} </div>
+</div>
+

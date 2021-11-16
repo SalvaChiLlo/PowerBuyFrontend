@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Producto } from '../../models/producto.model';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { Producto, ProductoCantidad } from '../../models/producto.model';
+import { ProductsService } from '../../services/products.service';
 
 @Component({
   selector: 'app-selectioned-products',
@@ -7,18 +8,15 @@ import { Producto } from '../../models/producto.model';
   styleUrls: ['./selectioned-products.component.css']
 })
 export class SelectionedProductsComponent implements OnInit {
-    @Input() products: Producto[];
-    @Input() productsToRender: Producto[];
-    cantidadPorProducto: number[];
-  constructor() { }
+
+  constructor( public productService: ProductsService) { }
 
   ngOnInit(): void {
+    
   }
 
-  setCantidadPorProducto() {
-
-  }
 
   
+
 
 }

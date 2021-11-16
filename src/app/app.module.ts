@@ -25,6 +25,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { SelectionedProductsComponent } from './shopping-cart/selectioned-products/selectioned-products.component';
 import { SummaryComponent } from './shopping-cart/summary/summary.component';
 import { CardSlideComponent } from './shopping-cart/card-slide/card-slide.component'
+import { MatNativeDateModule } from '@angular/material/core';
 
 registerLocaleData(localeDEBE)
 @NgModule({
@@ -53,7 +54,8 @@ registerLocaleData(localeDEBE)
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    MatNativeDateModule,
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'de-be' }],
   bootstrap: [AppComponent]

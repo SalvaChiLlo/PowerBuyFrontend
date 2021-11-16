@@ -2,16 +2,15 @@
 <div class="container-fluid">
     <div class="row">
       <div class="col-6">
-        <app-selectioned-products [products] = "products" [productsToRender] = "productsToRender">
-        </app-selectioned-products>
+        <app-selectioned-products></app-selectioned-products>
       </div>
       <div class="col-6">
-        <app-summary [products] = "products"></app-summary>
+        <app-summary></app-summary>
       </div>
     </div>
 </div>
 <hr>
 <div>
-    <button type="button" class="btn btn-primary">Finalizar Compra</button>
+    <button type="button" class="btn btn-primary" (click) = "finalizarCompra()">Finalizar Compra</button>
 </div>
 

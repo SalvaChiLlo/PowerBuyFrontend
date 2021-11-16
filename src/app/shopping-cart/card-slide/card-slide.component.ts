@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Producto } from '../../models/producto.model';
-
+import { Component, OnInit, Input, Output} from '@angular/core';
+import { Producto, ProductoCantidad } from '../../models/producto.model';
+import { ProductsService } from '../../services/products.service';
 
 @Component({
   selector: 'app-card-slide',
@@ -8,11 +8,22 @@ import { Producto } from '../../models/producto.model';
   styleUrls: ['./card-slide.component.css']
 })
 export class CardSlideComponent implements OnInit {
-  @Input() product: Producto;
-  @Input() cantidadProducto: number;
-  constructor() { }
+  @Input() product: ProductoCantidad;
+
+  constructor( private productService: ProductsService) {}
 
   ngOnInit(): void {
+  }
+
+  plus(){
+     if(this.product.producto.cantidadDisponible - 1 > 0){
+      this.productService.addProductToCart(this.product.producto);
+     }
+
+  }
+
+  minus(){
+      this.productService.removeProductFromCart(this.product.producto);
   }
 
 }
