@@ -1,5 +1,6 @@
 import { ProvisionalAreaComponent } from './provisional-area/provisional-area.component';
 import { SigninComponent } from './login/signin/signin.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { NgModule } from '@angular/core';
@@ -42,7 +43,12 @@ const routes: Routes = [
   {
     path: '**',
     redirectTo: '/home'
-  }
+  },
+  { path: 'home', component: MainPageComponent },
+  { path: 'product/:id', component: ProductDetailComponent },
+  { path: 'user/:id', component:UserDetailComponent} ,
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '**', redirectTo: '/home' }
 ];
 
 @NgModule({
