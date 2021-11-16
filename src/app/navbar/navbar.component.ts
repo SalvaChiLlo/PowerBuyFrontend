@@ -15,7 +15,5 @@ export class NavbarComponent implements OnInit {
 
   }
 
-  scroll() {
-    window.scroll(0, 0)
-  }
+
 }
