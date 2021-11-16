@@ -1,0 +1,40 @@
+.button-user {
+  color: black;
+  background-color: white;
+  border: 2px solid;
+  border-color: orangered;
+  margin: 10px;
+  border-radius: 100px;
+}
+
+/* For width smaller than 400px: */
+
+  .header-user {
+    background: url("/assets/banner2.png");
+    background-size: cover;
+  }
+/* For width 400px and larger: */
+@media only screen and (min-width: 550px) {
+  .header-user {
+    background: url("/assets/banner-superior.png");
+    background-size: cover;
+  }
+}
+
+.image {
+  border: 5px solid;
+  color: #EA5B0C;
+  border-radius: 100px;
+  background: white;
+  width: 30%;
+}
+
+@media only screen and (min-width: 550px) {
+  .image {
+    border: 5px solid;
+    color: #EA5B0C;
+    border-radius: 100px;
+    background: white;
+    width: 15%;
+  }
+}

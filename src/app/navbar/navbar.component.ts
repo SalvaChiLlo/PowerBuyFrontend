@@ -6,6 +6,8 @@ import { map } from 'rxjs/operators';
 import { Cliente } from '../models/producto.model';
 import { ClientesService } from '../services/clientes.service';
 
+import { Input } from '@angular/core';
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -16,8 +18,9 @@ export class NavbarComponent implements OnInit {
   userImage: string;
   client: Cliente | null;
   @ViewChild('navBar') navBar: ElementRef;
+  id: number = -1;
   constructor(private router: Router, private auth: Auth, private clienteService: ClientesService) {
-
+    this.id = 2;
   }
   ngOnInit(): void {
     this.clienteService.currentClientSubject.subscribe(client => {
