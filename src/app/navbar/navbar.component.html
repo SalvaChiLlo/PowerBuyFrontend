@@ -37,7 +37,7 @@
             aria-expanded="false">
           </app-profile-picture-viewer>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
-            <li><button (click)="close()" routerLink="/areaPersonal" class="dropdown-item" href="#">Área
+            <li><button (click)="close()" [routerLink]="'/user/' + id" class="dropdown-item" href="#">Área
                 Personal</button>
             </li>
             <li>
