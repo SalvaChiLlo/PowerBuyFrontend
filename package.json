@@ -43,6 +43,7 @@
     "@angular/cli": "~12.2.2",
     "@angular/compiler-cli": "~12.2.0",
     "@angular/localize": "^12.2.9",
+    "@cypress/schematic": "^1.6.0",
     "@types/jasmine": "~3.8.0",
     "@types/node": "^12.11.1",
     "cypress": "^8.7.0",
