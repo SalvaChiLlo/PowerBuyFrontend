@@ -14,7 +14,6 @@ export class UserDetailComponent implements OnInit {
   public user: Cliente = {
     id: -1,
     username: 'pacoLopez',
-    password: 'asdasd123',
     email: 'paquito@gmail.com',
     imageURL: '',
     createdAt: '',
