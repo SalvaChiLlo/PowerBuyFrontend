@@ -26,6 +26,8 @@ import { SelectionedProductsComponent } from './shopping-cart/selectioned-produc
 import { SummaryComponent } from './shopping-cart/summary/summary.component';
 import { CardSlideComponent } from './shopping-cart/card-slide/card-slide.component'
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 registerLocaleData(localeDEBE)
 @NgModule({
@@ -56,6 +58,7 @@ registerLocaleData(localeDEBE)
     BrowserAnimationsModule,
     MatIconModule,
     MatNativeDateModule,
+    MatSnackBarModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'de-be' }],
   bootstrap: [AppComponent]

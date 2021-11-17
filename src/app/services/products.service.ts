@@ -19,14 +19,14 @@ export class ProductsService {
     return this.http.get<Producto[]>('http://localhost:9000/api/productos/' + id)
   }
 
-  
+
   public addProductToCart(product: Producto) {
     console.log("añadirProducto");
     var posicion = this.isAlready(product);
-    if(posicion.length == 0) {
+    if (posicion.length == 0) {
       let nuevoProducto: ProductoCantidad = {
-        producto : product,
-        cantidad : 1
+        producto: product,
+        cantidad: 1
       };
       this.shoppingCart.push(nuevoProducto);
       this.shoppingCart = [...this.shoppingCart]
@@ -38,15 +38,17 @@ export class ProductsService {
 
   public removeProductFromCart(product: Producto) {
     var posicion = this.isAlready(product);
-    if(posicion[0].cantidad > 1) {posicion[0].cantidad--}
-    else{this.shoppingCart = this.shoppingCart.filter(p => p.producto.id != product.id)}
+    if (posicion[0].cantidad > 1) { posicion[0].cantidad-- }
+    else { this.shoppingCart = this.shoppingCart.filter(p => p.producto.id != product.id) }
     localStorage.setItem("Carro", JSON.stringify(this.shoppingCart))
     console.log(this.shoppingCart);
     this.shoppingSubject.next(1);
   }
 
   public finalizarCompra() {
-    this.shoppingCart =  [];
+    this.shoppingCart = [];
+    localStorage.setItem("Carro", JSON.stringify(this.shoppingCart))
+    this.shoppingSubject.next(1);
   }
 
 

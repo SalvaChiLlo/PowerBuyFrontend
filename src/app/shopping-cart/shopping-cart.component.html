@@ -1,5 +1,7 @@
-<hr class="first">
-<div class="container-fluid">
+<div class="content">
+
+  <hr class="first">
+  <div class="container-fluid">
     <div class="row">
       <div class="col-6">
         <app-selectioned-products></app-selectioned-products>
@@ -8,9 +10,27 @@
         <app-summary></app-summary>
       </div>
     </div>
-</div>
-<hr>
-<div>
-    <button type="button" class="btn btn-primary" (click) = "finalizarCompra()">Finalizar Compra</button>
-</div>
+  </div>
+  <hr>
+  <div>
+    <button type="button" class="btn btn-primary mt-5 mx-5" (click)="finalizarCompra()">Finalizar Compra</button>
+  </div>
 
+  <div class="my-modal" *ngIf="show">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modal title</h5>
+          <mat-icon (click)="show = false">close</mat-icon>
+        </div>
+        <div class="modal-body">
+          <p>Modal body text goes here.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

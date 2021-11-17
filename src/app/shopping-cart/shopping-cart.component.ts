@@ -8,15 +8,20 @@ import { ProductsService } from './../services/products.service';
   styleUrls: ['./shopping-cart.component.css']
 })
 export class ShoppingCartComponent implements OnInit {
+  show = false;
 
-  constructor( private productService: ProductsService) { }
+  constructor(private productService: ProductsService) { }
 
   ngOnInit(): void {
-    
+
   }
 
   finalizarCompra() {
-    if (this.productService.shoppingCart.length > 0){this.productService.finalizarCompra();}
+    if (this.productService.shoppingCart.length > 0) {
+      this.show = true;
+      this.productService.finalizarCompra();
+    }
+
   }
 
 
