@@ -9,11 +9,15 @@ import { ProductsService } from './../services/products.service';
 })
 export class ShoppingCartComponent implements OnInit {
   show = false;
+  shoppingCart: ProductoCantidad[] = [];
 
   constructor(private productService: ProductsService) { }
 
   ngOnInit(): void {
-
+    this.productService.shoppingSubject.subscribe(products => {
+      this.shoppingCart = products;
+    })
+    this.shoppingCart = this.productService.shoppingCart;
   }
 
   finalizarCompra() {

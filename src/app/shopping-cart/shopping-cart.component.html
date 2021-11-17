@@ -13,7 +13,9 @@
   </div>
   <hr>
   <div>
-    <button type="button" class="btn btn-primary mt-5 mx-5" (click)="finalizarCompra()">Finalizar Compra</button>
+    <button type="button" *ngIf="shoppingCart.length" class="btn btn-primary mt-5 mx-5"
+      (click)="finalizarCompra()">Finalizar
+      Compra</button>
   </div>
 
   <div class="my-modal" *ngIf="show">
@@ -24,11 +26,7 @@
           <mat-icon (click)="show = false">close</mat-icon>
         </div>
         <div class="modal-body">
-          <p>Modal body text goes here.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Save changes</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <p>Compra finalizada!</p>
         </div>
       </div>
     </div>

@@ -11,39 +11,50 @@ import { ProductsService } from '../../services/products.service';
 export class SummaryComponent implements OnInit {
   subtotal: number = 0;
   envio: number = 0;
-  impuestos:number = 0;
-  total:number = 0;
+  impuestos: number = 0;
+  total: number = 0;
 
   constructor(private productService: ProductsService) { }
 
   ngOnInit(): void {
-      this.productService.shoppingSubject.subscribe(_ => {this.setSubtotal();
-        this.setEnvio();
-        this.setImpuestos();
-        this.setTotal();})
+    this.subtotal = 0;
+    this.envio = 0;
+    this.impuestos = 0;
+    this.total = 0;
+    this.productService.shoppingSubject.subscribe(_ => {
+      this.subtotal = 0;
+      this.envio = 0;
+      this.impuestos = 0;
+      this.total = 0;
+
       this.setSubtotal();
       this.setEnvio();
       this.setImpuestos();
       this.setTotal();
+    })
+    this.setSubtotal();
+    this.setEnvio();
+    this.setImpuestos();
+    this.setTotal();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-      this.setSubtotal();
-      this.setEnvio();
-      this.setImpuestos();
-      this.setTotal();
+    this.setSubtotal();
+    this.setEnvio();
+    this.setImpuestos();
+    this.setTotal();
     console.log(changes)
   }
 
   setSubtotal() {
     this.subtotal = 0;
     if (this.productService.shoppingCart.length > 0) {
-      for(var i = 0; i<this.productService.shoppingCart.length; i++) {
-        this.subtotal = this.subtotal 
-        + this.productService.shoppingCart[i].producto.precio * this.productService.shoppingCart[i].cantidad;
+      for (var i = 0; i < this.productService.shoppingCart.length; i++) {
+        this.subtotal = this.subtotal
+          + this.productService.shoppingCart[i].producto.precio * this.productService.shoppingCart[i].cantidad;
       }
     }
-    else {this.subtotal = 0;}
+    else { this.subtotal = 0; }
   }
 
   setEnvio() {
@@ -58,6 +69,6 @@ export class SummaryComponent implements OnInit {
     this.total = this.subtotal + this.envio + this.impuestos;
   }
 
-  
+
 
 }
