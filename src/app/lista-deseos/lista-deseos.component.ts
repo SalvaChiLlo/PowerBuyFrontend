@@ -2,6 +2,8 @@ import { Producto } from './../models/producto.model';
 import { CategoriasService } from './../services/categorias.service';
 import { ProductsService } from './../services/products.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
 
 
 @Component({
@@ -15,23 +17,41 @@ export class ListaDeseosComponent implements OnInit {
   productsToRender: Producto[] = [];
   productsBusqueda: Producto[];
   sortType: any;
+
   idProducts: number[] = [1,2,3];
 
-  constructor(private productService: ProductsService, private categoriesService: CategoriasService) { }
+  constructor(private router: Router, private auth: Auth,private productService: ProductsService, private categoriesService: CategoriasService) { }
+
+  //no hacer caso, aun no esta probado
+  isLogged() : boolean {
+
+    if (this.auth) { return true; }
+    this.router.navigate(['/login']);
+    return false;
+  }
+
 
   ngOnInit(): void {
-    this.productService.getAllProducts().subscribe((products: any) => {
-      this.products = products
-      this.products = this.products.filter(prd => (this.idProducts.indexOf(prd.id) > -1))
-      this.productsToRender = this.products
-      console.log(this.products)
-    })
+    
+      this.productService.getAllProducts().subscribe((products: any) => {
+        this.products = products
+        this.products = this.products.filter(prd => (this.idProducts.indexOf(prd.id) > -1))
+        this.productsToRender = this.products
+        console.log(this.products)
+      })
+
+    
+    
   }
  
   getOrden(value: any) {
     this.sortType = value;
 
-    if (value == 2) {
+
+    if (value == 1 ){
+      this.products = this.products.sort((prd1, prd2) => prd1.id - prd2.id)
+    }
+    else if (value == 2) {
       this.products = this.products.sort((prd1, prd2) => prd1.precio - prd2.precio)
     }
     else if (value == 3) {

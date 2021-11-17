@@ -1,5 +1,6 @@
-<div class="container-fluid mt-4" *ngIf="productsToRender.length > 0">
-    <p class="px-2 m-0"><small>{{products.length}} productos en la lista de deseos</small></p>
+
+<div class="container-fluid mt-4" *ngIf="productsToRender.length > 0" >
+   <h1>  {{products.length}} productos en la lista de deseos </h1>
     <div class="product-list">
       <app-product-card-fav *ngFor="let product of productsToRender" [product]="product"></app-product-card-fav>
     </div>
