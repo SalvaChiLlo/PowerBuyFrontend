@@ -13,7 +13,7 @@
   </div>
   <hr>
   <div>
-    <button type="button" *ngIf="shoppingCart.length" class="btn btn-primary mt-5 mx-5"
+    <button type="button" [class.disabled]="shoppingCart.length === 0" class="btn btn-primary mt-5 mx-5"
       (click)="finalizarCompra()">Finalizar
       Compra</button>
   </div>
