@@ -1,0 +1,22 @@
+<div class="lista-deseos-container" *ngIf="products">
+    <hr class="first">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-3">
+         
+        </div>
+        <div class="col-6">
+         
+        </div>
+        <div class="col-3">
+          <app-sort-selector (selectedOrderEmitter)="getOrden($event)"></app-sort-selector>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="product-list">
+      <app-product-list-fav [products]="productsToRender"></app-product-list-fav>
+    </div>
+  </div>
+
+  

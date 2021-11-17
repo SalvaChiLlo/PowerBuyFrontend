@@ -7,11 +7,16 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SignupComponent } from './login/signup/signup.component';
 import { AuthGuard, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/auth-guard'
+import { ListaDeseosComponent } from './lista-deseos/lista-deseos.component';
 
 const routes: Routes = [
   {
     path: 'home',
     component: MainPageComponent
+  },
+  {
+    path: 'listaDeseos',
+    component: ListaDeseosComponent
   },
   {
     path: 'product/:id',

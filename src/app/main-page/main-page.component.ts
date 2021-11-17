@@ -60,8 +60,14 @@ export class MainPageComponent implements OnInit {
   }
   getOrden(value: number, shouldMerge: boolean) {
     this.sortType = value;
+    
+    if (value == 1 ){
+      this.products = this.products.sort((prd1, prd2) => prd1.id - prd2.id)
+      this.productsBusqueda = this.productsBusqueda?.sort((prd1, prd2) => prd1.id - prd2.id)
+      this.productsCategorias = this.productsCategorias?.sort((prd1, prd2) => prd1.id - prd2.id)
 
-    if (value == 2) {
+    }
+    else if (value == 2) {
       this.products = this.products.sort((prd1, prd2) => prd1.precio - prd2.precio)
       this.productsBusqueda = this.productsBusqueda?.sort((prd1, prd2) => prd1.precio - prd2.precio)
       this.productsCategorias = this.productsCategorias?.sort((prd1, prd2) => prd1.precio - prd2.precio)

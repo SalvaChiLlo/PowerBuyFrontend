@@ -1,0 +1,19 @@
+<div *ngIf="product" [routerLink]="'/product/'+product.id" (click)="scroll()" class="card m-2"
+  style="max-width: 540px;">
+  <div class="row g-0 card-content">
+    <div class="col-4 fill img-container">
+      <img [src]="image" alt="...">
+    </div>
+    <div class="col-8">
+      <div class="card-body d-flex flex-column justify-content-start">
+        <h5 class="card-title ">{{titulo}}</h5>
+        <div class="card-text">
+          Cant.Lote: {{product.cantidadDisponible}} / {{product.cantidadInicial}}
+          <app-progress-bar [cantInicial]="product.cantidadInicial" [cantDisp]="product.cantidadDisponible">
+          </app-progress-bar>
+        </div>
+        <div class="price-tag mt-3 ">{{price|currency:'EUR':'symbol'}} </div>
+      </div>
+    </div>
+  </div>
+</div>

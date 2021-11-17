@@ -36,6 +36,9 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { provideStorage, getStorage } from '@angular/fire/storage';
 import { ProvisionalAreaComponent } from './provisional-area/provisional-area.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { ListaDeseosComponent } from './lista-deseos/lista-deseos.component';
+import { ProductCardFavComponent } from './lista-deseos/product-card-fav/product-card-fav.component';
+import { ProductListFavComponent } from './lista-deseos/product-list-fav/product-list-fav.component';
 
 registerLocaleData(localeDEBE)
 @NgModule({
@@ -60,6 +63,9 @@ registerLocaleData(localeDEBE)
     SpinnerComponent,
     ProfilePictureViewerComponent,
     ProvisionalAreaComponent,
+    ListaDeseosComponent,
+    ProductCardFavComponent,
+    ProductListFavComponent,
   ],
   imports: [
     BrowserModule,
