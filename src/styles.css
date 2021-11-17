@@ -44,3 +44,10 @@ app-body {
 .sr-only {
   display: none;
 }
+
+.generic-button {
+  background-color: #020202;
+  border-radius: 1.2em;
+  padding: 6px 18px 6px 18px;
+  font-weight: 600;
+}
