@@ -15,7 +15,7 @@ input + span {
   position: absolute;
   top: 0px;
   transition: all 0.5s ease;
-  z-index: -1;
+  z-index: 1;
 }
 
 .login-inputs span.active {
@@ -83,4 +83,8 @@ p small {
 
 .input-error {
   border-bottom: 2px solid #c02e2e;
+}
+
+input {
+  z-index: 1000;
 }
