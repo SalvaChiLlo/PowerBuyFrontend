@@ -58,3 +58,10 @@ export interface Interes {
   ClienteId: number;
   CategoriaProductoCategoria: string;
 }
+
+export interface ProductoCantidad {
+  producto: Producto;
+  cantidad: number;
+}
+
+

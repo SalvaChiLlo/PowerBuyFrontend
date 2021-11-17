@@ -2,6 +2,7 @@ import { ProductsService } from './../services/products.service';
 import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Opinion, Producto } from '../models/producto.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-product-detail',
@@ -28,7 +29,7 @@ export class ProductDetailComponent implements OnInit {
   public opiniones: Opinion[] = [];
   public progress: number = 0;
   timestamp: number = 0;
-  constructor(private route: ActivatedRoute, private productService: ProductsService) { }
+  constructor(private route: ActivatedRoute, private productService: ProductsService, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(paramMap => {
@@ -46,6 +47,16 @@ export class ProductDetailComponent implements OnInit {
 
       this.progress = Math.floor((this.product.cantidadDisponible / this.product.cantidadInicial) * 100)
     })
+  }
+
+  participarProducto() {
+    if (this.product.cantidadDisponible > 0) {
+      this.snackBar.open("Producto añadido a la cesta.", 'X');
+      console.log(this.product);
+      this.productService.addProductToCart(this.product);
+    } else {
+      this.snackBar.open("Ya no puedes participar en este producto.", 'X');
+    }
   }
 
 }
