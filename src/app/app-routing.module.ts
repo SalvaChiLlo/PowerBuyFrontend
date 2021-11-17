@@ -30,7 +30,7 @@ const routes: Routes = [
     data: { authGuardPipe: () => redirectLoggedInTo(['/home']) }
   },
   {
-    path: 'user/:id',
+    path: 'user',
     component: UserDetailComponent,
     canActivate: [AuthGuard],
     data: { authGuardPipe: () => redirectUnauthorizedTo(['/home']) }
