@@ -98,11 +98,11 @@ registerLocaleData(localeDEBE)
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
     }),
+    MatNativeDateModule,
+    MatSnackBarModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'de-be' },
-    MatNativeDateModule,
-    MatSnackBarModule
   ],
   bootstrap: [AppComponent]
 })

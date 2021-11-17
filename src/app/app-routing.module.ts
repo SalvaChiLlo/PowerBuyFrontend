@@ -19,6 +19,7 @@ const routes: Routes = [
     path: 'listaDeseos',
     component: ListaDeseosComponent
   },
+  { path: 'shopping-cart', component: ShoppingCartComponent },
   {
     path: 'product/:id',
     component: ProductDetailComponent
@@ -53,7 +54,6 @@ const routes: Routes = [
   { path: 'home', component: MainPageComponent },
   { path: 'product/:id', component: ProductDetailComponent },
   { path: 'user/:id', component: UserDetailComponent },
-  { path: 'shopping-cart', component: ShoppingCartComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home' }
 ];
