@@ -9,6 +9,14 @@ body {
 }
 body {
   margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
   background-color: #ea5b0c;
   font-family: "Nunito", sans-serif;
 }
@@ -43,4 +51,11 @@ app-body {
 
 .sr-only {
   display: none;
+}
+
+.generic-button {
+  background-color: #020202;
+  border-radius: 1.2em;
+  padding: 6px 18px 6px 18px;
+  font-weight: 600;
 }

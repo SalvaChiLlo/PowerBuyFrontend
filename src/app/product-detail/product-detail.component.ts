@@ -3,6 +3,7 @@ import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Cliente, Opinion, Producto } from '../models/producto.model';
 import { ClientesService } from '../services/clientes.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-product-detail',
@@ -32,7 +33,7 @@ export class ProductDetailComponent implements OnInit {
   cliente: Cliente;
 
 
-  constructor(private route: ActivatedRoute, private productService: ProductsService,  private clienteService: ClientesService) { 
+  constructor(private route: ActivatedRoute, private productService: ProductsService,  private clienteService: ClientesService, private snackBar: MatSnackBar) { 
     this.cliente = this.clienteService.currentCliente;
   }
 
@@ -81,4 +82,14 @@ export class ProductDetailComponent implements OnInit {
     }    
     else{b1.className = "btn btn-outline-danger";}*/
   }
+  participarProducto() {
+    if (this.product.cantidadDisponible > 0) {
+      this.snackBar.open("Producto añadido a la cesta.", 'X');
+      console.log(this.product);
+      this.productService.addProductToCart(this.product);
+    } else {
+      this.snackBar.open("Ya no puedes participar en este producto.", 'X');
+    }
+  }
+
 }
