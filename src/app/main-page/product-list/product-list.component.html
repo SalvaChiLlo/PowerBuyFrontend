@@ -1,7 +1,8 @@
 <div class="container-fluid mt-4" *ngIf="productsToRender.length > 0">
-  <p class="px-2 m-0"><small>{{firstProd+1}}-{{lastProd}} de {{products.length}} resultados encontrados para
+  <p *ngIf="showText" class="px-2 m-0"><small>{{firstProd+1}}-{{lastProd}} de {{products.length}} resultados encontrados
+      para
       "{{busqueda}}"</small></p>
-  <div class="product-list">
+  <div class="product-list" [class.product-list-one]="columns===1">
     <app-product-card *ngFor="let product of productsToRender" [product]="product"></app-product-card>
   </div>
   <div class="pb-pagination mt-3">

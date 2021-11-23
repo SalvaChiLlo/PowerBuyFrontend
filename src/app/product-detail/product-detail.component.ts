@@ -1,7 +1,9 @@
 import { ProductsService } from './../services/products.service';
 import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Opinion, Producto } from '../models/producto.model';
+import { Cliente, Opinion, Producto } from '../models/producto.model';
+import { ClientesService } from '../services/clientes.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-product-detail',
@@ -28,20 +30,30 @@ export class ProductDetailComponent implements OnInit {
   public opiniones: Opinion[] = [];
   public progress: number = 0;
   timestamp: number = 0;
-  constructor(private route: ActivatedRoute, private productService: ProductsService) { }
+  cliente: Cliente;
+  isFav: boolean = false;
+
+
+  constructor(private route: ActivatedRoute, private productService: ProductsService, private clienteService: ClientesService, private snackBar: MatSnackBar) {
+    this.cliente = this.clienteService.currentCliente;
+    this.clienteService.currentClientSubject.subscribe(cliente => {
+      this.cliente = cliente
+    })
+  }
+
+
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(paramMap => {
       this.productId = paramMap.get('id') ? +paramMap.get('id') : -1
       this.getProduct()
-
     });
   }
 
   private getProduct() {
     this.productService.getProductById(this.productId).subscribe((product: any) => {
       this.product = product[0]
-      this.product.descripcion = this.parseDescription(this.product.descripcion)
+      //this.product.descripcion = this.parseDescription(this.product.descripcion)
       this.imagenes = JSON.parse(this.product.imagenes)
       this.opiniones = this.product.Opinions
 
@@ -49,11 +61,13 @@ export class ProductDetailComponent implements OnInit {
     })
   }
 
-  private parseDescription(descripcion: string) {
-    //let d = descripcion.replace('["', "").replace('"]', "").split('","').join('\n')
-    let d = descripcion.replace('["', "").replace('"]', "").split('","').join('"<br>"')
-    console.log(d)
-    return d
+  participarProducto() {
+    if (this.product.cantidadDisponible > 0) {
+      this.snackBar.open("Producto añadido a la cesta.", 'X');
+      this.productService.addProductToCart(this.product);
+    } else {
+      this.snackBar.open("Ya no puedes participar en este producto.", 'X');
+    }
   }
 
 }

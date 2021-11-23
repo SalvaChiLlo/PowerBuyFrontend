@@ -45,6 +45,8 @@ export interface Cliente {
   username: string;
   email: string;
   imageURL?: string;
+  favoritos?: string;
+  _favoritos?: number[];
   imageBLOB?: any;
   createdAt?: string;
   updatedAt?: string;
@@ -58,3 +60,10 @@ export interface Interes {
   ClienteId: number;
   CategoriaProductoCategoria: string;
 }
+
+export interface ProductoCantidad {
+  producto: Producto;
+  cantidad: number;
+}
+
+

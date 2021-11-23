@@ -37,8 +37,14 @@ import { provideStorage, getStorage } from '@angular/fire/storage';
 import { ProvisionalAreaComponent } from './provisional-area/provisional-area.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { ListaDeseosComponent } from './lista-deseos/lista-deseos.component';
-import { ProductCardFavComponent } from './lista-deseos/product-card-fav/product-card-fav.component';
-import { ProductListFavComponent } from './lista-deseos/product-list-fav/product-list-fav.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { SelectionedProductsComponent } from './shopping-cart/selectioned-products/selectioned-products.component';
+import { SummaryComponent } from './shopping-cart/summary/summary.component';
+import { CardSlideComponent } from './shopping-cart/card-slide/card-slide.component'
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { FavoriteToggleComponent } from './favorite-toggle/favorite-toggle.component';
+
 
 registerLocaleData(localeDEBE)
 @NgModule({
@@ -64,8 +70,11 @@ registerLocaleData(localeDEBE)
     ProfilePictureViewerComponent,
     ProvisionalAreaComponent,
     ListaDeseosComponent,
-    ProductCardFavComponent,
-    ProductListFavComponent,
+    ShoppingCartComponent,
+    SelectionedProductsComponent,
+    SummaryComponent,
+    CardSlideComponent,
+    FavoriteToggleComponent
   ],
   imports: [
     BrowserModule,
@@ -87,6 +96,8 @@ registerLocaleData(localeDEBE)
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
     }),
+    MatNativeDateModule,
+    MatSnackBarModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'de-be' },

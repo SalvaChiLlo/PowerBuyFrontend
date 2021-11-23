@@ -8,16 +8,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { SignupComponent } from './login/signup/signup.component';
 import { AuthGuard, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/auth-guard'
 import { ListaDeseosComponent } from './lista-deseos/lista-deseos.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 const routes: Routes = [
   {
     path: 'home',
     component: MainPageComponent
   },
-  {
-    path: 'listaDeseos',
-    component: ListaDeseosComponent
-  },
+  { path: 'shopping-cart', component: ShoppingCartComponent },
   {
     path: 'product/:id',
     component: ProductDetailComponent
@@ -37,6 +35,12 @@ const routes: Routes = [
   {
     path: 'user',
     component: UserDetailComponent,
+    canActivate: [AuthGuard],
+    data: { authGuardPipe: () => redirectUnauthorizedTo(['/home']) }
+  },
+  {
+    path: 'listaDeseos',
+    component: ListaDeseosComponent,
     canActivate: [AuthGuard],
     data: { authGuardPipe: () => redirectUnauthorizedTo(['/home']) }
   },

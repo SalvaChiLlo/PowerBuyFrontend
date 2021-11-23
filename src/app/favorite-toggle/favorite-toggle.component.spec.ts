@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProductListFavComponent } from './product-list-fav.component';
+import { FavoriteToggleComponent } from './favorite-toggle.component';
 
-describe('ProductListFavComponent', () => {
-  let component: ProductListFavComponent;
-  let fixture: ComponentFixture<ProductListFavComponent>;
+describe('FavoriteToggleComponent', () => {
+  let component: FavoriteToggleComponent;
+  let fixture: ComponentFixture<FavoriteToggleComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProductListFavComponent ]
+      declarations: [ FavoriteToggleComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProductListFavComponent);
+    fixture = TestBed.createComponent(FavoriteToggleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

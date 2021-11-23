@@ -9,6 +9,14 @@ body {
 }
 body {
   margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
   background-color: #ea5b0c;
   font-family: "Nunito", sans-serif;
 }

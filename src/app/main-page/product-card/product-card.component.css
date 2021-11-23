@@ -56,3 +56,13 @@ img {
     font-size: 0.8em;
   }
 }
+
+.product {
+  position: relative;
+}
+
+app-favorite-toggle {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+}
