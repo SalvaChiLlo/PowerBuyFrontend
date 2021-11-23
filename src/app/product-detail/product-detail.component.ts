@@ -41,11 +41,19 @@ export class ProductDetailComponent implements OnInit {
   private getProduct() {
     this.productService.getProductById(this.productId).subscribe((product: any) => {
       this.product = product[0]
+      this.product.descripcion = this.parseDescription(this.product.descripcion)
       this.imagenes = JSON.parse(this.product.imagenes)
       this.opiniones = this.product.Opinions
 
       this.progress = Math.floor((this.product.cantidadDisponible / this.product.cantidadInicial) * 100)
     })
+  }
+
+  private parseDescription(descripcion: string) {
+    //let d = descripcion.replace('["', "").replace('"]', "").split('","').join('\n')
+    let d = descripcion.replace('["', "").replace('"]', "").split('","').join('"<br>"')
+    console.log(d)
+    return d
   }
 
 }
