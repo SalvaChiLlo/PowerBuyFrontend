@@ -54,7 +54,6 @@ export class ListaDeseosComponent implements OnInit {
       }
 
       this.productsToRender = this.products
-      console.log(this.products)
       this.loading = false;
     })
   }
@@ -100,7 +99,6 @@ export class ListaDeseosComponent implements OnInit {
 
       this.products = this.products.sort((prd1, prd2) => (prd1.cantidadInicial / prd1.cantidadDisponible) - (prd2.cantidadInicial / prd2.cantidadDisponible))
     }
-    console.log("cambio de orden")
     this.updatePage()
   }
 
