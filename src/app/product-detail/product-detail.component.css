@@ -2,7 +2,7 @@
   background-color: #8b8b8b90;
 }
 
-.carousel-item.active{
+.carousel-item.active {
   height: 30rem;
   display: flex;
   justify-content: center;
@@ -17,4 +17,9 @@
 .progress {
   height: 2rem;
   font-size: 1.3rem;
+}
+
+.favorite {
+  color: red;
+  font-size: 34px;
 }

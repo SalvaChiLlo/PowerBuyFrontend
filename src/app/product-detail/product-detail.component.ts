@@ -36,7 +36,11 @@ export class ProductDetailComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private productService: ProductsService, private clienteService: ClientesService, private snackBar: MatSnackBar) {
     this.cliente = this.clienteService.currentCliente;
-    this.clienteService.currentClientSubject.subscribe(cliente => { this.cliente = cliente })
+    this.clienteService.currentClientSubject.subscribe(cliente => {
+      this.cliente = cliente
+      this.checkIfFav();
+    })
+    this.checkIfFav();
   }
 
 
@@ -45,7 +49,7 @@ export class ProductDetailComponent implements OnInit {
     this.route.paramMap.subscribe(paramMap => {
       this.productId = paramMap.get('id') ? +paramMap.get('id') : -1
       this.getProduct()
-
+      this.checkIfFav()
     });
     this.checkIfFav()
   }
@@ -68,12 +72,16 @@ export class ProductDetailComponent implements OnInit {
         this.cliente.favoritos = JSON.stringify(this.cliente._favoritos)
         this.clienteService.updateClient(this.cliente).subscribe(cliente => {
           this.clienteService.currentClientSubject.next(this.cliente)
-          console.log("cliente actualizado")
+          this.checkIfFav();
         })
-        console.log("añadido correctamente a favoritos")
       }
       else {
-        console.log("ya esta en favoritos")
+        this.cliente._favoritos = this.cliente._favoritos.filter(prodId => prodId !== this.productId)
+        this.cliente.favoritos = JSON.stringify(this.cliente._favoritos)
+        this.clienteService.updateClient(this.cliente).subscribe(cliente => {
+          this.clienteService.currentClientSubject.next(this.cliente)
+          this.checkIfFav();
+        })
       }
     }
     else {
@@ -83,16 +91,13 @@ export class ProductDetailComponent implements OnInit {
   }
 
   checkIfFav() {
-    if (typeof this.cliente?._favoritos !== 'undefined' && this.cliente._favoritos != null) {
-      if (this.cliente._favoritos.indexOf(this.productId) >= 0) { this.isFav = true; }
-      else { this.isFav = false; }
+    if (this.cliente && JSON.parse(this.cliente.favoritos)) {
+      this.isFav = JSON.parse(this.cliente.favoritos).filter((id: number) => id === this.productId).length ? true : false
     }
-    else { this.isFav = false; }
   }
   participarProducto() {
     if (this.product.cantidadDisponible > 0) {
       this.snackBar.open("Producto añadido a la cesta.", 'X');
-      console.log(this.product);
       this.productService.addProductToCart(this.product);
     } else {
       this.snackBar.open("Ya no puedes participar en este producto.", 'X');

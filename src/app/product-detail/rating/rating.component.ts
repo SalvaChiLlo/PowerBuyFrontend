@@ -36,8 +36,6 @@ export class RatingComponent implements OnChanges {
   ) {
     this.currentCliente = this.clienteService.currentCliente;
     this.clienteService.currentClientSubject.subscribe(cliente => {
-      console.log(cliente, 'Cliente')
-      console.log(this.clienteService.currentCliente)
       this.currentCliente = cliente
       this.isLoggedIn = cliente === null ? false : true
     })
@@ -57,8 +55,6 @@ export class RatingComponent implements OnChanges {
     this.opinionesService.createOpinion(opinion).subscribe(op => {
       this.currentRate = 0
       this.textRate = ''
-      console.log(op)
-      console.log(this.opiniones)
       this.opiniones.push(op[0])
       this.calculateRating();
     })

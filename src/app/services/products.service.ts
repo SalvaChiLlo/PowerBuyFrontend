@@ -26,7 +26,6 @@ export class ProductsService {
 
 
   public addProductToCart(product: Producto) {
-    console.log("añadirProducto");
     var posicion = this.isAlready(product);
     if (posicion.length == 0) {
       let nuevoProducto: ProductoCantidad = {
@@ -46,7 +45,6 @@ export class ProductsService {
     if (posicion[0].cantidad > 1) { posicion[0].cantidad-- }
     else { this.shoppingCart = this.shoppingCart.filter(p => p.producto.id != product.id) }
     localStorage.setItem("Carro", JSON.stringify(this.shoppingCart))
-    console.log(this.shoppingCart);
     this.shoppingSubject.next(1);
   }
 

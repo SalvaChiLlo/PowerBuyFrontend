@@ -43,7 +43,6 @@ export class SummaryComponent implements OnInit {
     this.setEnvio();
     this.setImpuestos();
     this.setTotal();
-    console.log(changes)
   }
 
   setSubtotal() {
