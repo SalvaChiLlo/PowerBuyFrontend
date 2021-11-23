@@ -1,7 +1,8 @@
 import { ProductsService } from './../services/products.service';
 import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Opinion, Producto } from '../models/producto.model';
+import { Cliente, Opinion, Producto } from '../models/producto.model';
+import { ClientesService } from '../services/clientes.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -29,7 +30,14 @@ export class ProductDetailComponent implements OnInit {
   public opiniones: Opinion[] = [];
   public progress: number = 0;
   timestamp: number = 0;
-  constructor(private route: ActivatedRoute, private productService: ProductsService, private snackBar: MatSnackBar) { }
+  cliente: Cliente;
+
+
+  constructor(private route: ActivatedRoute, private productService: ProductsService,  private clienteService: ClientesService, private snackBar: MatSnackBar) { 
+    this.cliente = this.clienteService.currentCliente;
+  }
+
+  
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(paramMap => {
@@ -37,6 +45,7 @@ export class ProductDetailComponent implements OnInit {
       this.getProduct()
 
     });
+    this.checkIfFav()
   }
 
   private getProduct() {
@@ -49,6 +58,30 @@ export class ProductDetailComponent implements OnInit {
     })
   }
 
+  addToFav(){//esto se hace porque por defecto favortitos se crea null, se deberia inicializar a [] cuando se cree el cliente
+    if(typeof this.cliente.favoritos !== 'undefined' && this.cliente.favoritos != null ){
+      
+      if(this.cliente.favoritos.indexOf(this.productId) < 0){
+        this.cliente.favoritos.push(this.productId)
+        console.log("añadido correctamente a favoritos")
+      }
+      else{
+        console.log("ya esta en favoritos")
+      }
+    }    
+    else{
+    this.cliente.favoritos = [this.productId];
+    }
+  }
+
+  checkIfFav(){
+    /*var b1 = document.getElementById("favButton");
+    if(typeof this.cliente.favoritos !== 'undefined' && this.cliente.favoritos != null ){
+      if(this.cliente.favoritos.indexOf(this.productId) >= 0){ b1.className = "btn btn-outline-danger"; }
+      else{b1.className = "btn btn-danger";}
+    }    
+    else{b1.className = "btn btn-outline-danger";}*/
+  }
   participarProducto() {
     if (this.product.cantidadDisponible > 0) {
       this.snackBar.open("Producto añadido a la cesta.", 'X');

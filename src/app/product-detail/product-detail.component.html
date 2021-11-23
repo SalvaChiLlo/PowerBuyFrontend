@@ -35,6 +35,12 @@
         <div class="col">
           <h2 *ngIf="product.precio !== -1">{{product.precio}} €</h2>
         </div>
+
+        <div class="col">
+          <button type="button" class="btn btn-outline-danger" (click)="addToFav()" id= "favButton" >Favoritos</button>
+        </div>
+
+
       </div>
       <div class="row">
         <div class="col">
