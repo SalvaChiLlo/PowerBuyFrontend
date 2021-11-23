@@ -37,7 +37,7 @@
         </div>
 
         <div class="col">
-          <button type="button" class="btn btn-outline-danger" (click)="addToFav()" id= "favButton" >Favoritos</button>
+          <button type="button" class="btn" (click)="addToFav()" [class.btn-outline-danger] = "!isFav" [class.btn-danger] = "isFav" >Add To Fav</button>
         </div>
 
 

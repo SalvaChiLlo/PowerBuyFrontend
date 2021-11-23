@@ -25,8 +25,8 @@ export class ListaDeseosComponent implements OnInit {
   // mirar luego que pasa si no hay cliente con sesion iniciada, o sea no currentClient?
   constructor(private router: Router, private auth: Auth,private productService: ProductsService, private categoriesService: CategoriasService, private clienteService: ClientesService) {
     this.cliente = this.clienteService.currentCliente;
-    if(typeof this.cliente.favoritos !== 'undefined' && this.cliente.favoritos != null){
-      this.idProducts = this.cliente.favoritos;
+    if(typeof this.cliente._favoritos !== 'undefined' && this.cliente._favoritos != null){
+      this.idProducts = this.cliente._favoritos;
     }
    }
 

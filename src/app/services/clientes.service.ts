@@ -29,6 +29,7 @@ export class ClientesService implements OnChanges {
               this.getClientByEmail(user.email).subscribe(client => {
                 this.currentClientSubject.next(client[0])
                 this.currentCliente = client[0]
+                this.currentCliente._favoritos = JSON.parse(this.currentCliente.favoritos || "[]")
               })
             }
           })
@@ -57,6 +58,9 @@ export class ClientesService implements OnChanges {
 
   public createClient(cliente: Cliente): Observable<Cliente> {
     return this.http.post<Cliente>(environment.baseBackendURL + '/api/clientes', cliente)
+  }
+  public updateClient(cliente: Cliente): Observable<Cliente> {
+    return this.http.put<Cliente>(environment.baseBackendURL + '/api/clientes', cliente)
   }
 
   public checkIfClientIsLogged() {
