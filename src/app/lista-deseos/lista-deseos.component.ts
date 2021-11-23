@@ -1,7 +1,10 @@
-import { Producto } from './../models/producto.model';
+import { Cliente, Producto } from './../models/producto.model';
 import { CategoriasService } from './../services/categorias.service';
 import { ProductsService } from './../services/products.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { ClientesService } from '../services/clientes.service';
 
 
 @Component({
@@ -15,23 +18,40 @@ export class ListaDeseosComponent implements OnInit {
   productsToRender: Producto[] = [];
   productsBusqueda: Producto[];
   sortType: any;
-  idProducts: number[] = [1,2,3];
+  cliente: Cliente;
+  idProducts: number[] = [];
 
-  constructor(private productService: ProductsService, private categoriesService: CategoriasService) { }
+
+  // mirar luego que pasa si no hay cliente con sesion iniciada, o sea no currentClient?
+  constructor(private router: Router, private auth: Auth,private productService: ProductsService, private categoriesService: CategoriasService, private clienteService: ClientesService) {
+    this.cliente = this.clienteService.currentCliente;
+    if(typeof this.cliente.favoritos !== 'undefined' && this.cliente.favoritos != null){
+      this.idProducts = this.cliente.favoritos;
+    }
+   }
 
   ngOnInit(): void {
-    this.productService.getAllProducts().subscribe((products: any) => {
-      this.products = products
-      this.products = this.products.filter(prd => (this.idProducts.indexOf(prd.id) > -1))
-      this.productsToRender = this.products
-      console.log(this.products)
-    })
+      this.productService.getAllProducts().subscribe((products: any) => {
+        this.products = products
+        if(this.idProducts != null && this.idProducts.length > 0){
+          this.products = this.products.filter(prd => (this.idProducts.indexOf(prd.id) > -1));
+        }
+        else{
+          this.products = [];
+        }
+        
+        this.productsToRender = this.products
+        console.log(this.products)
+      })
   }
  
   getOrden(value: any) {
     this.sortType = value;
 
-    if (value == 2) {
+    if (value == 1 ){
+      this.products = this.products.sort((prd1, prd2) => prd1.id - prd2.id)
+    }
+    else if (value == 2) {
       this.products = this.products.sort((prd1, prd2) => prd1.precio - prd2.precio)
     }
     else if (value == 3) {
