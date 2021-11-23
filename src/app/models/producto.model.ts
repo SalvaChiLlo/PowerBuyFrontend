@@ -45,6 +45,7 @@ export interface Cliente {
   username: string;
   email: string;
   imageURL?: string;
+  favoritos?: number[];
   imageBLOB?: any;
   createdAt?: string;
   updatedAt?: string;
