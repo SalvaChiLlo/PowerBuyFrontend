@@ -10,10 +10,8 @@
           <h5 class="card-title ">{{titulo}}</h5>
           <div class="card-text">
             Cant.Lote: {{product.cantidadDisponible}} / {{product.cantidadInicial}}
-            <div class="col d-flex flex-row">
-              <app-progress-bar [cantInicial]="product.cantidadInicial" [cantDisp]="product.cantidadDisponible">
-              </app-progress-bar>
-            </div>
+            <app-progress-bar [cantInicial]="product.cantidadInicial" [cantDisp]="product.cantidadDisponible">
+            </app-progress-bar>
           </div>
           <div class="price-tag mt-3 ">{{price|currency:'EUR':'symbol'}} </div>
         </div>
