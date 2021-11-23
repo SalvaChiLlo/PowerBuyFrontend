@@ -31,10 +31,12 @@ export class ProductDetailComponent implements OnInit {
   public progress: number = 0;
   timestamp: number = 0;
   cliente: Cliente;
+  isFav: boolean = false;
 
 
   constructor(private route: ActivatedRoute, private productService: ProductsService,  private clienteService: ClientesService, private snackBar: MatSnackBar) { 
     this.cliente = this.clienteService.currentCliente;
+    this.clienteService.currentClientSubject.subscribe(cliente => {this.cliente = cliente})
   }
 
   
@@ -59,10 +61,14 @@ export class ProductDetailComponent implements OnInit {
   }
 
   addToFav(){//esto se hace porque por defecto favortitos se crea null, se deberia inicializar a [] cuando se cree el cliente
-    if(typeof this.cliente.favoritos !== 'undefined' && this.cliente.favoritos != null ){
+    if(typeof this.cliente._favoritos !== 'undefined' && this.cliente._favoritos != null ){
       
-      if(this.cliente.favoritos.indexOf(this.productId) < 0){
-        this.cliente.favoritos.push(this.productId)
+      if(this.cliente._favoritos.indexOf(this.productId) < 0){
+        this.cliente._favoritos.push(this.productId)
+        this.cliente.favoritos = JSON.stringify(this.cliente._favoritos)
+        this.clienteService.updateClient(this.cliente).subscribe(cliente =>{this.clienteService.currentClientSubject.next(cliente)
+        console.log("cliente actualizado")
+        })
         console.log("añadido correctamente a favoritos")
       }
       else{
@@ -70,17 +76,17 @@ export class ProductDetailComponent implements OnInit {
       }
     }    
     else{
-    this.cliente.favoritos = [this.productId];
+    this.cliente._favoritos = [this.productId];
     }
+    this.checkIfFav();
   }
 
-  checkIfFav(){
-    /*var b1 = document.getElementById("favButton");
-    if(typeof this.cliente.favoritos !== 'undefined' && this.cliente.favoritos != null ){
-      if(this.cliente.favoritos.indexOf(this.productId) >= 0){ b1.className = "btn btn-outline-danger"; }
-      else{b1.className = "btn btn-danger";}
+  checkIfFav(){    
+    if(typeof this.cliente?._favoritos !== 'undefined' && this.cliente._favoritos != null ){
+      if(this.cliente._favoritos.indexOf(this.productId) >= 0){this.isFav = true; }
+      else{this.isFav = false;}
     }    
-    else{b1.className = "btn btn-outline-danger";}*/
+    else{this.isFav = false;}
   }
   participarProducto() {
     if (this.product.cantidadDisponible > 0) {
