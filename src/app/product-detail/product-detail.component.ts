@@ -34,12 +34,12 @@ export class ProductDetailComponent implements OnInit {
   isFav: boolean = false;
 
 
-  constructor(private route: ActivatedRoute, private productService: ProductsService,  private clienteService: ClientesService, private snackBar: MatSnackBar) { 
+  constructor(private route: ActivatedRoute, private productService: ProductsService, private clienteService: ClientesService, private snackBar: MatSnackBar) {
     this.cliente = this.clienteService.currentCliente;
-    this.clienteService.currentClientSubject.subscribe(cliente => {this.cliente = cliente})
+    this.clienteService.currentClientSubject.subscribe(cliente => { this.cliente = cliente })
   }
 
-  
+
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(paramMap => {
@@ -60,33 +60,34 @@ export class ProductDetailComponent implements OnInit {
     })
   }
 
-  addToFav(){//esto se hace porque por defecto favortitos se crea null, se deberia inicializar a [] cuando se cree el cliente
-    if(typeof this.cliente._favoritos !== 'undefined' && this.cliente._favoritos != null ){
-      
-      if(this.cliente._favoritos.indexOf(this.productId) < 0){
+  addToFav() {//esto se hace porque por defecto favortitos se crea null, se deberia inicializar a [] cuando se cree el cliente
+    if (typeof this.cliente._favoritos !== 'undefined' && this.cliente._favoritos != null) {
+
+      if (this.cliente._favoritos.indexOf(this.productId) < 0) {
         this.cliente._favoritos.push(this.productId)
         this.cliente.favoritos = JSON.stringify(this.cliente._favoritos)
-        this.clienteService.updateClient(this.cliente).subscribe(cliente =>{this.clienteService.currentClientSubject.next(cliente)
-        console.log("cliente actualizado")
+        this.clienteService.updateClient(this.cliente).subscribe(cliente => {
+          this.clienteService.currentClientSubject.next(this.cliente)
+          console.log("cliente actualizado")
         })
         console.log("añadido correctamente a favoritos")
       }
-      else{
+      else {
         console.log("ya esta en favoritos")
       }
-    }    
-    else{
-    this.cliente._favoritos = [this.productId];
+    }
+    else {
+      this.cliente._favoritos = [this.productId];
     }
     this.checkIfFav();
   }
 
-  checkIfFav(){    
-    if(typeof this.cliente?._favoritos !== 'undefined' && this.cliente._favoritos != null ){
-      if(this.cliente._favoritos.indexOf(this.productId) >= 0){this.isFav = true; }
-      else{this.isFav = false;}
-    }    
-    else{this.isFav = false;}
+  checkIfFav() {
+    if (typeof this.cliente?._favoritos !== 'undefined' && this.cliente._favoritos != null) {
+      if (this.cliente._favoritos.indexOf(this.productId) >= 0) { this.isFav = true; }
+      else { this.isFav = false; }
+    }
+    else { this.isFav = false; }
   }
   participarProducto() {
     if (this.product.cantidadDisponible > 0) {

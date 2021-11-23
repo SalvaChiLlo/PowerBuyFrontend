@@ -14,41 +14,55 @@ import { ClientesService } from '../services/clientes.service';
 })
 export class ListaDeseosComponent implements OnInit {
 
-  products: Producto[];
+  products: Producto[] = [];
   productsToRender: Producto[] = [];
   productsBusqueda: Producto[];
   sortType: any;
   cliente: Cliente;
   idProducts: number[] = [];
+  loading = true;
 
 
   // mirar luego que pasa si no hay cliente con sesion iniciada, o sea no currentClient?
-  constructor(private router: Router, private auth: Auth,private productService: ProductsService, private categoriesService: CategoriasService, private clienteService: ClientesService) {
-    this.cliente = this.clienteService.currentCliente;
-    if(typeof this.cliente._favoritos !== 'undefined' && this.cliente._favoritos != null){
-      this.idProducts = this.cliente._favoritos;
-    }
-   }
+  constructor(private router: Router, private auth: Auth, private productService: ProductsService, private categoriesService: CategoriasService, private clienteService: ClientesService) {
+  }
 
   ngOnInit(): void {
-      this.productService.getAllProducts().subscribe((products: any) => {
-        this.products = products
-        if(this.idProducts != null && this.idProducts.length > 0){
-          this.products = this.products.filter(prd => (this.idProducts.indexOf(prd.id) > -1));
-        }
-        else{
-          this.products = [];
-        }
-        
-        this.productsToRender = this.products
-        console.log(this.products)
-      })
+    this.clienteService.currentClientSubject.subscribe(cl => {
+      this.cliente = cl
+      if (this.cliente) {
+        this.idProducts = JSON.parse(this.cliente.favoritos || "[]");
+        this.getProducts();
+      }
+    })
+
+    this.cliente = this.clienteService.currentCliente
+    if (this.cliente) {
+      this.idProducts = JSON.parse(this.cliente.favoritos || "[]");
+      this.getProducts();
+    }
   }
- 
+
+  getProducts() {
+    this.productService.getAllProducts().subscribe((products: any) => {
+      this.products = products
+      if (this.idProducts != null && this.idProducts.length > 0) {
+        this.products = this.products.filter(prd => (this.idProducts.indexOf(prd.id) > -1));
+      }
+      else {
+        this.products = [];
+      }
+
+      this.productsToRender = this.products
+      console.log(this.products)
+      this.loading = false;
+    })
+  }
+
   getOrden(value: any) {
     this.sortType = value;
 
-    if (value == 1 ){
+    if (value == 1) {
       this.products = this.products.sort((prd1, prd2) => prd1.id - prd2.id)
     }
     else if (value == 2) {
@@ -86,11 +100,11 @@ export class ListaDeseosComponent implements OnInit {
 
       this.products = this.products.sort((prd1, prd2) => (prd1.cantidadInicial / prd1.cantidadDisponible) - (prd2.cantidadInicial / prd2.cantidadDisponible))
     }
-    console.log("cambio de orden")    
-    this.updatePage()   
+    console.log("cambio de orden")
+    this.updatePage()
   }
 
   updatePage() {
-    this.productsToRender = [...this.products]     
+    this.productsToRender = [...this.products]
   }
 }

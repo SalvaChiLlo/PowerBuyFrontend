@@ -15,10 +15,6 @@ const routes: Routes = [
     path: 'home',
     component: MainPageComponent
   },
-  {
-    path: 'listaDeseos',
-    component: ListaDeseosComponent
-  },
   { path: 'shopping-cart', component: ShoppingCartComponent },
   {
     path: 'product/:id',
@@ -39,6 +35,12 @@ const routes: Routes = [
   {
     path: 'user',
     component: UserDetailComponent,
+    canActivate: [AuthGuard],
+    data: { authGuardPipe: () => redirectUnauthorizedTo(['/home']) }
+  },
+  {
+    path: 'listaDeseos',
+    component: ListaDeseosComponent,
     canActivate: [AuthGuard],
     data: { authGuardPipe: () => redirectUnauthorizedTo(['/home']) }
   },
