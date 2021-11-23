@@ -38,9 +38,7 @@ export class ProductDetailComponent implements OnInit {
     this.cliente = this.clienteService.currentCliente;
     this.clienteService.currentClientSubject.subscribe(cliente => {
       this.cliente = cliente
-      this.checkIfFav();
     })
-    this.checkIfFav();
   }
 
 
@@ -49,9 +47,7 @@ export class ProductDetailComponent implements OnInit {
     this.route.paramMap.subscribe(paramMap => {
       this.productId = paramMap.get('id') ? +paramMap.get('id') : -1
       this.getProduct()
-      this.checkIfFav()
     });
-    this.checkIfFav()
   }
 
   private getProduct() {
@@ -64,37 +60,6 @@ export class ProductDetailComponent implements OnInit {
     })
   }
 
-  addToFav() {//esto se hace porque por defecto favortitos se crea null, se deberia inicializar a [] cuando se cree el cliente
-    if (typeof this.cliente._favoritos !== 'undefined' && this.cliente._favoritos != null) {
-
-      if (this.cliente._favoritos.indexOf(this.productId) < 0) {
-        this.cliente._favoritos.push(this.productId)
-        this.cliente.favoritos = JSON.stringify(this.cliente._favoritos)
-        this.clienteService.updateClient(this.cliente).subscribe(cliente => {
-          this.clienteService.currentClientSubject.next(this.cliente)
-          this.checkIfFav();
-        })
-      }
-      else {
-        this.cliente._favoritos = this.cliente._favoritos.filter(prodId => prodId !== this.productId)
-        this.cliente.favoritos = JSON.stringify(this.cliente._favoritos)
-        this.clienteService.updateClient(this.cliente).subscribe(cliente => {
-          this.clienteService.currentClientSubject.next(this.cliente)
-          this.checkIfFav();
-        })
-      }
-    }
-    else {
-      this.cliente._favoritos = [this.productId];
-    }
-    this.checkIfFav();
-  }
-
-  checkIfFav() {
-    if (this.cliente && JSON.parse(this.cliente.favoritos)) {
-      this.isFav = JSON.parse(this.cliente.favoritos).filter((id: number) => id === this.productId).length ? true : false
-    }
-  }
   participarProducto() {
     if (this.product.cantidadDisponible > 0) {
       this.snackBar.open("Producto añadido a la cesta.", 'X');

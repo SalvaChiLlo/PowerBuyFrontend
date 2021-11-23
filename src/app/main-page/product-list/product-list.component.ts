@@ -9,6 +9,7 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 export class ProductListComponent implements OnInit, OnChanges {
   @Input() products: Producto[] = [];
   @Input() busqueda: string = "";
+  @Input() columns: number = 3;
   currentPage: number = 1;
   numberOfPages: number = 1;
   productsToRender: Producto[] = [];

@@ -1,0 +1,4 @@
+<div type="button" class="btn" (click)="addToFav()">
+  <mat-icon class="favorite" [style]="{'font-size': size +'px'}" *ngIf="!isFav">favorite_border</mat-icon>
+  <mat-icon class="favorite" [style]="{'font-size': size +'px'}" *ngIf="isFav">favorite</mat-icon>
+</div>

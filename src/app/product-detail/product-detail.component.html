@@ -37,10 +37,7 @@
         </div>
 
         <div class="col">
-          <div type="button" class="btn" (click)="addToFav()">
-            <mat-icon class="favorite" *ngIf="!isFav">favorite_border</mat-icon>
-            <mat-icon class="favorite" *ngIf="isFav">favorite</mat-icon>
-          </div>
+          <app-favorite-toggle [productId]="productId" [size]="34"></app-favorite-toggle>
         </div>
 
 
