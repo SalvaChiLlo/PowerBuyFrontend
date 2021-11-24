@@ -29,6 +29,7 @@ export class ProductDetailComponent implements OnInit {
   public imagenes: string[] = [];
   public opiniones: Opinion[] = [];
   public progress: number = 0;
+  public lineasDescripcion: string[] = [];
   timestamp: number = 0;
   cliente: Cliente;
   isFav: boolean = false;
@@ -59,7 +60,7 @@ export class ProductDetailComponent implements OnInit {
   private getProduct() {
     this.productService.getProductById(this.productId).subscribe((product: any) => {
       this.product = product[0]
-      //this.product.descripcion = this.parseDescription(this.product.descripcion)
+      this.lineasDescripcion = JSON.parse(this.product.descripcion);
       this.imagenes = JSON.parse(this.product.imagenes)
       this.opiniones = this.product.Opinions
 

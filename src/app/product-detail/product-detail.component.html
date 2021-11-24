@@ -6,7 +6,6 @@
   <div class="row">
     <div class="col">
       <div id="carouselExampleIndicators" class="carousel slide" data-bs-interval="false">
-        <app-favorite-toggle *ngIf="favoriteVisible" [productId]="productId" [size]="34"></app-favorite-toggle>
         <div class="carousel-inner">
           <div class="carousel-item img-container" *ngFor="let image of imagenes; let index = index" [class.active]="index == 0">
             <img [src]="image" class="d-block" alt="..." />
@@ -44,6 +43,7 @@
           <button type="button" mat-stroked-button class="btn btn-primary generic-button" (click)="participarProducto()">
             Comprar
           </button>
+          <app-favorite-toggle *ngIf="favoriteVisible" [productId]="productId" [size]="34"></app-favorite-toggle>
         </div>
       </div>
       <div class="row">
@@ -53,7 +53,9 @@
     <div class="row">
       <div class="col">
         <h4 class="product-title">Acerca de este producto</h4>
-        <p align="justify">{{product.descripcion}}</p>
+        <div *ngFor="let image of imagenes; let index = index">
+          <p align="justify">{{product.descripcion}}</p>
+        </div>
       </div>
     </div>
     <!-- End product view -->
