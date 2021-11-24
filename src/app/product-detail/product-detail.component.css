@@ -1,20 +1,78 @@
 .carousel:hover button {
   background-color: #8b8b8b90;
+  overflow: hidden;
 }
 
-.carousel-item.active {
-  height: 30rem;
+.slide {
+  overflow: hidden;
+}
+
+.carousel-item.active{
+  height: 20rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .carousel-item img {
-  max-height: 100%;
   max-width: 100%;
+  max-height: 100%;
+}
+
+#carouselExampleIndicators {
+
+  height: 100%;
+  max-height: 300px;
+
 }
 
 .progress {
   height: 2rem;
   font-size: 1.3rem;
+}
+
+div.fit-content {
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+}
+
+.product-title {
+  font-weight: bold;
+  text-align: center;
+}
+
+.product-price {
+  display: flex;
+  flex-direction: initial;
+}
+
+.product-price h2 {
+  margin: 0 20px 0 0;
+}
+
+.progress-bar {
+  background-color: #f26530;
+  border-radius: 0.8em;
+}
+
+.progress {
+  background-color: #dddddd;
+  font-weight: bold;
+  border-radius: 0.8em;
+}
+
+.progress-available {
+  text-align: center;
+}
+
+.carousel {
+  position: relative;
+}
+
+app-favorite-toggle {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 400;
 }

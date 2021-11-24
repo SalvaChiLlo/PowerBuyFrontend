@@ -18,5 +18,5 @@
       </div>
     </div>
   </div>
-  <app-favorite-toggle [productId]="product.id" [size]=""></app-favorite-toggle>
+  <app-favorite-toggle *ngIf="favoriteVisible" [productId]="product.id" [size]=""></app-favorite-toggle>
 </div>
