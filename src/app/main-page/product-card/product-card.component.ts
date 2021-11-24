@@ -1,5 +1,6 @@
-import { Producto } from './../../models/producto.model';
+import { Cliente, Producto } from './../../models/producto.model';
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ClientesService } from 'src/app/services/clientes.service';
 
 @Component({
   selector: 'app-product-card',
@@ -11,8 +12,22 @@ export class ProductCardComponent implements OnInit, OnChanges {
   price: number = -1;
   image: string = 'https://drive.google.com/uc?id=1B7MZEPUkmFHkyynxwA3gkLgnGoEPvaf5';
   titulo: string = '';
+  cliente: Cliente;
+  favoriteVisible: boolean = false;
 
-  constructor() { }
+  constructor(private clienteService: ClientesService) {
+    this.cliente = this.clienteService.currentCliente;
+    this.clienteService.currentClientSubject.subscribe(cliente => {
+      this.cliente = cliente
+      if (this.cliente) {
+        this.favoriteVisible = true;
+      }
+    })
+    if (this.cliente) {
+      this.favoriteVisible = true;
+    }
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
     this.image = 'https://drive.google.com/uc?id=1B7MZEPUkmFHkyynxwA3gkLgnGoEPvaf5';
     if (this.product && this.product.id !== -1) {

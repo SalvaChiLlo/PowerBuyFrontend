@@ -32,13 +32,19 @@ export class ProductDetailComponent implements OnInit {
   timestamp: number = 0;
   cliente: Cliente;
   isFav: boolean = false;
-
+  favoriteVisible: boolean = false;
 
   constructor(private route: ActivatedRoute, private productService: ProductsService, private clienteService: ClientesService, private snackBar: MatSnackBar) {
     this.cliente = this.clienteService.currentCliente;
     this.clienteService.currentClientSubject.subscribe(cliente => {
       this.cliente = cliente
+      if (this.cliente) {
+        this.favoriteVisible = true;
+      }
     })
+    if (this.cliente) {
+      this.favoriteVisible = true;
+    }
   }
 
 
