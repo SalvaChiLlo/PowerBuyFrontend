@@ -5,7 +5,7 @@
   <div class="product-list" [class.product-list-one]="columns===1">
     <app-product-card *ngFor="let product of productsToRender" [product]="product"></app-product-card>
   </div>
-  <div class="pb-pagination mt-3">
+  <div class="pb-pagination mt-3 mb-3">
     <button (click)="previousPage()" [disabled]="currentPage <= 1" class="btn btn-primary mx-2">Anterior</button>
     <p>Pagina {{currentPage}} de {{numberOfPages}}</p>
     <button (click)="nextPage()" [disabled]="currentPage >= numberOfPages"

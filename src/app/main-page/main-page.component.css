@@ -15,3 +15,11 @@ hr.first {
   background-color: #f8f9fa;
   padding: 10px 50px;
 }
+
+.main-page-loading {
+  height: 100%;
+}
+
+.main-page-container {
+  background-color: #e5e5e5;
+}

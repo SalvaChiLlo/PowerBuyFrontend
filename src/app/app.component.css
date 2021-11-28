@@ -1,5 +1,5 @@
 .separator {
-  padding-top: 6rem;
+  padding-top: 5.5rem;
 }
 
 .container {
@@ -10,12 +10,11 @@
   max-width: none;
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: #e5e5e5;
 }
 
 app-body {
-  padding-bottom: 16px;
-  margin-top: auto;
+  height: 100%;
 }
 
 app-footer {
