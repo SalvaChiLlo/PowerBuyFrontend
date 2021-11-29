@@ -47,3 +47,10 @@ nav {
 .navbar {
   z-index: 9999999;
 }
+
+.session {
+  margin: 0;
+  background-color: #000000;
+  color: white;
+  width: fit-content;
+}

@@ -1,8 +1,8 @@
 <nav #navBar class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <div class="navbar-brand" routerLink="/home">
       <img src="/assets/PowerBuy_Logo.png" alt="PowerBuy logo" width="100px">
-    </a>
+    </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -37,7 +37,8 @@
             </li>
           </ul>
         </div>
-        <button *ngIf="!client" (click)="close()" class="btn btn-primary iniciar-sesion" routerLink="/signin">Iniciar
+        <button *ngIf="!client" (click)="close()" class="session btn btn-primary iniciar-sesion rounded-pill"
+          routerLink="/signin">Iniciar
           sesión</button>
         <mat-icon class="separator" fontSet="material-icons" routerLink="/shopping-cart">
           shopping_cart</mat-icon>
