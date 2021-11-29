@@ -4,7 +4,7 @@
       <img [src]="image" class="card-img-top" alt="...">
     </div>
     <div class="card-body">
-      <h5 class="card-title" (click)="scroll()" [routerLink]="'/product/'+product.id"><strong>{{titulo}}</strong></h5>
+      <h5 class="card-title" (click)="scroll()" [routerLink]="'/product/'+product.id">{{titulo}}</h5>
       <div (click)="scroll()" [routerLink]="'/product/'+product.id"
         class="card-text d-flex flex-column justify-content-center align-items-center mt-3">
         <app-progress-bar class="w-100" [cantInicial]="product.cantidadInicial" [cantDisp]="product.cantidadDisponible">

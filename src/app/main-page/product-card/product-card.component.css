@@ -72,3 +72,8 @@ app-favorite-toggle {
   font-size: 1rem;
   font-weight: 600;
 }
+
+h5 {
+  height: 54px;
+  overflow: hidden;
+}
