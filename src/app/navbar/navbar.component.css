@@ -9,6 +9,7 @@ mat-icon {
   width: 40px;
   height: 40px;
   margin-left: 1rem;
+  cursor: pointer;
 }
 .separator {
   margin-right: 1rem;

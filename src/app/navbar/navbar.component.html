@@ -12,6 +12,9 @@
         <li class="nav-item">
           <a class="nav-link" aria-current="page" routerLink="/home">Inicio</a>
         </li>
+        <li class="nav-item">
+          <mat-icon class="nav-link" (click)="back()">arrow_back</mat-icon>
+        </li>
       </ul>
       <div class="d-flex submenu">
         <div class="dropdown" *ngIf="client">
@@ -25,7 +28,7 @@
             </li>
             <li><button (click)="close()" [routerLink]="'/listaDeseos/'" class="dropdown-item" href="#">Lista Deseos
               </button>
-          </li>
+            </li>
             <li>
               <hr class="dropdown-divider">
             </li>

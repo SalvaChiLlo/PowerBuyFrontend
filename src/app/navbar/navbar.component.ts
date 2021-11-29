@@ -7,6 +7,7 @@ import { Cliente } from '../models/producto.model';
 import { ClientesService } from '../services/clientes.service';
 
 import { Input } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
@@ -19,7 +20,7 @@ export class NavbarComponent implements OnInit {
   client: Cliente | null;
   @ViewChild('navBar') navBar: ElementRef;
   id: number = -1;
-  constructor(private router: Router, private auth: Auth, private clienteService: ClientesService) {
+  constructor(private router: Router, private auth: Auth, private clienteService: ClientesService, private location: Location) {
     this.id = 2;
   }
   ngOnInit(): void {
@@ -44,5 +45,9 @@ export class NavbarComponent implements OnInit {
     if (navToggle.length) {
       (navToggle[0] as HTMLElement).click();
     }
+  }
+
+  back() {
+    this.location.back();
   }
 }

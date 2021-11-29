@@ -15,7 +15,7 @@ hr.first {
   padding: 10px 50px;
 }
 
-.container {
+.container-fluid {
   background-color: #e5e5e5;
   height: fit-content;
 }
