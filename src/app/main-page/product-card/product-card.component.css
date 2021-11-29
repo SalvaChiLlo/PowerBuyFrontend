@@ -72,3 +72,7 @@ app-favorite-toggle {
   font-size: 1rem;
   font-weight: 600;
 }
+
+.favorite {
+  z-index: 999999;
+}
