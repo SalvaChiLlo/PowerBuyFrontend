@@ -11,7 +11,7 @@
         </app-progress-bar>
         <p class="mt-3 lote-msg">Cant.Lote: {{product.cantidadDisponible}} / {{product.cantidadInicial}}</p>
       </div>
-      <div class="favorite d-flex flex-row justify-content-center align-items-center mt-1">
+      <div class="d-flex flex-row justify-content-center align-items-center mt-1">
         <div (click)="scroll()" [routerLink]="'/product/'+product.id" class="price-tag rounded-pill px-4 py-2 mx-2">
           {{price|currency:'EUR':'symbol'}} </div>
         <app-favorite-toggle class="mx-2" *ngIf="favoriteVisible" [productId]="product.id" [size]="26">
