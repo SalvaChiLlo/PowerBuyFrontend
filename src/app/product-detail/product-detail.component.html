@@ -53,8 +53,8 @@
     <div class="row">
       <div class="col">
         <h4 class="product-title">Acerca de este producto</h4>
-        <div *ngFor="let image of imagenes; let index = index">
-          <p align="justify">{{product.descripcion}}</p>
+        <div *ngFor="let linea of lineasDescripcion; let index = index">
+          <p align="justify">{{linea}}</p>
         </div>
       </div>
     </div>
