@@ -1,8 +1,8 @@
 <nav class="w-100">
   <div class="search" *ngIf="!showBack">
-    <img (click)="showSearchMenu = !showSearchMenu; showStoreMenu=false" class="icon pointer"
-      src="/assets/eva_search-fill.png" alt="search logo" width="100px">
-    <img *ngIf="showSearchMenu" class="chevron" src="/assets/Polygon 1.png" alt="search logo" width="100px">
+    <img (click)="showSearchMenu = !showSearchMenu; showStoreMenu=false" class="icon pointer" src="/assets/search.svg"
+      alt="search logo" width="100px">
+    <img *ngIf="showSearchMenu" class="chevron" src="/assets/chevron.svg" alt="search logo" width="100px">
   </div>
   <div class="search" *ngIf="showBack">
     <img (click)="back()" class="icon pointer" src="/assets/row.svg" alt="search logo" width="100px">
@@ -13,8 +13,8 @@
   </div>
   <div class="store">
     <img id="store_logo" (click)="showStoreMenu = !showStoreMenu; showSearchMenu=false" class="icon pointer"
-      src="/assets/mdi_shopping-outline.png" alt="store logo" width="100px">
-    <img *ngIf="showStoreMenu" class="chevron" src="/assets/Polygon 1.png" alt="search logo" width="100px">
+      src="/assets/store.svg" alt="store logo" width="100px">
+    <img *ngIf="showStoreMenu" class="chevron" src="/assets/chevron.svg" alt="search logo" width="100px">
   </div>
   <div class="search-menu" *ngIf="showSearchMenu">
     <div class="content">
