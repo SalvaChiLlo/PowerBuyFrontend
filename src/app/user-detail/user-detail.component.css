@@ -9,10 +9,10 @@
 
 /* For width smaller than 400px: */
 
-  .header-user {
-    background: url("/assets/banner2.png");
-    background-size: cover;
-  }
+.header-user {
+  background: url("/assets/banner2.png");
+  background-size: cover;
+}
 /* For width 400px and larger: */
 @media only screen and (min-width: 550px) {
   .header-user {
@@ -23,7 +23,7 @@
 
 .image {
   border: 5px solid;
-  color: #EA5B0C;
+  color: #f26430;
   border-radius: 100px;
   background: white;
   width: 30%;
@@ -32,9 +32,14 @@
 @media only screen and (min-width: 550px) {
   .image {
     border: 5px solid;
-    color: #EA5B0C;
+    color: #f26430;
     border-radius: 100px;
     background: white;
     width: 15%;
   }
+}
+
+.container {
+  background-color: white;
+  /* height: 100vh; */
 }

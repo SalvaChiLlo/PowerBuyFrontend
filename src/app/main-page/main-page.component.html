@@ -1,5 +1,5 @@
-<div class="main-page-container" *ngIf="products">
-  <hr class="first">
+<div class="main-page-container " *ngIf="products">
+  <!-- <hr class="first">
   <div class="container-fluid">
     <div class="row">
       <div class="col-3">
@@ -13,11 +13,11 @@
       </div>
     </div>
   </div>
-  <hr>
-  <div class="product-list">
+  <hr> -->
+  <div class="product-list  mb-3">
     <app-product-list [products]="productsToRender" [busqueda]="busqueda"></app-product-list>
   </div>
 </div>
-<div class="main-page-loading container d-flex justify-content-center align-items-center">
+<div class="main-page-loading container d-flex justify-content-center align-items-center" *ngIf="!products">
   <app-spinner [size]="100" *ngIf="!products" class=""></app-spinner>
 </div>

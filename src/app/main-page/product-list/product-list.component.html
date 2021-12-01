@@ -1,14 +1,16 @@
-<div class="container-fluid mt-4" *ngIf="productsToRender.length > 0">
-  <p *ngIf="showText" class="px-2 m-0"><small>{{firstProd+1}}-{{lastProd}} de {{products.length}} resultados encontrados
+<div class="container-fluid" *ngIf="productsToRender.length > 0">
+  <p *ngIf="showText && busqueda!== ''" class="px-2 m-0"><small>{{firstProd+1}}-{{lastProd}} de {{products.length}}
+      resultados encontrados
       para
       "{{busqueda}}"</small></p>
   <div class="product-list" [class.product-list-one]="columns===1">
     <app-product-card *ngFor="let product of productsToRender" [product]="product"></app-product-card>
   </div>
-  <div class="pb-pagination mt-3">
-    <button (click)="previousPage()" [disabled]="currentPage <= 1" class="btn btn-primary mx-2">Anterior</button>
+  <div class="pb-pagination mt-3 mb-3">
+    <button (click)="previousPage()" [disabled]="currentPage <= 1"
+      class="btn btn-primary mx-2 rounded-pill">Anterior</button>
     <p>Pagina {{currentPage}} de {{numberOfPages}}</p>
     <button (click)="nextPage()" [disabled]="currentPage >= numberOfPages"
-      class="btn btn-primary mx-2">Siguiente</button>
+      class="btn btn-primary mx-2 rounded-pill">Siguiente</button>
   </div>
 </div>

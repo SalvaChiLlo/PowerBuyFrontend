@@ -1,3 +1,11 @@
 .progress-bar {
   transition: all 0.7s ease;
+  background-color: #f26430;
+  border-radius: 9000px;
+  height: 24px;
+}
+
+.progress {
+  border-radius: 9000px;
+  height: 24px;
 }
