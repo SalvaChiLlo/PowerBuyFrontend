@@ -23,7 +23,7 @@
 
 .image {
   border: 5px solid;
-  color: #ea5b0c;
+  color: #f26430;
   border-radius: 100px;
   background: white;
   width: 30%;
@@ -32,7 +32,7 @@
 @media only screen and (min-width: 550px) {
   .image {
     border: 5px solid;
-    color: #ea5b0c;
+    color: #f26430;
     border-radius: 100px;
     background: white;
     width: 15%;
