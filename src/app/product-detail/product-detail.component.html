@@ -53,11 +53,13 @@
           <h3 class="text-muted" *ngIf="product.precio !== -1">Precio PowerBuy:
             {{product.precio|currency:'EUR':'symbol'}}</h3>
           <div class="d-flex justify-content-center align-items-center w-100 mt-2">
-            <h3 *ngIf="product.precio !== -1" class="mx-2">{{product.precio *
-              0.2|currency:'EUR':'symbol'}}</h3>
-            <button type="button" mat-stroked-button class="btn btn-primary generic-button"
+            <!-- <h3 *ngIf="product.precio !== -1" class="mx-2">{{product.precio *
+              0.2|currency:'EUR':'symbol'}}</h3> -->
+            <button type="button" mat-stroked-button class="btn btn-primary generic-button d-flex"
               (click)="participarProducto()">
-              Participar
+              <p class="font-weight-normal mx-1">Participar</p>
+              <p class="font-weight-bold" *ngIf="product.precio !== -1">{{product.precio *
+                0.2|currency:'EUR':'symbol'}}</p>
             </button>
             <app-favorite-toggle *ngIf="favoriteVisible" [productId]="productId" [size]="34"></app-favorite-toggle>
           </div>

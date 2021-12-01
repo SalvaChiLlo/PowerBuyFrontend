@@ -55,7 +55,7 @@ div.fit-content {
   overflow: hidden;
 }
 
-.btn-description{
+.btn-description {
   background: none;
   border: none;
   padding: 0;
@@ -99,4 +99,14 @@ div.fit-content {
 
 .text-muted {
   font-size: 1.2rem !important;
+}
+
+.font-weight-normal {
+  font-weight: lighter !important;
+  margin: 0;
+}
+
+.font-weight-bold {
+  font-weight: bold !important;
+  margin: 0;
 }
