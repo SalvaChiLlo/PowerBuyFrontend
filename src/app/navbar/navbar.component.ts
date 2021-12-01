@@ -40,6 +40,8 @@ export class NavbarComponent implements OnInit {
   busqueda = '';
   activeOption: number = 1;
   activeCategory: string = 'Todas las Categorías';
+  pageName = 'Home'
+  showLogo = true;
 
   constructor(
     private router: Router,
@@ -63,6 +65,33 @@ export class NavbarComponent implements OnInit {
       if (ev instanceof NavigationEnd) {
         this.showCategorias = ev.url === '/home'
         this.showBack = !(ev.url === '/home' || ev.url === '/listaDeseos');
+        if (ev.url === '/listaDeseos') {
+          this.showLogo = false;
+          this.pageName = 'Favoritos'
+        }
+
+        if (ev.url === '/shopping-cart') {
+          this.showLogo = false;
+          this.pageName = 'Cesta'
+        }
+
+        if (ev.url === '/user') {
+          this.showLogo = false;
+          this.pageName = 'Cuenta'
+        }
+
+        if (ev.url.includes('/product/')) {
+          this.showLogo = true;
+          this.pageName = 'Cuenta'
+        }
+
+        if (ev.url === '/home'
+          || ev.url.includes('/product/')
+          || ev.url === '/signin'
+          || ev.url === '/signup') {
+          this.showLogo = true;
+        }
+
         if (ev.url === '/' && ev.urlAfterRedirects === '/home') {
           this.showBack = false;
         }

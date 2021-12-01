@@ -1,10 +1,11 @@
-import { Cliente, Producto } from './../models/producto.model';
+import { Cliente, Opinion, Producto } from './../models/producto.model';
 import { CategoriasService } from './../services/categorias.service';
 import { ProductsService } from './../services/products.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { ClientesService } from '../services/clientes.service';
+import { RatingComponent } from '../product-detail/rating/rating.component';
 
 
 @Component({
@@ -21,6 +22,14 @@ export class ListaDeseosComponent implements OnInit {
   cliente: Cliente;
   idProducts: number[] = [];
   loading = true;
+
+  providers: [RatingComponent];
+  rating: RatingComponent;
+  _valoraciones: any = [0, 0, 0, 0, 0];
+  valoraciones: any = [0, 0, 0, 0, 0];
+  opiniones: Opinion[] = [];
+  puntuaciones: number[] = [];
+  valoracionGlobal: number = 0;
 
 
   // mirar luego que pasa si no hay cliente con sesion iniciada, o sea no currentClient?
@@ -63,11 +72,42 @@ export class ListaDeseosComponent implements OnInit {
     })
   }
 
+  calcRating(producto: Producto): Number {
+    this._valoraciones = Array(5).fill(0);
+    this.puntuaciones = [];
+    this.opiniones = producto.Opinions;
+
+    if (this.opiniones) {
+      this.opiniones.forEach((o: Opinion) => {
+        this._valoraciones[o.valoracion - 1]++
+        this.puntuaciones.push(o.valoracion)
+      });
+
+      if (this.puntuaciones.length) {
+        this.valoracionGlobal = this.puntuaciones.reduce((previousValue, currentValue) => previousValue + currentValue)
+
+        this.valoraciones = this._valoraciones.map((valoracion: any) => {
+          return valoracion ? Math.floor((valoracion / this.opiniones.length) * 100) : 0
+        })
+        this.valoracionGlobal = Math.floor(this.valoracionGlobal / this.opiniones.length * 10) / 10
+      }
+    }
+    return this.valoracionGlobal;
+  }
+
   getOrden(value: any) {
     this.sortType = value;
 
     if (value == 1) {
-      this.products = this.products.sort((prd1, prd2) => prd1.id - prd2.id)
+      this.products = this.products.sort((prd1, prd2) => {
+        if (this.calcRating(prd1) < this.calcRating(prd2)) {
+          return 1;
+        }
+        else if (this.calcRating(prd1) > this.calcRating(prd2)) {
+          return -1;
+        }
+        return 0;
+      });
     }
     else if (value == 2) {
       this.products = this.products.sort((prd1, prd2) => prd1.precio - prd2.precio)

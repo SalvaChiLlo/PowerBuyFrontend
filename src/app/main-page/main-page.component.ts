@@ -90,28 +90,28 @@ export class MainPageComponent implements OnInit {
 
     if (value == 1) {
       this.products = this.products.sort((prd1, prd2) => {
-        if (this.calcRating(prd1) > this.calcRating(prd2)) {
+        if (this.calcRating(prd1) < this.calcRating(prd2)) {
           return 1;
         }
-        else if (this.calcRating(prd1) < this.calcRating(prd2)) {
+        else if (this.calcRating(prd1) > this.calcRating(prd2)) {
           return -1;
         }
         return 0;
       });
       this.productsBusqueda = this.productsBusqueda?.sort((prd1, prd2) => {
-        if (this.calcRating(prd1) > this.calcRating(prd2)) {
+        if (this.calcRating(prd1) < this.calcRating(prd2)) {
           return 1;
         }
-        else if (this.calcRating(prd1) < this.calcRating(prd2)) {
+        else if (this.calcRating(prd1) > this.calcRating(prd2)) {
           return -1;
         }
         return 0;
       });
       this.productsCategorias = this.productsCategorias?.sort((prd1, prd2) => {
-        if (this.calcRating(prd1) > this.calcRating(prd2)) {
+        if (this.calcRating(prd1) < this.calcRating(prd2)) {
           return 1;
         }
-        else if (this.calcRating(prd1) < this.calcRating(prd2)) {
+        else if (this.calcRating(prd1) > this.calcRating(prd2)) {
           return -1;
         }
         return 0;
