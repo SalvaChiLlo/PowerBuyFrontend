@@ -30,6 +30,18 @@ export class MainPageComponent implements OnInit {
     this.categoriesService.getAllCategories().subscribe((categories: any) => {
       this.categories = categories
     })
+
+    this.categoriesService.busquedaSubject.subscribe(busqueda => {
+      this.getBusqueda(busqueda)
+    })
+
+    this.categoriesService.categoriasSubject.subscribe(categoria => {
+      this.filtrarCategoria(categoria)
+    })
+
+    this.categoriesService.sortSubject.subscribe(sort => {
+      this.getOrden(sort, true)
+    })
   }
 
   getBusqueda(busqueda: string) {
@@ -61,7 +73,7 @@ export class MainPageComponent implements OnInit {
   getOrden(value: number, shouldMerge: boolean) {
     this.sortType = value;
 
-    if (value == 1 ){
+    if (value == 1) {
       this.products = this.products.sort((prd1, prd2) => prd1.id - prd2.id)
       this.productsBusqueda = this.productsBusqueda?.sort((prd1, prd2) => prd1.id - prd2.id)
       this.productsCategorias = this.productsCategorias?.sort((prd1, prd2) => prd1.id - prd2.id)

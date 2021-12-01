@@ -17,7 +17,7 @@
       <div class="form ">
         <input class="mt-2 mb-2" type="text" name="busqueda" id="busqueda" placeholder="Buscar..."
           [(ngModel)]="busqueda">
-        <img src="assets/Vector.svg" alt="">
+        <img src="assets/Vector.svg" alt="" (click)="setBusqueda()">
       </div>
       <div class="accordion" id="accordionExample">
         <div class="accordion-item">
@@ -31,7 +31,7 @@
             data-bs-parent="#accordionExample">
             <ul class="list-group">
               <li *ngFor="let option of options" class="list-group-item"
-                [class.selected]="activeOption === option.value" (click)="activeOption = option.value">
+                [class.selected]="activeOption === option.value" (click)="setSort(option.value)">
                 {{option.name}}</li>
             </ul>
           </div>
@@ -50,8 +50,7 @@
                 (click)="activeCategory = 'Todas las Categorías'">
                 Todas las Categorías</li>
               <li *ngFor="let categoria of categorias" class="list-group-item"
-                [class.selected]="activeCategory === categoria.categoria"
-                (click)="activeCategory = categoria.categoria">
+                [class.selected]="activeCategory === categoria.categoria" (click)="setCategoria(categoria.categoria)">
                 {{categoria.categoria}}</li>
             </ul>
           </div>

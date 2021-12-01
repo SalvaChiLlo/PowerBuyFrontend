@@ -88,4 +88,18 @@ export class NavbarComponent implements OnInit {
       this.categorias = categorias
     })
   }
+
+  setCategoria(categoria: string) {
+    this.activeCategory = categoria
+    this.categoriasService.categoriasSubject.next(categoria)
+  }
+
+  setSort(opcion: number) {
+    this.activeOption = opcion
+    this.categoriasService.sortSubject.next(opcion)
+  }
+
+  setBusqueda() {
+    this.categoriasService.busquedaSubject.next(this.busqueda)
+  }
 }
