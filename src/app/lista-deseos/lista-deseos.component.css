@@ -1,18 +1,26 @@
 .product-list {
-    display: flex;
-    justify-content: center;
-  }
-  
-  hr {
-    margin: 0;
-  }
-  
-  hr.first {
-    margin-top: 0;
-  }
-  
-  .row {
-    background-color: #f8f9fa;
-    padding: 10px 50px;
-  }
-  
+  display: flex;
+  justify-content: center;
+}
+
+hr {
+  margin: 0;
+}
+
+hr.first {
+  margin-top: 0;
+}
+
+.row {
+  padding: 10px 50px;
+}
+
+.container-fluid {
+  background-color: #e5e5e5;
+  height: fit-content;
+}
+
+.container-spinner {
+  background-color: #e5e5e5;
+  height: 100%;
+}

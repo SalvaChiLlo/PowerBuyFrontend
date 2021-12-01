@@ -9,6 +9,7 @@ mat-icon {
   position: absolute;
   bottom: 30px;
   right: 26px;
+  z-index: 999;
 }
 
 input + span {
@@ -30,7 +31,7 @@ input:focus + span {
 
 .submit,
 [for="image"] {
-  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+  /* box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25); */
   transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
   padding: 12px;
 }
@@ -38,7 +39,7 @@ input:focus + span {
 .submit:hover,
 [for="image"]:hover {
   transform: scale(0.97);
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4);
+  /* box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4); */
 }
 
 p small {
@@ -72,13 +73,13 @@ p small {
 }
 
 [for="image"] {
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+  /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25); */
   transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 [for="image"]:hover {
   transform: scale(0.97);
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+  /* box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4); */
 }
 
 .input-error {

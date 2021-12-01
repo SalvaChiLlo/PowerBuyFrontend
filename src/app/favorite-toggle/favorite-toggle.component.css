@@ -1,5 +1,6 @@
 .favorite {
-  color: red;
+  color: #ea5b0c;
+  z-index: 9999999;
 }
 
 * {

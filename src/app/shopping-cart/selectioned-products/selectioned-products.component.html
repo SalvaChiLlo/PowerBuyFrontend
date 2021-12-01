@@ -1,7 +1,7 @@
-<h3>Carro de Compra</h3>
+<h3>Cesta</h3>
 <hr>
 <div class="container-fluid mt-4" *ngIf="productService.shoppingCart.length > 0">
-    <div class="product-list">
-        <app-card-slide *ngFor="let product of productService.shoppingCart" [product]="product"></app-card-slide>
-    </div>
+  <div class="product-list">
+    <app-card-slide *ngFor="let product of productService.shoppingCart" [product]="product"></app-card-slide>
+  </div>
 </div>

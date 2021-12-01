@@ -23,7 +23,7 @@ export class MainPageComponent implements OnInit {
   productsBusqueda: Producto[];
   sortType: any;
   providers: [RatingComponent];
-  rating : RatingComponent;
+  rating: RatingComponent;
   _valoraciones: any = [0, 0, 0, 0, 0];
   valoraciones: any = [0, 0, 0, 0, 0];
   opiniones: Opinion[] = [];
@@ -41,6 +41,18 @@ export class MainPageComponent implements OnInit {
 
     this.categoriesService.getAllCategories().subscribe((categories: any) => {
       this.categories = categories
+    })
+
+    this.categoriesService.busquedaSubject.subscribe(busqueda => {
+      this.getBusqueda(busqueda)
+    })
+
+    this.categoriesService.categoriasSubject.subscribe(categoria => {
+      this.filtrarCategoria(categoria)
+    })
+
+    this.categoriesService.sortSubject.subscribe(sort => {
+      this.getOrden(sort, true)
     })
   }
 
@@ -73,8 +85,8 @@ export class MainPageComponent implements OnInit {
   getOrden(value: number, shouldMerge: boolean) {
     this.sortType = value;
 
-    if (value == 1 ) {
-      this.products = this.products.sort( (prd1, prd2) => {
+    if (value == 1) {
+      this.products = this.products.sort((prd1, prd2) => {
         if (this.calcRating(prd1) < this.calcRating(prd2)) {
           console.log(this.calcRating(prd1));
           return 1;
@@ -84,7 +96,7 @@ export class MainPageComponent implements OnInit {
         }
         return 0;
       });
-      this.productsBusqueda = this.productsBusqueda?.sort( (prd1, prd2) => {
+      this.productsBusqueda = this.productsBusqueda?.sort((prd1, prd2) => {
         if (this.calcRating(prd1) < this.calcRating(prd2)) {
           return 1;
         }
@@ -93,7 +105,7 @@ export class MainPageComponent implements OnInit {
         }
         return 0;
       });
-      this.productsCategorias = this.productsCategorias?.sort( (prd1, prd2) => {
+      this.productsCategorias = this.productsCategorias?.sort((prd1, prd2) => {
         if (this.calcRating(prd1) < this.calcRating(prd2)) {
           return 1;
         }
@@ -206,7 +218,7 @@ export class MainPageComponent implements OnInit {
     }
   }
 
-  calcRating(producto: Producto) : Number {
+  calcRating(producto: Producto): Number {
     this._valoraciones = Array(5).fill(0);
     this.puntuaciones = [];
     this.opiniones = producto.Opinions;

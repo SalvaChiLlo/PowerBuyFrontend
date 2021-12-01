@@ -1,22 +1,24 @@
-<div class="product">
-  <div *ngIf="product" [routerLink]="'/product/'+product.id" (click)="scroll()" class="card m-2"
-    style="max-width: 540px;">
-    <div class="row g-0 card-content">
-      <div class="col-4 fill img-container">
-        <img [src]="image" alt="...">
+<div class="product m-1">
+  <div class="card p-3" style="width: 100%;" *ngIf="product">
+    <div class="img-container fill m-3" (click)="scroll()" [routerLink]="'/product/'+product.id">
+      <img [src]="image" class="card-img-top" alt="...">
+    </div>
+    <div class="card-body">
+      <h5 class="card-title" (click)="scroll()" [routerLink]="'/product/'+product.id">{{titulo}}</h5>
+      <div (click)="scroll()" [routerLink]="'/product/'+product.id"
+        class="card-text d-flex flex-column justify-content-center align-items-center mt-3">
+        <app-progress-bar class="w-100" [cantInicial]="product.cantidadInicial" [cantDisp]="product.cantidadDisponible">
+        </app-progress-bar>
+        <p class="mt-3 lote-msg">Cant.Lote: {{product.cantidadDisponible}} / {{product.cantidadInicial}}</p>
       </div>
-      <div class="col-8">
-        <div class="card-body d-flex flex-column justify-content-start">
-          <h5 class="card-title ">{{titulo}}</h5>
-          <div class="card-text">
-            Cant.Lote: {{product.cantidadDisponible}} / {{product.cantidadInicial}}
-            <app-progress-bar [cantInicial]="product.cantidadInicial" [cantDisp]="product.cantidadDisponible">
-            </app-progress-bar>
-          </div>
-          <div class="price-tag mt-3 ">{{price|currency:'EUR':'symbol'}} </div>
-        </div>
+      <div class="d-flex flex-row justify-content-center align-items-center mt-1">
+        <div (click)="scroll()" [routerLink]="'/product/'+product.id" class="mx-1 text-muted">
+          {{price|currency:'EUR':'symbol'}} </div>
+        <div (click)="scroll()" [routerLink]="'/product/'+product.id" class="price-tag rounded-pill px-4 py-2 mx-2">
+          {{price*0.20|currency:'EUR':'symbol'}} </div>
+        <app-favorite-toggle class="mx-2" *ngIf="favoriteVisible" [productId]="product.id" [size]="26">
+        </app-favorite-toggle>
       </div>
     </div>
   </div>
-  <app-favorite-toggle *ngIf="favoriteVisible" [productId]="product.id" [size]=""></app-favorite-toggle>
 </div>
