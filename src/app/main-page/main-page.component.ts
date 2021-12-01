@@ -1,7 +1,10 @@
-import { Producto, Categoria } from './../models/producto.model';
+import { AppComponent } from './../app.component';
+import { RatingComponent } from './../product-detail/rating/rating.component';
+import { Producto, Categoria, Opinion } from './../models/producto.model';
 import { CategoriasService } from './../services/categorias.service';
 import { ProductsService } from './../services/products.service';
 import { Component, OnInit } from '@angular/core';
+import { ProviderId } from 'firebase/auth';
 
 @Component({
   selector: 'app-main-page',
@@ -19,12 +22,21 @@ export class MainPageComponent implements OnInit {
   productsCategorias: Producto[];
   productsBusqueda: Producto[];
   sortType: any;
+  providers: [RatingComponent];
+  rating : RatingComponent;
+  _valoraciones: any = [0, 0, 0, 0, 0];
+  valoraciones: any = [0, 0, 0, 0, 0];
+  opiniones: Opinion[] = [];
+  puntuaciones: number[] = [];
+  valoracionGlobal: number = 0;
+
   constructor(private productService: ProductsService, private categoriesService: CategoriasService) { }
 
   ngOnInit(): void {
     this.productService.getAllProducts().subscribe((products: any) => {
       this.products = products
       this.productsToRender = this.products
+      this.getOrden(1, true);
     })
 
     this.categoriesService.getAllCategories().subscribe((categories: any) => {
@@ -61,11 +73,35 @@ export class MainPageComponent implements OnInit {
   getOrden(value: number, shouldMerge: boolean) {
     this.sortType = value;
 
-    if (value == 1 ){
-      this.products = this.products.sort((prd1, prd2) => prd1.id - prd2.id)
-      this.productsBusqueda = this.productsBusqueda?.sort((prd1, prd2) => prd1.id - prd2.id)
-      this.productsCategorias = this.productsCategorias?.sort((prd1, prd2) => prd1.id - prd2.id)
-
+    if (value == 1 ) {
+      this.products = this.products.sort( (prd1, prd2) => {
+        if (this.calcRating(prd1) < this.calcRating(prd2)) {
+          console.log(this.calcRating(prd1));
+          return 1;
+        }
+        else if (this.calcRating(prd1) > this.calcRating(prd2)) {
+          return -1;
+        }
+        return 0;
+      });
+      this.productsBusqueda = this.productsBusqueda?.sort( (prd1, prd2) => {
+        if (this.calcRating(prd1) < this.calcRating(prd2)) {
+          return 1;
+        }
+        else if (this.calcRating(prd1) > this.calcRating(prd2)) {
+          return -1;
+        }
+        return 0;
+      });
+      this.productsCategorias = this.productsCategorias?.sort( (prd1, prd2) => {
+        if (this.calcRating(prd1) < this.calcRating(prd2)) {
+          return 1;
+        }
+        else if (this.calcRating(prd1) > this.calcRating(prd2)) {
+          return -1;
+        }
+        return 0;
+      });
     }
     else if (value == 2) {
       this.products = this.products.sort((prd1, prd2) => prd1.precio - prd2.precio)
@@ -168,6 +204,29 @@ export class MainPageComponent implements OnInit {
       this.productsToRender = [...this.products]
       // this.getOrden(this.sortType, false)
     }
+  }
+
+  calcRating(producto: Producto) : Number {
+    this._valoraciones = Array(5).fill(0);
+    this.puntuaciones = [];
+    this.opiniones = producto.Opinions;
+
+    if (this.opiniones) {
+      this.opiniones.forEach((o: Opinion) => {
+        this._valoraciones[o.valoracion - 1]++
+        this.puntuaciones.push(o.valoracion)
+      });
+
+      if (this.puntuaciones.length) {
+        this.valoracionGlobal = this.puntuaciones.reduce((previousValue, currentValue) => previousValue + currentValue)
+
+        this.valoraciones = this._valoraciones.map((valoracion: any) => {
+          return valoracion ? Math.floor((valoracion / this.opiniones.length) * 100) : 0
+        })
+        this.valoracionGlobal = Math.floor(this.valoracionGlobal / this.opiniones.length * 10) / 10
+      }
+    }
+    return this.valoracionGlobal;
   }
 }
 
