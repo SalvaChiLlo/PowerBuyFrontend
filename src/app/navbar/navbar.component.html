@@ -1,48 +1,78 @@
-<nav #navBar class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-brand" routerLink="/home">
-      <img src="/assets/PowerBuy_Logo.png" alt="PowerBuy logo" width="100px">
+<nav class="w-100">
+  <div class="search">
+    <img (click)="showSearchMenu = !showSearchMenu; showStoreMenu=false" class="icon" src="/assets/eva_search-fill.png"
+      alt="search logo" width="100px">
+    <img *ngIf="showSearchMenu" class="chevron" src="/assets/Polygon 1.png" alt="search logo" width="100px">
+  </div>
+  <div class="brand" routerLink="/home">
+    <img class="logo" src="/assets/NavBarLogo.svg" alt="PowerBuy logo" width="100px">
+  </div>
+  <div class="store">
+    <img id="store_logo" (click)="showStoreMenu = !showStoreMenu; showSearchMenu=false" class="icon"
+      src="/assets/mdi_shopping-outline.png" alt="store logo" width="100px">
+    <img *ngIf="showStoreMenu" class="chevron" src="/assets/Polygon 1.png" alt="search logo" width="100px">
+  </div>
+  <div class="search-menu" *ngIf="showSearchMenu">
+    <div class="content">
+      <div class="form ">
+        <input class="mt-2 mb-2" type="text" name="busqueda" id="busqueda" placeholder="Buscar..."
+          [(ngModel)]="busqueda">
+        <img src="assets/Vector.svg" alt="">
+      </div>
+      <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+              Ordenar
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample">
+            <ul class="list-group">
+              <li *ngFor="let option of options" class="list-group-item"
+                [class.selected]="activeOption === option.value" (click)="activeOption = option.value">
+                {{option.name}}</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              Categorías
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+            data-bs-parent="#accordionExample">
+            <ul class="list-group">
+              <li class="list-group-item" [class.selected]="activeCategory === 'Todas las Categorías'"
+                (click)="activeCategory = 'Todas las Categorías'">
+                Todas las Categorías</li>
+              <li *ngFor="let categoria of categorias" class="list-group-item"
+                [class.selected]="activeCategory === categoria.categoria"
+                (click)="activeCategory = categoria.categoria">
+                {{categoria.categoria}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLink="/home">Inicio</a>
+  </div>
+
+  <div class="search-menu" *ngIf="showStoreMenu">
+    <div class="content">
+      <ul class="list-group pw_list-group py-3 px-3">
+        <li class="list-group-item" (click)="close_store_menu()" routerLink="/shopping-cart">Cesta</li>
+        <li class="list-group-item" *ngIf="client" (click)="close_store_menu()">Participaciones</li>
+        <li class="list-group-item" *ngIf="client" (click)="close_store_menu()" [routerLink]="'/listaDeseos/'">Favoritos
         </li>
-        <li class="nav-item">
-          <mat-icon class="nav-link" (click)="back()">arrow_back</mat-icon>
+        <li class="list-group-item" *ngIf="client" (click)="close_store_menu()" routerLink="/user">Cuenta</li>
+        <li class="list-group-item danger" *ngIf="client" (click)="logout();close_store_menu()">Cerrar Sesión</li>
+        <li class="list-group-item warn" *ngIf="!client" (click)="close_store_menu()" routerLink="/signin">Iniciar
+          Sesión
         </li>
       </ul>
-      <div class="d-flex submenu">
-        <div class="dropdown" *ngIf="client">
-          <app-profile-picture-viewer class="btn userimg dropdown-toggle" [rounded]="true"
-            [image]="userImage || placeholderImage" [width]="42" [height]="42" data-bs-toggle="dropdown"
-            aria-expanded="false">
-          </app-profile-picture-viewer>
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
-            <li><button (click)="close()" routerLink="/user" class="dropdown-item" href="#">Área
-                Personal</button>
-            </li>
-            <li><button (click)="close()" [routerLink]="'/listaDeseos/'" class="dropdown-item" href="#">Lista Deseos
-              </button>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><button (click)="logout();close();" class="dropdown-item text-danger fw-bold" href="#">Cerrar
-                Sesión</button>
-            </li>
-          </ul>
-        </div>
-        <button *ngIf="!client" (click)="close()" class="session btn btn-primary iniciar-sesion rounded-pill"
-          routerLink="/signin">Iniciar
-          sesión</button>
-        <mat-icon class="separator" fontSet="material-icons" routerLink="/shopping-cart">
-          shopping_cart</mat-icon>
-      </div>
     </div>
   </div>
 </nav>
