@@ -1,0 +1,12 @@
+.related-container {
+  width: fit-content;
+}
+
+.row {
+  overflow-x: auto;
+}
+
+app-product-card {
+  width: 80vw;
+  max-width: 360px;
+}

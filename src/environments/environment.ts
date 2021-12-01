@@ -13,7 +13,8 @@ export const environment = {
     messagingSenderId: '271306468951',
     measurementId: 'G-6T0L1NLVS1',
   },
-  baseBackendURL: 'http://localhost:9000'
+  // baseBackendURL: 'http://localhost:9000'
+  baseBackendURL: 'https://powerbuypin.herokuapp.com'
 };
 
 /*
