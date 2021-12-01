@@ -24,6 +24,7 @@ export class RatingComponent implements OnChanges {
   currentRate = 0;
   textRate = "";
   showForm = false;
+  showRating = false;
   isLoggedIn: boolean = false;
   currentCliente: Cliente;
 

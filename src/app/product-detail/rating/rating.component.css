@@ -17,11 +17,8 @@ a:hover {
 .card {
   border-radius: 5px;
   background-color: #fff;
-  padding-left: 60px;
-  padding-right: 60px;
+  padding: 10px;
   margin-top: 30px;
-  padding-top: 30px;
-  padding-bottom: 30px
 }
 
 .rating-box {
@@ -94,9 +91,9 @@ td {
 }
 
 .star-active {
-  color: #f26530;
+  color: #f26530 !important;
   margin-top: 10px;
-  margin-bottom: 10px
+  margin-bottom: 10px;
 }
 
 .star-active:hover {
@@ -107,7 +104,7 @@ td {
 .star-inactive {
   color: #CFD8DC;
   margin-top: 10px;
-  margin-bottom: 10px
+  margin-bottom: 10px;
 }
 
 .blue-text {
@@ -115,7 +112,8 @@ td {
 }
 
 .content {
-  font-size: 18px
+  font-size: 18px;
+  text-align: justify;
 }
 
 .profile-pic {
@@ -147,4 +145,25 @@ td {
 }
 .filled.bad {
   color: #ff1e1e;
+}
+
+.rating-heading {
+  font-weight: bold;
+  text-align: center;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.rating-content {
+  height: 380px;
+  overflow: hidden;
+}
+
+.rating-heading label {
+  cursor: pointer;
+}
+
+.show-rating {
+  overflow: visible;
+  height: auto;
 }

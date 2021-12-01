@@ -34,6 +34,7 @@ export class ProductDetailComponent implements OnInit {
   cliente: Cliente;
   isFav: boolean = false;
   favoriteVisible: boolean = false;
+  show: boolean = false;
 
   constructor(private route: ActivatedRoute, private productService: ProductsService, private clienteService: ClientesService, private snackBar: MatSnackBar) {
     this.cliente = this.clienteService.currentCliente;

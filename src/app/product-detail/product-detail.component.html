@@ -1,24 +1,48 @@
-<div *ngIf="product.id === -1" class="main-page-loading container d-flex justify-content-center align-items-center">
+<div
+  *ngIf="product.id === -1"
+  class="
+    main-page-loading
+    container
+    d-flex
+    justify-content-center
+    align-items-center
+  "
+>
   <app-spinner [size]="100" class=""></app-spinner>
 </div>
 <div class="container" *ngIf="product.id !== -1">
   <!-- Start product view -->
   <div class="row">
     <div class="col">
-      <div id="carouselExampleIndicators" class="carousel slide" data-bs-interval="false">
+      <div
+        id="carouselExampleIndicators"
+        class="carousel slide"
+        data-bs-interval="false"
+      >
         <div class="carousel-inner">
-          <div class="carousel-item img-container" *ngFor="let image of imagenes; let index = index"
-            [class.active]="index == 0">
+          <div
+            class="carousel-item img-container"
+            *ngFor="let image of imagenes; let index = index"
+            [class.active]="index == 0"
+          >
             <img [src]="image" class="d-block" alt="..." />
           </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-          data-bs-slide="prev">
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="prev"
+        >
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-          data-bs-slide="next">
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="next"
+        >
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
@@ -35,43 +59,67 @@
       <div class="row">
         <div class="col">
           <div class="progress">
-            <div class="progress-bar" role="progressbar" [style]="{ width: progress + '%' }" aria-valuenow="25"
-              aria-valuemin="0" aria-valuemax="100">{{ progress }} %</div>
+            <div
+              class="progress-bar"
+              role="progressbar"
+              [style]="{ width: progress + '%' }"
+              aria-valuenow="25"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            >
+              {{ progress }} %
+            </div>
           </div>
-          <p class="m-4 progress-available">{{ product.cantidadDisponible }} / {{ product.cantidadInicial }} Disponibles
+          <p class="m-4 progress-available">
+            {{ product.cantidadDisponible }} /
+            {{ product.cantidadInicial }} Disponibles
           </p>
         </div>
       </div>
       <div class="row">
-        <div class="product-price justify-content-center align-items-center mb-4">
+        <div
+          class="product-price justify-content-center align-items-center mb-4"
+        >
           <h2 *ngIf="product.precio !== -1">{{ product.precio }} €</h2>
-          <button type="button" mat-stroked-button class="btn btn-primary generic-button"
-            (click)="participarProducto()">
+          <button
+            type="button"
+            mat-stroked-button
+            class="btn btn-primary generic-button"
+            (click)="participarProducto()"
+          >
             Comprar
           </button>
-          <app-favorite-toggle *ngIf="favoriteVisible" [productId]="productId" [size]="34"></app-favorite-toggle>
+          <app-favorite-toggle
+            *ngIf="favoriteVisible"
+            [productId]="productId"
+            [size]="34"
+          ></app-favorite-toggle>
         </div>
       </div>
       <div class="row">
         <div class="col"></div>
       </div>
     </div>
-    <div class="row">
-      <div class="col">
-        <h4 class="product-title">Acerca de este producto</h4>
-        <div *ngFor="let linea of lineasDescripcion; let index = index">
-          <p align="justify">{{linea}}</p>
+    <div>
+      <div class="justify-content-center align-items-center">
+        <h4 class="product-heading m-4">Acerca de este producto</h4>
+        <div class="product-description" [class.show]="show">
+          <div *ngFor="let linea of lineasDescripcion; let index = index">
+            <p align="justify">{{ linea }}</p>
+          </div>
         </div>
+        <button class="btn-description d-flex" (click)="show = !show">{{ show ? 'Ver menos detalles': 'Ver más detalles' }} ></button>
       </div>
     </div>
     <!-- End product view -->
-    <hr />
     <!-- Start related products -->
     <app-related-products></app-related-products>
     <!-- End related products -->
-    <hr />
     <!-- Start reviews -->
-    <app-rating [opiniones]="product.Opinions" [productoId]="product.id"></app-rating>
+    <app-rating
+      [opiniones]="product.Opinions"
+      [productoId]="product.id"
+    ></app-rating>
     <!-- End reviews -->
   </div>
 </div>

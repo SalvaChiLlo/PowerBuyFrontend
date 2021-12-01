@@ -37,7 +37,7 @@ div.fit-content {
   margin: auto;
 }
 
-.product-title {
+.product-heading {
   font-weight: bold;
   text-align: center;
 }
@@ -49,6 +49,25 @@ div.fit-content {
 
 .product-price h2 {
   margin: 0 20px 0 0;
+}
+
+.product-description {
+  height: 64px;
+  overflow: hidden;
+}
+
+.btn-description{
+  background: none;
+  border: none;
+  padding: 0;
+  color: #f26530;
+  cursor: pointer;
+  margin: auto;
+}
+
+.show {
+  overflow: visible;
+  height: auto;
 }
 
 .progress-bar {

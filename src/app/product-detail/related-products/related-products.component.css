@@ -10,3 +10,8 @@ app-product-card {
   width: 80vw;
   max-width: 360px;
 }
+
+.product-heading {
+  font-weight: bold;
+  text-align: center;
+}
