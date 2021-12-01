@@ -91,7 +91,6 @@ export class MainPageComponent implements OnInit {
     if (value == 1) {
       this.products = this.products.sort((prd1, prd2) => {
         if (this.calcRating(prd1) < this.calcRating(prd2)) {
-          console.log(this.calcRating(prd1));
           return 1;
         }
         else if (this.calcRating(prd1) > this.calcRating(prd2)) {
