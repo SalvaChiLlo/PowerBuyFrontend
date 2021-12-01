@@ -12,6 +12,7 @@ export class RelatedProductsComponent implements OnInit {
   productosAMostrar: Producto[] = [];
   numProductosAMostrar = 3;
   @Input('update') update: number;
+  @Input() product: Producto;
   constructor(private productService: ProductsService) {
     this.productService.getAllProducts().subscribe(productos => {
       this.productos = productos
@@ -30,6 +31,12 @@ export class RelatedProductsComponent implements OnInit {
 
 
   setProductosAMostrar() {
+    this.productos = this.productos.filter(product => {
+      return JSON.stringify(product.CategoriaProductos).toLowerCase().includes(this.product.CategoriaProductos[0].categoria.toLowerCase());
+    });
+    this.productos = this.productos.filter(product => {
+      return product.id != this.product.id;
+    });
     for (let i = 0; i < this.numProductosAMostrar; i++) {
       this.productosAMostrar[i] = this.productos[Math.floor(Math.random() * this.productos.length - 1)]
     }
