@@ -25,10 +25,7 @@
               <td class="rating-label">5</td>
               <td class="rating-bar">
                 <div class="bar-container">
-                  <div
-                    class="bar-5"
-                    [style]="{ width: valoraciones[4] + '%' }"
-                  ></div>
+                  <div class="bar-5" [style]="{ width: valoraciones[4] + '%' }"></div>
                 </div>
               </td>
               <td class="text-right">{{ valoraciones[4] }}%</td>
@@ -37,10 +34,7 @@
               <td class="rating-label">4</td>
               <td class="rating-bar">
                 <div class="bar-container">
-                  <div
-                    class="bar-4"
-                    [style]="{ width: valoraciones[3] + '%' }"
-                  ></div>
+                  <div class="bar-4" [style]="{ width: valoraciones[3] + '%' }"></div>
                 </div>
               </td>
               <td class="text-right">{{ valoraciones[3] }}%</td>
@@ -49,10 +43,7 @@
               <td class="rating-label">3</td>
               <td class="rating-bar">
                 <div class="bar-container">
-                  <div
-                    class="bar-3"
-                    [style]="{ width: valoraciones[2] + '%' }"
-                  ></div>
+                  <div class="bar-3" [style]="{ width: valoraciones[2] + '%' }"></div>
                 </div>
               </td>
               <td class="text-right">{{ valoraciones[2] }}%</td>
@@ -61,10 +52,7 @@
               <td class="rating-label">2</td>
               <td class="rating-bar">
                 <div class="bar-container">
-                  <div
-                    class="bar-2"
-                    [style]="{ width: valoraciones[1] + '%' }"
-                  ></div>
+                  <div class="bar-2" [style]="{ width: valoraciones[1] + '%' }"></div>
                 </div>
               </td>
               <td class="text-right">{{ valoraciones[1] }}%</td>
@@ -73,10 +61,7 @@
               <td class="rating-label">1</td>
               <td class="rating-bar">
                 <div class="bar-container">
-                  <div
-                    class="bar-1"
-                    [style]="{ width: valoraciones[0] + '%' }"
-                  ></div>
+                  <div class="bar-1" [style]="{ width: valoraciones[0] + '%' }"></div>
                 </div>
               </td>
               <td class="text-right">{{ valoraciones[0] }}%</td>
@@ -85,41 +70,24 @@
         </div>
       </div>
 
-      <div
-        class="d-flex justify-content-center align-items-center mt-4"
-        *ngIf="currentCliente"
-      >
+      <div class="d-flex justify-content-center align-items-center mt-4" *ngIf="currentCliente">
         <p class="mb-0 mx-3">Queremos saber tu opinión</p>
-        <button
-          class="action-button btn btn-primary"
-          type="button"
-          (click)="showForm = !showForm"
-        >
+        <button class="action-button btn btn-dark" type="button" (click)="showForm = !showForm">
           Enviar opinión
         </button>
       </div>
-      <div
-        *ngIf="showForm"
-        class="
+      <div *ngIf="showForm" class="
           collapse
           d-flex
           flex-column
           w-100
           justify-content-left
           align-items-center
-        "
-        id="collapseExample"
-      >
+        " id="collapseExample">
         <div class="card-body w-100">
           <div class="form-floating">
-            <textarea
-              class="form-control"
-              placeholder=""
-              id="floatingTextarea"
-              name="floatingTextarea"
-              style="height: 100px"
-              [(ngModel)]="textRate"
-            ></textarea>
+            <textarea class="form-control" placeholder="" id="floatingTextarea" name="floatingTextarea"
+              style="height: 100px" [(ngModel)]="textRate"></textarea>
             <label for="floatingTextarea">Añadir una reseña escrita</label>
           </div>
         </div>
@@ -131,12 +99,7 @@
             </ng-template>
           </ngb-rating>
         </div>
-        <button
-          class="action-button btn btn-primary"
-          type="button"
-          (click)="submit()"
-          [disabled]="currentRate == 0"
-        >
+        <button class="action-button btn btn-dark" type="button" (click)="submit()" [disabled]="currentRate == 0">
           Guardar
         </button>
       </div>
@@ -146,11 +109,9 @@
         <div class="d-flex flex-column">
           <h4 class="mt-2 mb-0">{{ opinion.Cliente.username }}</h4>
           <div>
-            <span
-              *ngFor="
+            <span *ngFor="
               let dummy of ' '.repeat(opinion.valoracion).split('');
-              let x = index"
-              class="star-active star fa fa-star">★</span>
+              let x = index" class="star-active star fa fa-star">★</span>
           </div>
         </div>
         <div class="ml-auto">

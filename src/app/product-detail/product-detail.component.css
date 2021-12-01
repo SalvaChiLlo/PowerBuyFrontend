@@ -110,3 +110,7 @@ div.fit-content {
   font-weight: bold !important;
   margin: 0;
 }
+
+.main-page-loading {
+  height: 100%;
+}

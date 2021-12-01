@@ -8,7 +8,7 @@ import { Observable, Subject } from 'rxjs';
 })
 export class ProductsService {
   shoppingCart: ProductoCantidad[] = JSON.parse(localStorage.getItem("Carro")) || [];
-  shoppingSubject = new Subject<any>();
+  shoppingSubject = new Subject<ProductoCantidad[]>();
 
   constructor(private http: HttpClient) { }
 
@@ -37,7 +37,7 @@ export class ProductsService {
     }
     else { posicion[0].cantidad++; }
     localStorage.setItem("Carro", JSON.stringify(this.shoppingCart))
-    this.shoppingSubject.next(1);
+    this.shoppingSubject.next(this.shoppingCart);
   }
 
   public removeProductFromCart(product: Producto) {
@@ -45,13 +45,13 @@ export class ProductsService {
     if (posicion[0].cantidad > 1) { posicion[0].cantidad-- }
     else { this.shoppingCart = this.shoppingCart.filter(p => p.producto.id != product.id) }
     localStorage.setItem("Carro", JSON.stringify(this.shoppingCart))
-    this.shoppingSubject.next(1);
+    this.shoppingSubject.next(this.shoppingCart);
   }
 
   public finalizarCompra() {
     this.shoppingCart = [];
     localStorage.setItem("Carro", JSON.stringify(this.shoppingCart))
-    this.shoppingSubject.next(1);
+    this.shoppingSubject.next(this.shoppingCart);
   }
 
 

@@ -27,3 +27,22 @@ mat-icon {
   color: white;
   width: fit-content;
 }
+
+.my-modal {
+  z-index: 9999;
+}
+
+.modal-dialog {
+  z-index: 9999;
+}
+
+.my-modal::after {
+  position: fixed;
+  top: 57px;
+  left: 0;
+  content: "";
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.33);
+  z-index: 9;
+}

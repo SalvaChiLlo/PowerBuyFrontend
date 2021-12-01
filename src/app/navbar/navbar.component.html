@@ -1,18 +1,18 @@
 <nav class="w-100">
   <div class="search" *ngIf="!showBack">
-    <img (click)="showSearchMenu = !showSearchMenu; showStoreMenu=false" class="icon" src="/assets/eva_search-fill.png"
-      alt="search logo" width="100px">
+    <img (click)="showSearchMenu = !showSearchMenu; showStoreMenu=false" class="icon pointer"
+      src="/assets/eva_search-fill.png" alt="search logo" width="100px">
     <img *ngIf="showSearchMenu" class="chevron" src="/assets/Polygon 1.png" alt="search logo" width="100px">
   </div>
   <div class="search" *ngIf="showBack">
-    <img (click)="back()" class="icon" src="/assets/row.svg" alt="search logo" width="100px">
+    <img (click)="back()" class="icon pointer" src="/assets/row.svg" alt="search logo" width="100px">
   </div>
   <div class="brand" routerLink="/home">
-    <img *ngIf="showLogo" class="logo" src="/assets/NavBarLogo.svg" alt="PowerBuy logo" width="100px">
-    <h3 *ngIf="!showLogo">{{pageName}}</h3>
+    <img *ngIf="showLogo" class="logo pointer" src="/assets/NavBarLogo.svg" alt="PowerBuy logo" width="100px">
+    <h3 *ngIf="!showLogo" class="pointer">{{pageName}}</h3>
   </div>
   <div class="store">
-    <img id="store_logo" (click)="showStoreMenu = !showStoreMenu; showSearchMenu=false" class="icon"
+    <img id="store_logo" (click)="showStoreMenu = !showStoreMenu; showSearchMenu=false" class="icon pointer"
       src="/assets/mdi_shopping-outline.png" alt="store logo" width="100px">
     <img *ngIf="showStoreMenu" class="chevron" src="/assets/Polygon 1.png" alt="search logo" width="100px">
   </div>
@@ -42,18 +42,18 @@
         </div>
         <div class="accordion-item disabled">
           <h2 class="accordion-header" id="headingTwo">
-            <button *ngIf="showCategorias" class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            <button *ngIf="showCategorias" class="accordion-button collapsed pointer" type="button"
+              data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
               Categorías
             </button>
           </h2>
           <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
             data-bs-parent="#accordionExample">
             <ul class="list-group">
-              <li class="list-group-item" [class.selected]="activeCategory === 'Todas las Categorías'"
+              <li class="list-group-item pointer" [class.selected]="activeCategory === 'Todas las Categorías'"
                 (click)="activeCategory = 'Todas las Categorías'">
                 Todas las Categorías</li>
-              <li *ngFor="let categoria of categorias" class="list-group-item"
+              <li *ngFor="let categoria of categorias" class="list-group-item pointer"
                 [class.selected]="activeCategory === categoria.categoria" (click)="setCategoria(categoria.categoria)">
                 {{categoria.categoria}}</li>
             </ul>
@@ -66,16 +66,26 @@
   <div class="search-menu" *ngIf="showStoreMenu">
     <div class="content">
       <ul class="list-group pw_list-group py-3 px-3">
-        <li class="list-group-item" (click)="close_store_menu()" routerLink="/shopping-cart">Cesta</li>
-        <li class="list-group-item" *ngIf="client" (click)="close_store_menu()">Participaciones</li>
-        <li class="list-group-item" *ngIf="client" (click)="close_store_menu()" [routerLink]="'/listaDeseos/'">Favoritos
+        <li routerLinkActive="active-link" class="pointer list-group-item" (click)="close_store_menu()"
+          routerLink="/home">
+          Inicio</li>
+        <li routerLinkActive="active-link" class="pointer list-group-item" (click)="close_store_menu()"
+          routerLink="/shopping-cart">Cesta</li>
+        <li routerLinkActive="active-link" class="pointer list-group-item" *ngIf="client" (click)="close_store_menu()">
+          Participaciones</li>
+        <li routerLinkActive="active-link" class="pointer list-group-item" *ngIf="client" (click)="close_store_menu()"
+          [routerLink]="'/listaDeseos/'">Favoritos
         </li>
-        <li class="list-group-item" *ngIf="client" (click)="close_store_menu()" routerLink="/user">Cuenta</li>
-        <li class="list-group-item danger" *ngIf="client" (click)="logout();close_store_menu()">Cerrar Sesión</li>
-        <li class="list-group-item warn" *ngIf="!client" (click)="close_store_menu()" routerLink="/signin">Iniciar
+        <li routerLinkActive="active-link" class="pointer list-group-item" *ngIf="client" (click)="close_store_menu()"
+          routerLink="/user">Cuenta</li>
+        <li routerLinkActive="active-link" class="pointer list-group-item danger" *ngIf="client"
+          (click)="logout();close_store_menu()">Cerrar Sesión</li>
+        <li routerLinkActive="active-link" class="pointer list-group-item warn" *ngIf="!client"
+          (click)="close_store_menu()" routerLink="/signin">Iniciar
           Sesión
         </li>
       </ul>
     </div>
   </div>
 </nav>
+<div class="separator"></div>

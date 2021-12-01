@@ -1,17 +1,16 @@
 <div *ngIf="product">
   <div class="row">
-    <div class="col-8">
+    <div class="col">
       <app-product-card [product]="product.producto"></app-product-card>
-    </div>
-    <div class="col-4">
-      <div class="input-group mt-3">
-        <button type="button" class="btn btn-danger btn-number" data-type="minus" data-field="quant[2]"
+      <div class="input-group mt-2">
+        <button type="button" class="btn btn-dark btn-number" data-type="minus" data-field="quant[2]"
           (click)="minus()">-</button>
         <input type="text" name="quant[2]" class="form-control input-number" value="{{product.cantidad}}" min="1"
           max="10">
-        <button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[2]"
+        <button type="button" class="btn btn-dark btn-number" data-type="plus" data-field="quant[2]"
           (click)="plus()">+</button>
       </div>
     </div>
   </div>
 </div>
+<hr>

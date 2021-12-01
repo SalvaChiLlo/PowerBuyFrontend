@@ -1,27 +1,35 @@
 <h3>Resumen</h3>
 <hr>
-<div class="row">
-  <div class="col-6">
-    <p>SUBTOTAL</p>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-6">
+      <p class="text-end">SUBTOTAL</p>
+    </div>
+    <div class="col-6 text-end">{{subtotal|currency:'EUR':'symbol'}} </div>
   </div>
-  <div class="col-6">{{subtotal|currency:'EUR':'symbol'}} </div>
-</div>
-<div class="row">
-  <div class="col-6">
-    <p>ENVIO</p>
+  <div class="row">
+    <div class="col-6">
+      <p class="text-end">ENVIO</p>
+    </div>
+    <div class="col-6 text-end">{{envio|currency:'EUR':'symbol'}} </div>
   </div>
-  <div class="col-6">{{envio|currency:'EUR':'symbol'}} </div>
-</div>
-<div class="row">
-  <div class="col-6">
-    <p>IMPUESTOS</p>
+  <div class="row">
+    <div class="col-6">
+      <p class="text-end">IMPUESTOS</p>
+    </div>
+    <div class="col-6 text-end">{{impuestos|currency:'EUR':'symbol'}} </div>
   </div>
-  <div class="col-6">{{impuestos|currency:'EUR':'symbol'}} </div>
-</div>
-<hr>
-<div class="row">
-  <div class="col-6">
-    <p>TOTAL</p>
+  <hr>
+  <div class="row">
+    <div class="col-6">
+      <p class="text-end fw-bolder">TOTAL</p>
+    </div>
+    <div class="col-6 text-end fw-bolder">{{total|currency:'EUR':'symbol'}} </div>
   </div>
-  <div class="col-6">{{total|currency:'EUR':'symbol'}} </div>
+  <div class="w-100 d-flex align-items-end justify-content-end">
+    <button [disabled]="shoppingCart.length === 0" (click)="_finalizarCompra()" type="button"
+      class="btn btn-dark mb-3 rounded-pill submit">Finalizar
+      Compra</button>
+  </div>
 </div>

@@ -76,6 +76,9 @@ export class ProductDetailComponent implements OnInit {
     } else {
       this.snackBar.open("Ya no puedes participar en este producto.", 'X');
     }
+    setTimeout(() => {
+      this.snackBar.dismiss();
+    }, 5000);
   }
 
 }

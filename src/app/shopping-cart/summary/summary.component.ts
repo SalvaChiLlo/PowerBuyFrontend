@@ -1,5 +1,5 @@
 import { Producto, ProductoCantidad } from '../../models/producto.model';
-import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
 
 
@@ -13,6 +13,9 @@ export class SummaryComponent implements OnInit {
   envio: number = 0;
   impuestos: number = 0;
   total: number = 0;
+  shoppingCart: ProductoCantidad[] = [];
+  @Output() finalizarCompra = new EventEmitter<any>();
+
 
   constructor(private productService: ProductsService) { }
 
@@ -21,7 +24,9 @@ export class SummaryComponent implements OnInit {
     this.envio = 0;
     this.impuestos = 0;
     this.total = 0;
-    this.productService.shoppingSubject.subscribe(_ => {
+    this.shoppingCart = this.productService.shoppingCart
+    this.productService.shoppingSubject.subscribe(products => {
+      this.shoppingCart = products
       this.subtotal = 0;
       this.envio = 0;
       this.impuestos = 0;
@@ -68,6 +73,8 @@ export class SummaryComponent implements OnInit {
     this.total = this.subtotal + this.envio + this.impuestos;
   }
 
-
+  _finalizarCompra() {
+    this.finalizarCompra.emit();
+  }
 
 }

@@ -6,17 +6,12 @@
       <div class="col-md-6 col-sm-12">
         <app-selectioned-products></app-selectioned-products>
       </div>
-      <div class="col-md-6 col-sm-12">
-        <app-summary></app-summary>
+      <div class="col-md-6 col-sm-12 mt-3">
+        <app-summary (finalizarCompra)="finalizarCompra()"></app-summary>
       </div>
     </div>
   </div>
-  <hr>
-  <div>
-    <button type="button" [class.disabled]="shoppingCart.length === 0"
-      class="btn btn-primary mt-5 mx-5 rounded-pill submit" (click)="finalizarCompra()">Finalizar
-      Compra</button>
-  </div>
+
 
   <div class="my-modal" *ngIf="show">
     <div class="modal-dialog">
