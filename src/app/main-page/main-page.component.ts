@@ -43,14 +43,17 @@ export class MainPageComponent implements OnInit {
       this.categories = categories
     })
 
+    this.categoriesService.busquedaSubject.next('')
     this.categoriesService.busquedaSubject.subscribe(busqueda => {
       this.getBusqueda(busqueda)
     })
 
+    this.categoriesService.categoriasSubject.next('Todas las Categorías')
     this.categoriesService.categoriasSubject.subscribe(categoria => {
       this.filtrarCategoria(categoria)
     })
 
+    this.categoriesService.sortSubject.next(1)
     this.categoriesService.sortSubject.subscribe(sort => {
       this.getOrden(sort, true)
     })

@@ -41,6 +41,11 @@ export class ListaDeseosComponent implements OnInit {
       this.idProducts = JSON.parse(this.cliente.favoritos || "[]");
       this.getProducts();
     }
+
+    this.categoriesService.sortSubject.next(1)
+    this.categoriesService.sortSubject.subscribe(sort => {
+      this.getOrden(sort)
+    })
   }
 
   getProducts() {

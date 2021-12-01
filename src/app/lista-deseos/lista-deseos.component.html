@@ -7,7 +7,7 @@
 </div>
 <div class="container-fluid">
   <div class="lista-deseos-container" *ngIf="!loading">
-    <hr class="first">
+    <!-- <hr class="first">
     <div class="container-fluid">
       <div class="row">
         <div class="col-3">
@@ -21,7 +21,7 @@
         </div>
       </div>
     </div>
-    <hr>
+    <hr> -->
     <p *ngIf="!products || products.length === 0">No tienes productos favoritos.</p>
     <div class="product-list">
       <app-product-list [showText]="false" [products]="productsToRender"></app-product-list>

@@ -2,7 +2,7 @@ import { Categoria, CategoriaProducto } from './../models/producto.model';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Auth, authState, signOut } from '@angular/fire/auth';
 import { traceUntilFirst } from '@angular/fire/performance';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { Cliente } from '../models/producto.model';
 import { ClientesService } from '../services/clientes.service';
@@ -22,6 +22,8 @@ export class NavbarComponent implements OnInit {
   client: Cliente | null;
   showSearchMenu = false;
   showStoreMenu = false;
+  showCategorias = false;
+  showBack = false;
   options = [
     { name: "Relevancia", value: 1 },
     { name: "Precio Ascendente", value: 2 },
@@ -41,6 +43,7 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private activedRouter: ActivatedRoute,
     private auth: Auth,
     private clienteService: ClientesService,
     private location: Location,
@@ -56,7 +59,26 @@ export class NavbarComponent implements OnInit {
       }
     })
 
+    this.router.events.subscribe(ev => {
+      if (ev instanceof NavigationEnd) {
+        this.showCategorias = ev.url === '/home'
+        this.showBack = ev.url !== '/home' && ev.url !== '/listaDeseos';
+      }
+    })
+
     this.getCategorias();
+
+    this.categoriasService.busquedaSubject.subscribe(busqueda => {
+      this.busqueda = busqueda;
+    })
+
+    this.categoriasService.categoriasSubject.subscribe(categoria => {
+      this.activeCategory = categoria
+    })
+
+    this.categoriasService.sortSubject.subscribe(sort => {
+      this.activeOption = sort;
+    })
   }
 
   async logout() {

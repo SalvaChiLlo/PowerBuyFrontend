@@ -1,8 +1,11 @@
 <nav class="w-100">
-  <div class="search">
+  <div class="search" *ngIf="!showBack">
     <img (click)="showSearchMenu = !showSearchMenu; showStoreMenu=false" class="icon" src="/assets/eva_search-fill.png"
       alt="search logo" width="100px">
     <img *ngIf="showSearchMenu" class="chevron" src="/assets/Polygon 1.png" alt="search logo" width="100px">
+  </div>
+  <div class="search" *ngIf="showBack">
+    <img class="icon" src="/assets/row.svg" alt="search logo" width="100px">
   </div>
   <div class="brand" routerLink="/home">
     <img class="logo" src="/assets/NavBarLogo.svg" alt="PowerBuy logo" width="100px">
@@ -36,9 +39,9 @@
             </ul>
           </div>
         </div>
-        <div class="accordion-item">
+        <div class="accordion-item disabled">
           <h2 class="accordion-header" id="headingTwo">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            <button *ngIf="showCategorias" class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
               data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
               Categorías
             </button>
