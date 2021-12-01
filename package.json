@@ -30,6 +30,7 @@
     "bootstrap": "^5.1.1",
     "browser-image-compression": "^1.0.16",
     "compress-base64": "^1.0.2",
+    "date-diff": "^1.0.2",
     "firebase": "^9.0.0",
     "material-icons": "^1.9.1",
     "rxfire": "^6.0.0",

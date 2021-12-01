@@ -27,6 +27,7 @@ export class RatingComponent implements OnChanges {
   showRating = false;
   isLoggedIn: boolean = false;
   currentCliente: Cliente;
+  dateDiff: number = -1;
 
 
   constructor(
@@ -80,6 +81,17 @@ export class RatingComponent implements OnChanges {
         this.valoracionGlobal = Math.floor(this.valoracionGlobal / this.opiniones.length * 10) / 10
       }
     }
+  }
+
+  toDateDiff(stringdate: string) {
+    stringdate = stringdate.split('T')[0]
+    let dateArray = stringdate.split('-')
+
+    let date = new Date(+dateArray[0], +dateArray[1] - 1, +dateArray[2])
+    let curDate = new Date()
+
+    let diff = Math.abs(date.getTime() - curDate.getTime())
+    return Math.ceil(diff / (1000 * 3600 * 24));
   }
 }
 

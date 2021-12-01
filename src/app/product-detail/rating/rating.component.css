@@ -167,3 +167,10 @@ td {
   overflow: visible;
   height: auto;
 }
+
+.action-button {
+  background-color: #f26530;
+  border-radius: 1.2em;
+  padding: 6px 18px 6px 18px;
+  font-weight: 600;
+}

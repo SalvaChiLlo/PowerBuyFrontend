@@ -91,7 +91,7 @@
       >
         <p class="mb-0 mx-3">Queremos saber tu opinión</p>
         <button
-          class="btn btn-primary"
+          class="action-button btn btn-primary"
           type="button"
           (click)="showForm = !showForm"
         >
@@ -132,7 +132,7 @@
           </ngb-rating>
         </div>
         <button
-          class="btn btn-primary"
+          class="action-button btn btn-primary"
           type="button"
           (click)="submit()"
           [disabled]="currentRate == 0"
@@ -155,7 +155,7 @@
         </div>
         <div class="ml-auto">
           <p class="text-muted pt-5 pt-sm-3">
-            Publicado el {{ opinion.updatedAt }}
+            Hace {{ toDateDiff(opinion.createdAt) }} días
           </p>
         </div>
       </div>
