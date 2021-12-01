@@ -1,6 +1,7 @@
 .carousel:hover button {
   background-color: #8b8b8b90;
   overflow: hidden;
+  z-index: 900;
 }
 
 .slide {
@@ -70,4 +71,13 @@ div.fit-content {
 
 .container {
   background-color: white;
+}
+
+.product-price h3 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.text-muted {
+  font-size: 1.2rem !important;
 }
