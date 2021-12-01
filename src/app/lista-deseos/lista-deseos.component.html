@@ -24,7 +24,7 @@
     <hr>
     <p *ngIf="!products || products.length === 0">No tienes productos favoritos.</p>
     <div class="product-list">
-      <app-product-list [columns]="1" [showText]="false" [products]="productsToRender"></app-product-list>
+      <app-product-list [showText]="false" [products]="productsToRender"></app-product-list>
     </div>
   </div>
 </div>
