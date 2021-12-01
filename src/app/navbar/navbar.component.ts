@@ -62,7 +62,10 @@ export class NavbarComponent implements OnInit {
     this.router.events.subscribe(ev => {
       if (ev instanceof NavigationEnd) {
         this.showCategorias = ev.url === '/home'
-        this.showBack = ev.url !== '/home' && ev.url !== '/listaDeseos';
+        this.showBack = !(ev.url === '/home' || ev.url === '/listaDeseos');
+        if (ev.url === '/' && ev.urlAfterRedirects === '/home') {
+          this.showBack = false;
+        }
       }
     })
 

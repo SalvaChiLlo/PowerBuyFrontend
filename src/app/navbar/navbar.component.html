@@ -5,7 +5,7 @@
     <img *ngIf="showSearchMenu" class="chevron" src="/assets/Polygon 1.png" alt="search logo" width="100px">
   </div>
   <div class="search" *ngIf="showBack">
-    <img class="icon" src="/assets/row.svg" alt="search logo" width="100px">
+    <img (click)="back()" class="icon" src="/assets/row.svg" alt="search logo" width="100px">
   </div>
   <div class="brand" routerLink="/home">
     <img class="logo" src="/assets/NavBarLogo.svg" alt="PowerBuy logo" width="100px">
