@@ -5,8 +5,8 @@
     </div>
   </div>
 </div>
-<div class="content pt-3">
-  <div class="lista-deseos-container" *ngIf="!loading">
+<div class="content">
+  <div class="lista-deseos-container mt-3" *ngIf="!loading">
     <!-- <hr class="first">
     <div class="container-fluid">
       <div class="row">
@@ -22,7 +22,7 @@
       </div>
     </div>
     <hr> -->
-    <p *ngIf="!products || products.length === 0">No tienes productos favoritos.</p>
+    <p *ngIf="!products || products.length === 0" class="mt-3">No tienes productos favoritos.</p>
     <div class="product-list">
       <app-product-list [showText]="false" [products]="productsToRender"></app-product-list>
     </div>
