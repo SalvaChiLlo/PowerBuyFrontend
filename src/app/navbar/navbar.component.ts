@@ -94,6 +94,7 @@ export class NavbarComponent implements OnInit {
 
         if (ev.url === '/' && ev.urlAfterRedirects === '/home') {
           this.showBack = false;
+          this.showCategorias = true
         }
       }
     })
