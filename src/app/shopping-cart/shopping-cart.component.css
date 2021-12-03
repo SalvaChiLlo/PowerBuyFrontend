@@ -10,6 +10,11 @@ hr.first {
   position: relative;
 }
 
+.content {
+  background-color: #e5e5e5;
+  height: fit-content;
+}
+
 .my-modal {
   width: 100%;
   position: absolute;

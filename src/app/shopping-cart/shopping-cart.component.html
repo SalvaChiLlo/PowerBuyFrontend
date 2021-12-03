@@ -1,14 +1,12 @@
 <div class="content">
 
   <hr class="first">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-6 col-sm-12">
-        <app-selectioned-products></app-selectioned-products>
-      </div>
-      <div class="col-md-6 col-sm-12 mt-3">
-        <app-summary (finalizarCompra)="finalizarCompra()"></app-summary>
-      </div>
+  <div class="row">
+    <div class="col-md-6 col-sm-12">
+      <app-selectioned-products></app-selectioned-products>
+    </div>
+    <div class="col-md-6 col-sm-12">
+      <app-summary (finalizarCompra)="finalizarCompra()"></app-summary>
     </div>
   </div>
 
