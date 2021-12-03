@@ -5,8 +5,16 @@
     </div>
   </div>
 </div>
+<div class="container-fluid container-spinner d-flex justify-content-center align-items-center"
+  *ngIf="!products || products.length === 0">
+  <div class="row">
+    <div class="col d-flex justify-content-center align-items-center">
+      <p class="pt-3">No tienes productos favoritos.</p>
+    </div>
+  </div>
+</div>
 <div class="content">
-  <div class="lista-deseos-container pt-3" *ngIf="!loading">
+  <div class="lista-deseos-container pt-3" *ngIf="!loading && products || products.length">
     <!-- <hr class="first">
     <div class="container-fluid">
       <div class="row">
@@ -22,7 +30,6 @@
       </div>
     </div>
     <hr> -->
-    <p *ngIf="!products || products.length === 0" class="pt-3">No tienes productos favoritos.</p>
     <div class="product-list">
       <app-product-list [showText]="false" [products]="productsToRender"></app-product-list>
     </div>
