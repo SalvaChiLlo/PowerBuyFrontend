@@ -12,7 +12,8 @@ hr.first {
 
 .content {
   background-color: #e5e5e5;
-  height: fit-content;
+  min-height: 100%;
+  max-height: fit-content;
 }
 
 .my-modal {
@@ -50,4 +51,10 @@ mat-icon {
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.33);
   z-index: 9;
+}
+
+@media (min-width: 768px) {
+  .summary {
+    margin-top: 1rem;
+  }
 }
