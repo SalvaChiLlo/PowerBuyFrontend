@@ -185,3 +185,8 @@ nav {
 .active-link {
   font-weight: bold !important;
 }
+
+.list-group {
+  max-height: 60vh;
+  overflow-y: scroll;
+}

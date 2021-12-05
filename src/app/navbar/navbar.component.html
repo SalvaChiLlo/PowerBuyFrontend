@@ -51,7 +51,7 @@
             data-bs-parent="#accordionExample">
             <ul class="list-group">
               <li class="list-group-item pointer" [class.selected]="activeCategory === 'Todas las Categorías'"
-                (click)="activeCategory = 'Todas las Categorías'">
+                (click)="setCategoria('Todas las Categorías')">
                 Todas las Categorías</li>
               <li *ngFor="let categoria of categorias" class="list-group-item pointer"
                 [class.selected]="activeCategory === categoria.categoria" (click)="setCategoria(categoria.categoria)">

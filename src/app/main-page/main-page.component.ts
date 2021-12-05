@@ -50,6 +50,7 @@ export class MainPageComponent implements OnInit {
 
     this.categoriesService.categoriasSubject.next('Todas las Categorías')
     this.categoriesService.categoriasSubject.subscribe(categoria => {
+      console.log(categoria, 'categoria');
       this.filtrarCategoria(categoria)
     })
 
@@ -77,7 +78,7 @@ export class MainPageComponent implements OnInit {
   filtrarCategoria(categoria: string) {
     this.categoria = categoria
     this.productsCategorias = this.products.filter(product => {
-      if (this.categoria == '0') {
+      if (this.categoria == 'Todas las Categorías') {
         return true
       } else {
         return JSON.stringify(product.CategoriaProductos).toLowerCase().includes(this.categoria.toLowerCase())
