@@ -73,21 +73,21 @@ nav {
   top: 58px;
   right: 0;
   left: 0;
-  z-index: 1;
   background-color: white;
   width: 100%;
   z-index: 999999;
 }
 
-.search-menu::before {
+.search-menu .shadow {
   position: absolute;
-  top: 0;
+  top: 58px;
   left: 0;
   content: "";
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 58px);
   background-color: rgba(0, 0, 0, 0.33);
   z-index: -1;
+  backdrop-filter: blur(4px);
 }
 
 .accordion-item {
@@ -187,6 +187,10 @@ nav {
 }
 
 .list-group {
-  max-height: 60vh;
-  overflow-y: scroll;
+  overflow-y: auto;
+  max-height: calc(100vh - 228px);
+}
+
+li {
+  cursor: pointer;
 }
