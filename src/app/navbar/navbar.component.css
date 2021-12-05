@@ -194,3 +194,7 @@ nav {
 li {
   cursor: pointer;
 }
+
+.chevron.favorite {
+  left: 64px !important;
+}

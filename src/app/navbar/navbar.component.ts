@@ -20,10 +20,11 @@ export class NavbarComponent implements OnInit {
   placeholderImage = 'https://drive.google.com/uc?id=1MDeTJsllJwe1gbJRR_xhDOm0k3WNtaVs'
   userImage: string;
   client: Cliente | null;
-  showSearchMenu = false;
   showStoreMenu = false;
   showCategorias = false;
+  showSearchMenu = false;
   showBack = false;
+  showBackNSearch = false;
   options = [
     { name: "Relevancia", value: 1 },
     { name: "Precio Ascendente", value: 2 },
@@ -63,11 +64,19 @@ export class NavbarComponent implements OnInit {
 
     this.router.events.subscribe(ev => {
       if (ev instanceof NavigationEnd) {
+
+        this.showStoreMenu = false;
+        this.showCategorias = false;
+        this.showSearchMenu = false;
+        this.showBack = false;
+        this.showBackNSearch = false;
+
         this.showCategorias = ev.url === '/home'
         this.showBack = !(ev.url === '/home' || ev.url === '/listaDeseos');
         if (ev.url === '/listaDeseos') {
           this.showLogo = false;
           this.pageName = 'Favoritos'
+          this.showBackNSearch = true
         }
 
         if (ev.url === '/shopping-cart') {

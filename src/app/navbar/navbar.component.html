@@ -1,11 +1,14 @@
 <nav class="w-100">
-  <div class="search" *ngIf="!showBack">
-    <img (click)="showSearchMenu = !showSearchMenu; showStoreMenu=false" class="icon pointer" src="/assets/search.svg"
-      alt="search logo" width="100px">
-    <img *ngIf="showSearchMenu" class="chevron" src="/assets/chevron.svg" alt="search logo" width="100px">
-  </div>
-  <div class="search" *ngIf="showBack">
-    <img (click)="back()" class="icon pointer" src="/assets/row.svg" alt="search logo" width="100px">
+  <div class="controls d-flex">
+    <div class="back" *ngIf="showBack || showBackNSearch">
+      <img (click)="back()" class="icon pointer" src="/assets/row.svg" alt="search logo" width="100px">
+    </div>
+    <div class="search" *ngIf="!showBack || showBackNSearch">
+      <img (click)="showSearchMenu = !showSearchMenu; showStoreMenu=false" class="icon pointer" src="/assets/search.svg"
+        alt="search logo" width="100px">
+      <img *ngIf="showSearchMenu" [class.favorite]="showBackNSearch" class="chevron" src="/assets/chevron.svg"
+        alt="search logo" width="100px">
+    </div>
   </div>
   <div class="brand" routerLink="/home">
     <img *ngIf="showLogo" class="logo pointer" src="/assets/NavBarLogo.svg" alt="PowerBuy logo" width="100px">
