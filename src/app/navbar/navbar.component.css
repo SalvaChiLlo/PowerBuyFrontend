@@ -198,3 +198,24 @@ li {
 .chevron.favorite {
   left: 64px !important;
 }
+
+.w-100 {
+  position: relative;
+}
+
+.brand {
+  position: absolute;
+  top: 14px;
+  width: 100vw;
+  height: 33px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 999;
+}
+
+.controls,
+.store {
+  z-index: 9999;
+}

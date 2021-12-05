@@ -1,5 +1,6 @@
 describe('Vamos a probar la búsqueda de productos', () => {
   it('Comprobamos que existe la barra del buscador', () => {
+    cy.viewport('iphone-x')
     cy.visit('http://localhost:4200');
     cy.location('pathname').should('eq', '/home')
     cy.wait(5000)
