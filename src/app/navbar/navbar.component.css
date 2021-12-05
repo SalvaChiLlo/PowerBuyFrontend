@@ -71,14 +71,40 @@ nav {
 .search-menu {
   position: absolute;
   top: 58px;
-  right: 0;
+  left: -100vw;
+  background-color: white;
+  width: 100vw;
+  z-index: -1;
+  opacity: 0;
+  transition: all 0.2s linear;
+}
+
+.search-menu.active {
+  position: absolute;
+  top: 58px;
   left: 0;
   background-color: white;
-  width: 100%;
+  width: 100vw;
   z-index: 999999;
+  opacity: 1;
 }
 
 .search-menu .shadow {
+  backdrop-filter: blur(4px);
+  position: absolute;
+  top: 100vh;
+  left: 100vw;
+  content: "";
+  width: 100vw;
+  height: calc(100vh - 58px);
+  background-color: rgba(0, 0, 0, 0.33);
+  z-index: -1;
+  opacity: 0;
+  transition: all 0.2s linear;
+}
+
+.search-menu.active .shadow {
+  backdrop-filter: blur(4px);
   position: absolute;
   top: 58px;
   left: 0;
@@ -87,7 +113,8 @@ nav {
   height: calc(100vh - 58px);
   background-color: rgba(0, 0, 0, 0.33);
   z-index: -1;
-  backdrop-filter: blur(4px);
+  opacity: 1;
+  transition: all 0.2s linear;
 }
 
 .accordion-item {

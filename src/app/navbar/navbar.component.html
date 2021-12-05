@@ -19,7 +19,9 @@
       src="/assets/store.svg" alt="store logo" width="100px">
     <img *ngIf="showStoreMenu" class="chevron" src="/assets/chevron.svg" alt="search logo" width="100px">
   </div>
-  <div class="search-menu" *ngIf="showSearchMenu">
+
+  <!-- *ngIf="showSearchMenu" -->
+  <div class="search-menu" [class.active]="showSearchMenu">
     <div class="content">
       <div class="form ">
         <input class="mt-2 mb-2" type="text" name="busqueda" id="busqueda" placeholder="Buscar..."
@@ -66,8 +68,8 @@
     </div>
     <div class="shadow" (click)="showSearchMenu=false; showStoreMenu=false"></div>
   </div>
-
-  <div class="search-menu" *ngIf="showStoreMenu">
+  <!-- *ngIf="showStoreMenu" -->
+  <div class="search-menu" [class.active]="showStoreMenu">
     <div class="content">
       <ul class="list-group pw_list-group py-3 px-3">
         <li routerLinkActive="active-link" class="pointer list-group-item" (click)="close_store_menu()"
