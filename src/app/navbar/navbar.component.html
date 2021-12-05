@@ -1,4 +1,4 @@
-<nav class="w-100">
+<nav #navBar class="w-100">
   <div class="controls d-flex">
     <div class="back" *ngIf="showBack || showBackNSearch">
       <img (click)="back()" class="icon pointer" src="/assets/row.svg" alt="search logo" width="100px">
@@ -93,4 +93,3 @@
     <div class="shadow" (click)="showSearchMenu=false; showStoreMenu=false"></div>
   </div>
 </nav>
-<div class="separator"></div>

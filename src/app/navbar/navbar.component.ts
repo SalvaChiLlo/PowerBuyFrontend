@@ -166,4 +166,5 @@ export class NavbarComponent implements OnInit {
   setBusqueda() {
     this.categoriasService.busquedaSubject.next(this.busqueda)
   }
+
 }

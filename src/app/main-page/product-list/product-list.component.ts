@@ -51,12 +51,20 @@ export class ProductListComponent implements OnInit, OnChanges {
   previousPage() {
     this.currentPage--;
     this.setProductsToRender();
-    window.scroll(0, 0)
+    this.scrollTop();
   }
   nextPage() {
     this.currentPage++;
     this.setProductsToRender();
-    window.scroll(0, 0)
+    this.scrollTop();
+  }
+
+  scrollTop() {
+    const body = document.getElementsByTagName("body")[0] as HTMLElement;
+    body.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
   }
 
 }
