@@ -64,6 +64,11 @@ export class ProductCardComponent implements OnInit, OnChanges {
 
   scroll() {
     window.scroll(0, 0)
+    const body = document.getElementsByTagName("body")[0] as HTMLElement;
+    body.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
   }
 
 }

@@ -141,6 +141,8 @@ export class NavbarComponent implements OnInit {
   close_store_menu() {
     let navToggle = document.getElementById('store_logo');
     (navToggle as HTMLElement).click();
+
+    this.scrollTop();
   }
 
   back() {
@@ -165,6 +167,14 @@ export class NavbarComponent implements OnInit {
 
   setBusqueda() {
     this.categoriasService.busquedaSubject.next(this.busqueda)
+  }
+
+  scrollTop() {
+    const body = document.getElementsByTagName("body")[0] as HTMLElement;
+    body.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
   }
 
 }
