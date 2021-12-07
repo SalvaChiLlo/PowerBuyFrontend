@@ -50,7 +50,6 @@ export class MainPageComponent implements OnInit {
 
     this.categoriesService.categoriasSubject.next('Todas las Categorías')
     this.categoriesService.categoriasSubject.subscribe(categoria => {
-      console.log(categoria, 'categoria');
       this.filtrarCategoria(categoria)
     })
 
