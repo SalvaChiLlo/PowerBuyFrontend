@@ -77,8 +77,9 @@
           Inicio</li>
         <li routerLinkActive="active-link" class="pointer list-group-item" (click)="close_store_menu()"
           routerLink="/shopping-cart">Cesta</li>
-        <li routerLinkActive="active-link" [routerLink]="'/historialCompras/'" class="pointer list-group-item" *ngIf="client" (click)="close_store_menu()">
-          Participaciones</li>
+        <li routerLinkActive="active-link" [routerLink]="'/historialCompras/'" class="pointer list-group-item"
+          *ngIf="client" (click)="close_store_menu()">
+          Mis Participaciones</li>
         <li routerLinkActive="active-link" class="pointer list-group-item" *ngIf="client" (click)="close_store_menu()"
           [routerLink]="'/listaDeseos/'">Favoritos
         </li>
