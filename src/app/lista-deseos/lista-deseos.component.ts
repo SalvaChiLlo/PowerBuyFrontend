@@ -23,7 +23,6 @@ export class ListaDeseosComponent implements OnInit {
   loading = true;
 
 
-  // mirar luego que pasa si no hay cliente con sesion iniciada, o sea no currentClient?
   constructor(private router: Router, private auth: Auth, private productService: ProductsService, private categoriesService: CategoriasService, private clienteService: ClientesService) {
   }
 

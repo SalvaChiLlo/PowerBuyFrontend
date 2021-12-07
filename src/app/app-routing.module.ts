@@ -9,6 +9,7 @@ import { SignupComponent } from './login/signup/signup.component';
 import { AuthGuard, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/auth-guard'
 import { ListaDeseosComponent } from './lista-deseos/lista-deseos.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { HistorialComprasComponent } from './historial-compras/historial-compras.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,12 @@ const routes: Routes = [
   {
     path: 'listaDeseos',
     component: ListaDeseosComponent,
+    canActivate: [AuthGuard],
+    data: { authGuardPipe: () => redirectUnauthorizedTo(['/home']) }
+  },
+  {
+    path: 'historialCompras',
+    component: HistorialComprasComponent,
     canActivate: [AuthGuard],
     data: { authGuardPipe: () => redirectUnauthorizedTo(['/home']) }
   },

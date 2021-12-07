@@ -47,6 +47,8 @@ export interface Cliente {
   imageURL?: string;
   favoritos?: string;
   _favoritos?: number[];
+  historial?: string;
+  _historial?: string[];
   imageBLOB?: any;
   createdAt?: string;
   updatedAt?: string;

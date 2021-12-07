@@ -19,4 +19,7 @@
     </div>
   </div>
   <app-favorite-toggle *ngIf="favoriteVisible" [productId]="product.id" [size]=""></app-favorite-toggle>
+  <ng-container *ngIf="showCantidades" >
+    <p> Cantidad comprada= {{cantidad}}</p>
+  </ng-container>  
 </div>

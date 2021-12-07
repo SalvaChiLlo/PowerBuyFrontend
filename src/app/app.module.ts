@@ -44,6 +44,7 @@ import { CardSlideComponent } from './shopping-cart/card-slide/card-slide.compon
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FavoriteToggleComponent } from './favorite-toggle/favorite-toggle.component';
+import { HistorialComprasComponent } from './historial-compras/historial-compras.component';
 
 
 registerLocaleData(localeDEBE)
@@ -74,7 +75,8 @@ registerLocaleData(localeDEBE)
     SelectionedProductsComponent,
     SummaryComponent,
     CardSlideComponent,
-    FavoriteToggleComponent
+    FavoriteToggleComponent,
+    HistorialComprasComponent
   ],
   imports: [
     BrowserModule,

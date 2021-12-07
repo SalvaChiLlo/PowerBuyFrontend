@@ -8,12 +8,15 @@ import { ClientesService } from 'src/app/services/clientes.service';
   styleUrls: ['./product-card.component.css']
 })
 export class ProductCardComponent implements OnInit, OnChanges {
-  @Input() product: Producto;
+  @Input() product: Producto;  
+  @Input() showCantidades: boolean = false;
+  @Input() cantidad: string = "";  
   price: number = -1;
   image: string = 'https://drive.google.com/uc?id=1B7MZEPUkmFHkyynxwA3gkLgnGoEPvaf5';
   titulo: string = '';
   cliente: Cliente;
   favoriteVisible: boolean = false;
+  index: number = 0;
 
   constructor(private clienteService: ClientesService) {
     this.cliente = this.clienteService.currentCliente;

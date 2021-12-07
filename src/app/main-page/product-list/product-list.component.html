@@ -3,7 +3,7 @@
       para
       "{{busqueda}}"</small></p>
   <div class="product-list" [class.product-list-one]="columns===1">
-    <app-product-card *ngFor="let product of productsToRender" [product]="product"></app-product-card>
+    <app-product-card *ngFor="let product of productsToRender; index as index" [product]="product" [showCantidades]= showCantidadesUp [cantidad]= "cantidadesUp[index]"  ></app-product-card>
   </div>
   <div class="pb-pagination mt-3">
     <button (click)="previousPage()" [disabled]="currentPage <= 1" class="btn btn-primary mx-2">Anterior</button>

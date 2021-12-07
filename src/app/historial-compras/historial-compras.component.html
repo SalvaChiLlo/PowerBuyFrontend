@@ -1,0 +1,19 @@
+<div class="container">    
+    <div class="historial-container" *ngIf="!loading">      
+
+        <div class="container-fluid">
+            <div class="col-5">
+              
+                <p *ngIf="!products || products.length === 0">No has realizado ninguna compra todavia.</p>
+                <div class="product-list">          
+                <p >Historial de compras( {{products.length}} ) </p>
+                <app-product-list [columns]="1" [showText]="false" [products]="productsToRender" [showCantidadesUp] = "true" [cantidadesUp] = "cantidades" ></app-product-list>                
+                </div>  
+
+              
+
+            </div>
+          </div>
+    </div>
+  </div>
+  
