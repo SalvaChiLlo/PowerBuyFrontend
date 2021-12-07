@@ -29,7 +29,11 @@ export class ClientesService implements OnChanges {
               this.getClientByEmail(user.email).subscribe(client => {
                 this.currentClientSubject.next(client[0])
                 this.currentCliente = client[0]
-                this.currentCliente._favoritos = JSON.parse(this.currentCliente.favoritos || "[]")
+                if (this.currentCliente.favoritos !== null) {
+                  this.currentCliente._favoritos = JSON.parse(this.currentCliente.favoritos || "[]")
+                } else {
+                  this.currentCliente._favoritos = JSON.parse("[]")
+                }
               })
             }
           })
