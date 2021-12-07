@@ -73,3 +73,9 @@
   display: grid;
   grid-template-columns: 1fr;
 }
+
+.textito{
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}

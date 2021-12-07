@@ -37,7 +37,8 @@ export class ShoppingCartComponent implements OnInit {
           var idd = this.productService.shoppingCart[i].producto.id.toString()
           var cantidad = this.productService.shoppingCart[i].cantidad.toString()
           console.log("id y cantidad del producto: " + i + " es: "+  idd + ", " + cantidad );
-          if(this.cliente.historial != null){
+          console.log("historial: " + this.cliente._historial);
+          if(this.cliente._historial != null){
             
             this.cliente._historial.push(idd+"-"+cantidad);
             this.cliente.historial = JSON.stringify(this.cliente._historial)
