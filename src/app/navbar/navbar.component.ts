@@ -29,10 +29,10 @@ export class NavbarComponent implements OnInit {
     { name: "Relevancia", value: 1 },
     { name: "Precio Ascendente", value: 2 },
     { name: "Precio Descentente", value: 3 },
-    { name: "Cantidad Lote Ascendente", value: 4 },
-    { name: "Cantidad Lote Descendente", value: 5 },
-    { name: "Alfabéticamente Ascentente", value: 6 },
-    { name: "Alfabéticamente Descendente", value: 7 }
+    { name: "Alfabéticamente Ascentente", value: 4 },
+    { name: "Alfabéticamente Descendente", value: 5 },
+    { name: "Cantidad Lote Ascendente", value: 6 },
+    { name: "Cantidad Lote Descendente", value: 7 },
   ];
   categorias: CategoriaProducto[] = [];
   @ViewChild('navBar') navBar: ElementRef;
