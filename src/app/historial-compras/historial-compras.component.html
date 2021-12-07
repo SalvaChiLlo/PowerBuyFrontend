@@ -4,9 +4,9 @@
         <div class="container-fluid">
             <div class="col">
               
-                <p *ngIf="!products || products.length === 0">No has realizado ninguna compra todavia.</p>
                 <div class="product-list">          
-                <p class="titulo mt-3"  >Historial de compras ( {{products.length}} ) </p>
+                    <p class="titulo mt-3"  >Historial de Participaciones ( {{products.length}} ) </p>
+                    <p class="noCompras" *ngIf="products.length === 0">No has realizado ninguna compra todavia.</p>
                 <app-product-list  [showText]="false" [products]="productsToRender" [showCantidadesUp] = "true" [cantidadesUp] = "cantidades" ></app-product-list>                
                 </div>  
 
