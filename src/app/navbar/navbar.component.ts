@@ -79,6 +79,11 @@ export class NavbarComponent implements OnInit {
           this.showBackNSearch = true
         }
 
+        if (ev.url === '/historialCompras') {
+          this.showLogo = false;
+          this.pageName = 'Mis Participaciones'
+        }
+
         if (ev.url === '/shopping-cart') {
           this.showLogo = false;
           this.pageName = 'Cesta'

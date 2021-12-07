@@ -40,7 +40,7 @@ app-body {
 .login-inputs input:hover,
 .login-inputs input:focus {
   padding: 3px;
-  border-bottom: 3px solid #2078f9;
+  border-bottom: 3px solid #f26430;
   background-color: #e3e4e691;
   outline: none;
 }
