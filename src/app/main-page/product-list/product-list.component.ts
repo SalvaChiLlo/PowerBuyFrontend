@@ -11,6 +11,8 @@ export class ProductListComponent implements OnInit, OnChanges {
   @Input() busqueda: string = "";
   @Input() columns: number = 3;
   @Input() showText: boolean = true;
+  @Input() showCantidadesUp: boolean = false;
+  @Input() cantidadesUp: string[] = [];
   currentPage: number = 1;
   numberOfPages: number = 1;
   productsToRender: Producto[] = [];

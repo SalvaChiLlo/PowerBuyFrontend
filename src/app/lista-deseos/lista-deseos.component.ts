@@ -32,7 +32,6 @@ export class ListaDeseosComponent implements OnInit {
   valoracionGlobal: number = 0;
 
 
-  // mirar luego que pasa si no hay cliente con sesion iniciada, o sea no currentClient?
   constructor(private router: Router, private auth: Auth, private productService: ProductsService, private categoriesService: CategoriasService, private clienteService: ClientesService) {
   }
 

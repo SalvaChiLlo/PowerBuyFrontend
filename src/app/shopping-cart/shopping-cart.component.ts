@@ -32,8 +32,27 @@ export class ShoppingCartComponent implements OnInit {
     if (this.cliente) {
       if (this.productService.shoppingCart.length > 0) {
         this.show = true;
+        
+        for(var i = 0 ; i <this.productService.shoppingCart.length; i++){         
+          var idd = this.productService.shoppingCart[i].producto.id.toString()
+          var cantidad = this.productService.shoppingCart[i].cantidad.toString()
+          console.log("id y cantidad del producto: " + i + " es: "+  idd + ", " + cantidad );
+          if(this.cliente.historial != null){
+            
+            this.cliente._historial.push(idd+"-"+cantidad);
+            this.cliente.historial = JSON.stringify(this.cliente._historial)
+          }
+          else{
+            this.cliente._historial = [idd+"-"+cantidad];
+            this.cliente.historial = JSON.stringify(this.cliente._historial);
+          }          
+        }
+        this.clienteService.updateClient(this.cliente).subscribe(cliente => {
+          this.clienteService.currentClientSubject.next(this.cliente)
+        })
         this.productService.finalizarCompra();
       }
+
     } else {
       this.router.navigate(['/signin'])
     }
