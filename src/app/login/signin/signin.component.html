@@ -39,7 +39,7 @@
             <input *ngIf="!loading" type="submit" required (click)="signin($event)" class="btn btn-dark generic-button d-flex"
               value="Iniciar sesión">
             <app-spinner *ngIf="loading" [size]="40"></app-spinner>
-            <b class="mt-3">¿No tienes cuenta? <b style="text-decoration: none; color: #f26430" routerLink="/signup">Regístrate </b></b>
+            <b class="mt-3 mb-3">¿No tienes cuenta? <b style="text-decoration: none; color: #f26430" routerLink="/signup">Regístrate </b></b>
           </div>
         </div>
       </form>

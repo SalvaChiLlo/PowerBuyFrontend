@@ -89,3 +89,74 @@ p small {
 input {
   z-index: 1000;
 }
+.container-fluid {
+  height: 100%;
+}
+.login-inputs {
+  position: relative;
+  height: 50px;
+}
+mat-icon {
+  position: absolute;
+  bottom: 30px;
+  right: 26px;
+  z-index: 9999;
+}
+
+input + span {
+  position: absolute;
+  top: 0px;
+  transition: all 0.5s ease;
+  z-index: 1;
+  color: black;
+}
+
+.login-inputs span.active {
+  top: -20px;
+}
+
+input:hover + span,
+input:focus + span {
+  color: #f26430;
+  top: -20px;
+}
+
+.submit {
+  /* box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25); */
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  padding: 12px;
+}
+
+.submit:hover {
+  transform: scale(0.97);
+  /* box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4); */
+}
+
+p small {
+  font-size: 16px;
+}
+
+[type="submit"] {
+  font-weight: bold;
+}
+
+.input-error {
+  border-bottom: 2px solid #c02e2e;
+}
+
+input {
+  z-index: 1000;
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.textus {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
