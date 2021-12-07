@@ -18,10 +18,11 @@
           {{price*0.20|currency:'EUR':'symbol'}} </div>
         <app-favorite-toggle class="mx-2" *ngIf="favoriteVisible" [productId]="product.id" [size]="26">
         </app-favorite-toggle>
+      <div class="cantidad rounded-pill" *ngIf="showCantidades" > 
+        <p  > CANTIDAD: {{cantidad}} </p>
+      </div>
+        
       </div>
     </div>
-  </div>
-  <ng-container *ngIf="showCantidades" >
-    <p> Cantidad comprada= {{cantidad}}</p>
-  </ng-container>  
+  </div>  
 </div>

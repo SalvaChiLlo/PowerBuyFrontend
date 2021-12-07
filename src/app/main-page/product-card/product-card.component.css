@@ -76,3 +76,22 @@ h5 {
   height: 54px;
   overflow: hidden;
 }
+.cantidad{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: #f26430;
+  padding: 10px;
+  color: white;
+ 
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cantidad p{
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+  font-size: 0.85rem;
+}
