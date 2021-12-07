@@ -37,8 +37,27 @@ export class RelatedProductsComponent implements OnInit {
     this.productos = this.productos.filter(product => {
       return product.id != this.product.id;
     });
+    this.productos = this.shuffle(this.productos);
     for (let i = 0; i < this.numProductosAMostrar; i++) {
-      this.productosAMostrar[i] = this.productos[Math.floor(Math.random() * this.productos.length - 1)]
+      this.productosAMostrar[i] = this.productos[i];
     }
+  }
+
+  shuffle(array:Producto[]):Producto[] {
+    let currentIndex = array.length,  randomIndex;
+  
+    // While there remain elements to shuffle...
+    while (currentIndex != 0) {
+  
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+  
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+    }
+  
+    return array;
   }
 }
