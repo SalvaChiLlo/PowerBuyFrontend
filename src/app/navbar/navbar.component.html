@@ -24,8 +24,8 @@
   <div class="search-menu" [class.active]="showSearchMenu">
     <div class="content">
       <div class="form ">
-        <input class="mt-2 mb-2" type="text" name="busqueda" id="busqueda" placeholder="Buscar..."
-          [(ngModel)]="busqueda">
+        <input (keydown.enter)="setBusqueda()" class="mt-2 mb-2" type="text" name="busqueda" id="busqueda"
+          placeholder="Buscar..." [(ngModel)]="busqueda">
         <img src="assets/Vector.svg" alt="" (click)="setBusqueda()">
       </div>
       <div class="accordion" id="accordionExample">
