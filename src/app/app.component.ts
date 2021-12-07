@@ -13,7 +13,6 @@ export class AppComponent {
     let prevScrollpos = body.scrollTop;
     body.onscroll = function () {
       let currentScrollPos = body.scrollTop;
-      console.log(prevScrollpos, currentScrollPos)
       if (prevScrollpos > currentScrollPos) {
         document.getElementById("navbar").style.top = "0";
       } else {
