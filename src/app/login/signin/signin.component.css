@@ -26,7 +26,7 @@ input + span {
 
 input:hover + span,
 input:focus + span {
-  color: #f26430;;
+  color: #f26430;
   top: -20px;
 }
 
@@ -55,4 +55,16 @@ p small {
 
 input {
   z-index: 1000;
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.textus {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
