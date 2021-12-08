@@ -1,6 +1,6 @@
 import { environment } from './../../environments/environment';
 import { Producto, ProductoCantidad } from './../models/producto.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 @Injectable({
@@ -13,7 +13,13 @@ export class ProductsService {
   constructor(private http: HttpClient) { }
 
   public getAllProducts(): Observable<Producto[]> {
-    return this.http.get<Producto[]>(environment.baseBackendURL + '/api/productos')
+
+    const headers: HttpHeaders = new HttpHeaders();
+    headers.append('Cache-Control', 'public');
+
+    return this.http.get<Producto[]>(environment.baseBackendURL + '/api/productos', {
+      headers
+    })
   }
 
   // public getProductById(id: number) {
