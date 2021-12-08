@@ -10,9 +10,10 @@
         alt="search logo" width="100px">
     </div>
   </div>
-  <div class="brand" routerLink="/home">
-    <img *ngIf="showLogo" class="logo pointer" src="/assets/NavBarLogo.svg" alt="PowerBuy logo" width="100px">
-    <h3 *ngIf="!showLogo" class="pointer">{{pageName}}</h3>
+  <div class="brand">
+    <img *ngIf="showLogo" routerLink="/home" class="logo pointer" src="/assets/NavBarLogo.svg" alt="PowerBuy logo"
+      width="100px">
+    <h3 *ngIf="!showLogo" routerLink="/home" class="pointer">{{pageName}}</h3>
   </div>
   <div class="store">
     <img id="store_logo" (click)="showStoreMenu = !showStoreMenu; showSearchMenu=false" class="icon pointer"
