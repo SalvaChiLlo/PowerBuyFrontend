@@ -30,9 +30,15 @@ export class ClientesService implements OnChanges {
                 this.currentClientSubject.next(client[0])
                 this.currentCliente = client[0]
                 if (this.currentCliente.favoritos !== null) {
-                  this.currentCliente._favoritos = JSON.parse(this.currentCliente.favoritos || "[]")
+                  this.currentCliente._favoritos = JSON.parse(this.currentCliente.favoritos)
                 } else {
                   this.currentCliente._favoritos = JSON.parse("[]")
+                }
+
+                if (this.currentCliente.historial !== null) {
+                  this.currentCliente._historial = JSON.parse(this.currentCliente.historial)
+                } else {
+                  this.currentCliente._historial = JSON.parse("[]")
                 }
               })
             }
