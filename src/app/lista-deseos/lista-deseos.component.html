@@ -1,37 +1,39 @@
-<div class="container-fluid container-spinner d-flex justify-content-center align-items-center" *ngIf="loading">
-  <div class="row">
-    <div class="col d-flex justify-content-center align-items-center">
-      <app-spinner [size]="100"></app-spinner>
-    </div>
-  </div>
-</div>
-<div class="container-fluid container-spinner d-flex justify-content-center align-items-center"
-  *ngIf="!products || products.length === 0">
-  <div class="row">
-    <div class="col d-flex justify-content-center align-items-center">
-      <p class="pt-3 px-3">No tienes productos favoritos.</p>
-    </div>
-  </div>
-</div>
 <div class="content">
-  <div class="lista-deseos-container pt-3" *ngIf="!loading && products || products.length">
-    <!-- <hr class="first">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-3">
-
-        </div>
-        <div class="col-6">
-
-        </div>
-        <div class="col-3">
-          <app-sort-selector (selectedOrderEmitter)="getOrden($event)"></app-sort-selector>
-        </div>
+  <div class="container-fluid container-spinner d-flex justify-content-center align-items-center" *ngIf="loading">
+    <div class="row">
+      <div class="col d-flex justify-content-center align-items-center">
+        <app-spinner [size]="100"></app-spinner>
       </div>
     </div>
-    <hr> -->
-    <div class="product-list">
-      <app-product-list [showText]="false" [products]="productsToRender"></app-product-list>
+  </div>
+  <div class="container-fluid container-spinner d-flex justify-content-center align-items-center"
+    *ngIf="!products || products.length === 0">
+    <div class="row">
+      <div class="col d-flex justify-content-center align-items-center">
+        <p class="pt-3 px-3">No tienes productos favoritos.</p>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="lista-deseos-container pt-3" *ngIf="!loading && products || products.length">
+      <!-- <hr class="first">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-3">
+
+          </div>
+          <div class="col-6">
+
+          </div>
+          <div class="col-3">
+            <app-sort-selector (selectedOrderEmitter)="getOrden($event)"></app-sort-selector>
+          </div>
+        </div>
+      </div>
+      <hr> -->
+      <div class="product-list">
+        <app-product-list [showText]="false" [products]="productsToRender"></app-product-list>
+      </div>
     </div>
   </div>
 </div>
