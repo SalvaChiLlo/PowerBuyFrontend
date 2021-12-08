@@ -12,8 +12,8 @@
       <div class="col">
 
         <div class="pb-3 list-content">
-          <p class="titulo pt-3">Historial de Participaciones ( {{products.length}} ) </p>
-          <p class="noCompras" *ngIf="products.length === 0">No has realizado ninguna compra todavia.</p>
+          <p class="titulo pt-3">Historial de Participaciones ( {{productsToRender.length}} ) </p>
+          <p class="noCompras" *ngIf="productsToRender.length === 0">No has realizado ninguna compra todavia.</p>
           <app-product-list [showText]="false" [products]="productsToRender" [showCantidadesUp]="true"
             [cantidadesUp]="cantidades"></app-product-list>
         </div>
