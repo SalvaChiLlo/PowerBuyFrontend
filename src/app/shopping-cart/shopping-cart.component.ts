@@ -36,23 +36,17 @@ export class ShoppingCartComponent implements OnInit {
         for (var i = 0; i < this.productService.shoppingCart.length; i++) {
           var idd = this.productService.shoppingCart[i].producto.id.toString()
           var cantidad = this.productService.shoppingCart[i].cantidad.toString()
-          console.log("id y cantidad del producto: " + i + " es: " + idd + ", " + cantidad);
-          console.log("historial: " + this.cliente._historial);
-          console.log(this.cliente._historial)
 
           if (this.cliente._historial != null) {
 
             this.cliente._historial.push(idd + "-" + cantidad);
-            console.log(this.cliente._historial)
             this.cliente.historial = JSON.stringify(this.cliente._historial)
-            console.log(this.cliente.historial)
           }
           else {
             this.cliente._historial = [idd + "-" + cantidad];
             this.cliente.historial = JSON.stringify(this.cliente._historial);
           }
         }
-        console.log(this.cliente)
         this.clienteService.updateClient(this.cliente).subscribe(cliente => {
           this.clienteService.currentClientSubject.next(this.cliente)
         })

@@ -44,7 +44,6 @@ export class ProductCardComponent implements OnInit, OnChanges {
       }
       this.formatTitulo();
     }
-    console.log(this.cantidad, this.product.id)
   }
 
   ngOnInit(): void {

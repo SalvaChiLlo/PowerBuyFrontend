@@ -42,15 +42,11 @@ export class HistorialComprasComponent implements OnInit {
   }
 
   getProducts() {
-    console.log(this.historial)
     if (this.historial != null) {
       this.historial.forEach(item => {
         this.cantidades.push(+item.split("-")[1])
         this.idProducts.push(+item.split("-")[0])
       })
-
-      console.log(this.cantidades)
-      console.log(this.idProducts)
 
       this.productService.getAllProducts().subscribe((products: Producto[]) => {
 
@@ -59,7 +55,6 @@ export class HistorialComprasComponent implements OnInit {
         })
 
         this.loading = false;
-        console.log(this.productsToRender)
       })
 
     }
