@@ -12,7 +12,7 @@ export class ProductListComponent implements OnInit, OnChanges {
   @Input() columns: number = 3;
   @Input() showText: boolean = true;
   @Input() showCantidadesUp: boolean = false;
-  @Input() cantidadesUp: string[] = [];
+  @Input() cantidadesUp: number[] = [];
   currentPage: number = 1;
   numberOfPages: number = 1;
   productsToRender: Producto[] = [];
@@ -25,6 +25,7 @@ export class ProductListComponent implements OnInit, OnChanges {
     if (Object.keys(changes).includes('products')) {
       this.setPagination();
     }
+
   }
 
   ngOnInit(): void {

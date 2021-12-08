@@ -15,13 +15,13 @@ export class HistorialComprasComponent implements OnInit {
 
   products: Producto[] = [];
   productsToRender: Producto[] = [];
-  cliente: Cliente;  
+  cliente: Cliente;
   loading = true;
 
-  idProducts: string[] = [];
-  cantidades: string[] = [];
+  idProducts: number[] = [];
+  cantidades: number[] = [];
   historial: string[] = [];
-  
+
 
   constructor(private router: Router, private productService: ProductsService, private clienteService: ClientesService) { }
 
@@ -30,7 +30,6 @@ export class HistorialComprasComponent implements OnInit {
       this.cliente = cl
       if (this.cliente) {
         this.historial = JSON.parse(this.cliente.historial || "[]");
-        this.idProducts = this.historial;
         this.getProducts();
       }
     })
@@ -38,37 +37,34 @@ export class HistorialComprasComponent implements OnInit {
     this.cliente = this.clienteService.currentCliente
     if (this.cliente) {
       this.historial = JSON.parse(this.cliente.historial || "[]");
-      this.idProducts = this.historial;
       this.getProducts();
-    }    
+    }
   }
 
   getProducts() {
-    if(this.historial != null){
-      for(var i = 0; i< this.historial.length; i++){
-        this.cantidades[i] = this.idProducts[i].substring(this.idProducts[i].indexOf("-") + 1) 
-        this.idProducts[i] = this.idProducts[i].substring(0, this.idProducts[i].indexOf("-")) 
-      }
-      console.log(this.cantidades.toString())
-      console.log(this.idProducts.toString())
-  
-      this.productService.getAllProducts().subscribe((products: any) => {
-        this.products = products
-        if (this.idProducts != null && this.idProducts.length > 0) {
-          this.products = this.products.filter(prd => (this.idProducts.indexOf(prd.id.toString()) > -1));
-        }
-        else {
-          this.products = [];
-        }
-        
-        this.productsToRender = this.products
-        
+    console.log(this.historial)
+    if (this.historial != null) {
+      this.historial.forEach(item => {
+        this.cantidades.push(+item.split("-")[1])
+        this.idProducts.push(+item.split("-")[0])
+      })
+
+      console.log(this.cantidades)
+      console.log(this.idProducts)
+
+      this.productService.getAllProducts().subscribe((products: Producto[]) => {
+
+        this.idProducts.forEach(id => {
+          this.productsToRender.push(products.filter(prod => prod.id === id)[0])
+        })
+
+        this.loading = false;
+        console.log(this.productsToRender)
       })
 
     }
 
-    this.loading = false;
-        
+
   }
 
 

@@ -1,10 +1,12 @@
 <div class="container-fluid" *ngIf="productsToRender.length > 0">
-  <p *ngIf="showText && busqueda!== ''" class="px-2 m-0"><small class="textito">{{firstProd+1}}-{{lastProd}} de {{products.length}}
+  <p *ngIf="showText && busqueda!== ''" class="px-2 m-0"><small class="textito">{{firstProd+1}}-{{lastProd}} de
+      {{products.length}}
       resultados encontrados
       para
       "{{busqueda}}"</small></p>
-  <div class="product-list" [class.product-list-one]="columns===1">
-    <app-product-card *ngFor="let product of productsToRender; index as index" [product]="product" [showCantidades]= showCantidadesUp [cantidad]= "cantidadesUp[index]"  ></app-product-card>
+  <div class="product-list">
+    <app-product-card *ngFor="let product of productsToRender; index as index" [product]="product"
+      [showCantidades]=showCantidadesUp [cantidad]="cantidadesUp[index]"></app-product-card>
   </div>
   <div class="pb-pagination mt-3 mb-3">
     <button (click)="previousPage()" [disabled]="currentPage <= 1"
